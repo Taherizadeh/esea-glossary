@@ -41,7 +41,6 @@
       background-color: var(--bg-main);
       color: var(--text-main);
       line-height: 1.6;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     header {
@@ -65,29 +64,23 @@
       gap: 1rem;
     }
 
-    .brand-box {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+    .brand-box { display: flex; align-items: center; gap: 1rem; }
 
     .ek-emblem {
-      width: 54px;
-      height: 54px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, var(--eck-gold-light), var(--eck-gold), var(--eck-gold-dark));
+      background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: 1.45rem;
-      color: var(--eck-blue-dark);
-      box-shadow: 0 2px 12px rgba(212, 175, 55, 0.6);
-      border: 2px solid #fff;
+      border: 2px solid var(--eck-gold);
+      overflow: hidden;
       flex-shrink: 0;
-      letter-spacing: -1px;
+      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
     }
+
+    .ek-emblem img { width: 100%; height: 100%; object-fit: cover; }
 
     .brand-titles h1 {
       font-family: 'Cinzel', serif;
@@ -107,81 +100,11 @@
       font-weight: 700;
       padding: 2px 8px;
       border-radius: 4px;
-      letter-spacing: 0.5px;
     }
 
-    .brand-titles p {
-      font-size: 0.82rem;
-      color: var(--eck-gold-light);
-      letter-spacing: 0.4px;
-    }
+    .brand-titles p { font-size: 0.82rem; color: var(--eck-gold-light); }
 
-    .header-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      flex-wrap: wrap;
-    }
-
-    .role-switcher {
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(212, 175, 55, 0.5);
-      padding: 0.4rem 0.75rem;
-      border-radius: 8px;
-      gap: 0.5rem;
-    }
-
-    .role-switcher label {
-      font-size: 0.78rem;
-      color: var(--eck-gold-light);
-      font-weight: 600;
-    }
-
-    .role-switcher select {
-      background: transparent;
-      color: #fff;
-      border: none;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      outline: none;
-    }
-
-    .role-switcher select option {
-      background: var(--eck-blue-dark);
-      color: #fff;
-    }
-
-    .todo-pill {
-      background: rgba(212, 175, 55, 0.2);
-      border: 1px solid var(--eck-gold);
-      color: var(--eck-gold-light);
-      padding: 0.4rem 0.85rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: 0.2s;
-    }
-
-    .todo-pill:hover {
-      background: var(--eck-gold);
-      color: var(--eck-blue-dark);
-    }
-
-    .todo-count {
-      background: var(--eck-gold);
-      color: var(--eck-blue-dark);
-      padding: 1px 7px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.75rem;
-    }
+    .header-controls { display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap; }
 
     .icon-btn {
       background: rgba(255, 255, 255, 0.12);
@@ -191,20 +114,13 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 0.85rem;
-      transition: 0.2s;
     }
 
-    .icon-btn:hover { background: rgba(255, 255, 255, 0.25); }
-
-    .main-container {
-      max-width: 1400px;
-      margin: 1.5rem auto;
-      padding: 0 1.5rem;
-    }
+    .main-container { max-width: 1400px; margin: 1.5rem auto; padding: 0 1.5rem; }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
@@ -218,23 +134,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
-    .stat-card h4 {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      letter-spacing: 0.5px;
-    }
-
-    .stat-card .num {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--eck-blue);
-      margin-top: 0.2rem;
-    }
-
+    .stat-card h4 { font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); }
+    .stat-card .num { font-size: 1.5rem; font-weight: 700; color: var(--eck-blue); margin-top: 0.2rem; }
     body.dark-mode .stat-card .num { color: var(--eck-gold-light); }
 
     .top-bar {
@@ -259,49 +162,9 @@
       font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: 0.2s;
     }
 
-    .tab-btn.active {
-      background: var(--eck-blue);
-      color: #ffffff;
-      box-shadow: 0 2px 8px rgba(0, 56, 147, 0.25);
-    }
-
-    .tab-btn:hover:not(.active) {
-      background: var(--eck-blue-light);
-      color: var(--eck-blue);
-    }
-
-    .action-buttons { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-
-    .btn-gold {
-      background: linear-gradient(135deg, var(--eck-gold) 0%, var(--eck-gold-dark) 100%);
-      color: #fff;
-      border: none;
-      padding: 0.6rem 1.15rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
-    }
-
-    .btn-outline {
-      background: var(--bg-card);
-      color: var(--eck-blue);
-      border: 1px solid var(--eck-blue);
-      padding: 0.55rem 1rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-
-    body.dark-mode .btn-outline {
-      color: var(--eck-gold-light);
-      border-color: var(--eck-gold);
-    }
+    .tab-btn.active { background: var(--eck-blue); color: #ffffff; }
 
     .filter-panel {
       background: var(--bg-card);
@@ -316,35 +179,16 @@
     }
 
     .search-box { flex: 1; min-width: 260px; position: relative; }
-
     .search-box input {
       width: 100%;
       padding: 0.65rem 1rem 0.65rem 2.4rem;
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      font-size: 0.92rem;
       background: var(--bg-main);
       color: var(--text-main);
       outline: none;
     }
-
-    .search-box .search-icon {
-      position: absolute;
-      left: 0.8rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-    }
-
-    .filter-select {
-      padding: 0.6rem 0.9rem;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      background: var(--bg-main);
-      color: var(--text-main);
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
+    .search-box .search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
 
     .table-wrapper {
       background: var(--bg-card);
@@ -355,176 +199,37 @@
     }
 
     table { width: 100%; border-collapse: collapse; min-width: 980px; }
-
-    thead {
-      background: var(--eck-blue-light);
-      border-bottom: 2px solid var(--eck-gold);
-    }
-
-    th {
-      text-align: left;
-      padding: 0.9rem 1rem;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--eck-blue);
-      font-weight: 700;
-    }
-
+    thead { background: var(--eck-blue-light); border-bottom: 2px solid var(--eck-gold); }
+    th { text-align: left; padding: 0.9rem 1rem; font-size: 0.78rem; text-transform: uppercase; color: var(--eck-blue); font-weight: 700; }
     body.dark-mode th { color: var(--eck-gold-light); }
+    td { padding: 1rem; border-bottom: 1px solid var(--border-color); vertical-align: top; font-size: 0.9rem; }
 
-    td {
-      padding: 1rem;
-      border-bottom: 1px solid var(--border-color);
-      vertical-align: top;
-      font-size: 0.9rem;
-    }
-
-    .term-title {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--eck-blue);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
+    .term-title { font-weight: 700; font-size: 1rem; color: var(--eck-blue); display: flex; align-items: center; gap: 0.4rem; }
     body.dark-mode .term-title { color: #fff; }
 
     .esc-rule {
-      display: inline-block;
-      margin-top: 0.3rem;
-      font-size: 0.73rem;
-      background: rgba(212, 175, 55, 0.15);
-      color: var(--eck-gold-dark);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-weight: 600;
+      display: inline-block; margin-top: 0.3rem; font-size: 0.73rem;
+      background: rgba(212, 175, 55, 0.15); color: var(--eck-gold-dark);
+      border: 1px solid rgba(212, 175, 55, 0.4); padding: 2px 7px; border-radius: 4px; font-weight: 600;
     }
 
-    body.dark-mode .esc-rule { color: var(--eck-gold-light); }
-
-    .badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      margin-right: 4px;
-      margin-top: 4px;
-    }
-
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; margin-right: 4px; margin-top: 4px; }
     .badge-category { background: var(--eck-blue-light); color: var(--eck-blue); }
     .badge-public { background: #dcfce7; color: #166534; }
-    .badge-chela { background: #f3e8ff; color: var(--chela-badge); }
 
     .lang-text { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
-    .phonetic { font-size: 0.76rem; color: var(--text-muted); font-style: italic; }
-
-    .status-dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      margin-right: 4px;
-    }
-
+    .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
     .dot-approved { background: var(--success); }
     .dot-pending { background: var(--warning); }
 
-    .mini-actions { display: flex; gap: 0.35rem; margin-top: 0.4rem; }
-
-    .mini-btn {
-      background: var(--bg-main);
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      padding: 2px 7px;
-      border-radius: 5px;
-      font-size: 0.72rem;
-      cursor: pointer;
-    }
-
-    .mini-btn.edit-highlight {
-      border-color: var(--eck-gold);
-      background: rgba(212, 175, 55, 0.12);
-      color: var(--eck-gold-dark);
-      font-weight: 600;
-    }
-
-    .quotes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .quote-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-top: 4px solid var(--eck-blue);
-      border-radius: 12px;
-      padding: 1.35rem;
-    }
-
+    .quotes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 1.25rem; }
+    .quote-card { background: var(--bg-card); border: 1px solid var(--border-color); border-top: 4px solid var(--eck-blue); border-radius: 12px; padding: 1.35rem; }
     .quote-en { font-size: 0.98rem; font-style: italic; margin-bottom: 0.6rem; }
     .quote-ref { font-size: 0.8rem; font-weight: 700; color: var(--eck-gold-dark); margin-bottom: 1rem; }
-    .quote-trans-box { border-top: 1px dashed var(--border-color); padding-top: 0.75rem; margin-top: 0.75rem; font-size: 0.88rem; }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 20, 60, 0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      padding: 1rem;
-    }
-
-    .modal-backdrop.open { display: flex; }
-
-    .modal {
-      background: var(--bg-card);
-      border-radius: 14px;
-      max-width: 580px;
-      width: 100%;
-      padding: 1.75rem;
-      border-top: 5px solid var(--eck-gold);
-    }
-
-    .form-group { margin-bottom: 1rem; }
-    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; }
-    .form-group input, .form-group select {
-      width: 100%;
-      padding: 0.65rem;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      background: var(--bg-main);
-      color: var(--text-main);
-    }
-
-    .esc-alert {
-      background: rgba(212, 175, 55, 0.14);
-      border-left: 4px solid var(--eck-gold);
-      padding: 0.65rem 0.9rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      margin-top: 0.45rem;
-      display: none;
-    }
 
     .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--eck-blue-dark);
-      color: #fff;
-      border-left: 4px solid var(--eck-gold);
-      padding: 0.85rem 1.25rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      display: none;
-      z-index: 300;
+      position: fixed; bottom: 20px; right: 20px; background: var(--eck-blue-dark); color: #fff;
+      border-left: 4px solid var(--eck-gold); padding: 0.85rem 1.25rem; border-radius: 8px; font-size: 0.88rem; display: none; z-index: 300;
     }
 
     .hidden { display: none !important; }
@@ -535,32 +240,17 @@
   <header>
     <div class="header-container">
       <div class="brand-box">
-        <div class="ek-emblem">EK</div>
+        <div class="ek-emblem">
+          <img src="EK_symbol_03_color_HI.jpg" alt="ECK" onerror="this.parentElement.innerHTML='EK'" />
+        </div>
         <div class="brand-titles">
           <h1>ECKANKAR <span class="region-tag">ESEA REGION</span></h1>
-          <p>The Path of Spiritual Freedom • Unified Regional Glossary (EN / TL / JA / TH)</p>
+          <p>The Path of Spiritual Freedom • Unified Regional Glossary (Live Google Sheet)</p>
         </div>
       </div>
 
       <div class="header-controls">
-        <div class="todo-pill" onclick="handleTodoClick()">
-          <span>🔔 To-Do Tasks</span>
-          <span class="todo-count" id="todoBadgeCount">2</span>
-        </div>
-
-        <div class="role-switcher">
-          <label for="userSelect">👤 Active User:</label>
-          <select id="userSelect" onchange="switchUser()">
-            <option value="Peter">Peter (Admin / RESA - All)</option>
-            <option value="Faramarz">Faramarz (Developer - All)</option>
-            <option value="Setsuko">Setsuko (Translator - Japanese)</option>
-            <option value="Oi">Oi (Translator - Thai)</option>
-            <option value="Mila">Mila (Translator - Filipino)</option>
-            <option value="Don">Don (Translator - Filipino)</option>
-            <option value="Judy">Judy (Viewer - All Languages)</option>
-          </select>
-        </div>
-
+        <button class="icon-btn" onclick="loadLiveData()">🔄 Sync with Sheet</button>
         <button class="icon-btn" onclick="toggleDarkMode()">🌓 Theme</button>
       </div>
     </div>
@@ -569,20 +259,16 @@
   <div class="main-container">
     <div class="stats-grid">
       <div class="stat-card">
-        <div><h4>Master Terms</h4><div class="num" id="statTotalTerms">0</div></div>
+        <div><h4>Master Terms (Sheet)</h4><div class="num" id="statTotalTerms">Loading...</div></div>
         <span style="font-size:1.8rem;">📘</span>
       </div>
       <div class="stat-card">
-        <div><h4>Sacred Quotes</h4><div class="num" id="statTotalQuotes">0</div></div>
+        <div><h4>Master Quotes (Sheet)</h4><div class="num" id="statTotalQuotes">Loading...</div></div>
         <span style="font-size:1.8rem;">💬</span>
       </div>
       <div class="stat-card">
-        <div><h4>Drafts Pending Approval</h4><div class="num" id="statPendingDrafts">0</div></div>
-        <span style="font-size:1.8rem;">⏳</span>
-      </div>
-      <div class="stat-card">
-        <div><h4>ESC Style Compliance</h4><div class="num">100%</div></div>
-        <span style="font-size:1.8rem;">✨</span>
+        <div><h4>Status</h4><div class="num" style="font-size:1.1rem; color:var(--success);">Connected Live</div></div>
+        <span style="font-size:1.8rem;">🟢</span>
       </div>
     </div>
 
@@ -590,367 +276,165 @@
       <div class="nav-tabs">
         <button class="tab-btn active" id="tabBtnGlossary" onclick="switchTab('glossary')">📖 Master Glossary</button>
         <button class="tab-btn" id="tabBtnQuotes" onclick="switchTab('quotes')">💬 Sacred Quotes (Master_Quotes)</button>
-        <button class="tab-btn" id="tabBtnDrafts" onclick="switchTab('drafts')">⏳ Drafts Queue & Batch Approval</button>
-      </div>
-
-      <div class="action-buttons">
-        <button class="btn-gold" onclick="openModal()" id="primaryActionBtn">+ Propose / Request Term</button>
-        <button class="btn-outline" onclick="exportCSV()">⬇️ Export CSV / Excel</button>
       </div>
     </div>
 
     <div class="filter-panel">
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Live search terms, translations, phonetics, or quotes..." oninput="renderActiveTab()" />
+        <input type="text" id="searchInput" placeholder="Search live terms, translations, or quotes..." oninput="renderActiveTab()" />
       </div>
-
-      <select class="filter-select" id="categoryFilter" onchange="renderActiveTab()">
-        <option value="ALL">All Categories</option>
-        <option value="Spiritual Concepts">Spiritual Concepts</option>
-        <option value="Roles/Titles">Roles/Titles</option>
-        <option value="Books/Talks">Books/Talks</option>
-        <option value="Programs/Roles">Programs/Roles</option>
-      </select>
-
-      <select class="filter-select" id="scopeFilter" onchange="renderActiveTab()">
-        <option value="ALL">All Scopes (Public & Chela)</option>
-        <option value="Public">Public Only</option>
-        <option value="Chela_Only">Chela_Only</option>
-      </select>
-
-      <select class="filter-select" id="statusFilter" onchange="renderActiveTab()">
-        <option value="ALL">All Statuses</option>
-        <option value="MY_PENDING">Needs My Translation (Pending)</option>
-        <option value="APPROVED">Fully Approved</option>
-      </select>
     </div>
 
     <div id="sectionGlossary" class="table-wrapper">
       <table>
         <thead>
           <tr>
-            <th style="width: 22%;">English Term & ESC Style Rule</th>
-            <th style="width: 22%;">🇵🇭 Filipino (Tagalog)</th>
-            <th style="width: 22%;">🇯🇵 Japanese (Furigana)</th>
-            <th style="width: 22%;">🇹🇭 Thai (Phonetic)</th>
-            <th style="width: 12%;">Context</th>
+            <th style="width: 25%;">English Term & ESC Style</th>
+            <th style="width: 25%;">🇵🇭 Filipino (Tagalog)</th>
+            <th style="width: 25%;">🇯🇵 Japanese</th>
+            <th style="width: 25%;">🇹🇭 Thai</th>
           </tr>
         </thead>
-        <tbody id="glossaryTableBody"></tbody>
+        <tbody id="glossaryTableBody">
+          <tr><td colspan="4" style="text-align:center; padding:2rem;">Loading data from Google Sheet...</td></tr>
+        </tbody>
       </table>
     </div>
 
     <div id="sectionQuotes" class="quotes-grid hidden"></div>
-
-    <div id="sectionDrafts" class="hidden">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-        <h3 style="color:var(--eck-blue);">Drafts Queue (Awaiting Admin Review)</h3>
-        <button class="btn-gold" id="batchApproveBtn" onclick="batchApproveSelected()">✅ Batch Approve Selected</button>
-      </div>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:4%;"><input type="checkbox" onchange="toggleSelectAllDrafts(this)" /></th>
-              <th>Draft ID & English Term</th>
-              <th>Target Language & Proposed Text</th>
-              <th>Submitted By</th>
-              <th>ESC Style AI Check (1997 / 2021)</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="draftsTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="termModal">
-    <div class="modal">
-      <h3 style="color:var(--eck-blue); margin-bottom:0.5rem;">Propose Translation / Request New Term</h3>
-      <div class="form-group">
-        <label>English Term (Reference)</label>
-        <input type="text" id="inputEnglishTerm" placeholder="e.g., Spiritual Eye, Temple of ECK..." oninput="checkESCStyle(this.value)" />
-        <div class="esc-alert" id="escLiveAlert"></div>
-      </div>
-      <div class="form-group">
-        <label>Category Domain</label>
-        <select id="inputCategory">
-          <option value="Spiritual Concepts">Spiritual Concepts</option>
-          <option value="Roles/Titles">Roles/Titles</option>
-          <option value="Books/Talks">Books/Talks</option>
-          <option value="Programs/Roles">Programs/Roles</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Target Language</label>
-        <select id="inputTargetLang">
-          <option value="Filipino">Filipino</option>
-          <option value="Japanese">Japanese</option>
-          <option value="Thai">Thai</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Proposed Translation</label>
-        <input type="text" id="inputTranslation" placeholder="Enter translation..." />
-      </div>
-      <div style="display:flex; justify-content:flex-end; gap:0.6rem; margin-top:1.25rem;">
-        <button class="btn-outline" onclick="closeModal()">Cancel</button>
-        <button class="btn-gold" onclick="submitDraft()">Submit to Drafts_Queue</button>
-      </div>
-    </div>
   </div>
 
   <div class="toast" id="toastBox"></div>
 
   <script>
-    const USERS = {
-      Peter:    { role: "Admin / RESA", lang: "ALL" },
-      Faramarz: { role: "Developer",    lang: "ALL" },
-      Setsuko:  { role: "Translator",   lang: "Japanese" },
-      Oi:       { role: "Translator",   lang: "Thai" },
-      Mila:     { role: "Translator",   lang: "Filipino" },
-      Don:      { role: "Translator",   lang: "Filipino" },
-      Judy:     { role: "Viewer",       lang: "NONE" }
-    };
+    // ** لینک Web App گوگل اسکریپت خود را اینجا قرار دهید **
+    const APPS_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
 
-    let currentUser = "Peter";
+    let liveGlossary = [];
+    let liveQuotes = [];
     let activeTab = "glossary";
 
-    const glossaryData = [
-      { id: "TERM_A001", en: "acorn to oak", category: "Spiritual Concepts", scope: "Public", esc: "Lowercase", tl: "", tl_ph: "", tl_status: "Pending", ja: "どんぐりから樫の大木へ", ja_ph: "Donguri kara kashi no taiboku e", ja_status: "Approved", th: "", th_ph: "", th_status: "Pending", context: "Metaphor for spiritual growth" },
-      { id: "TERM_A003", en: "Adept(s)", category: "Roles/Titles", scope: "Public", esc: "Initial cap when referring to an ECK Master", tl: "(Mga) Dalubhasa [tumutukoy sa (mga) ECK Master]", tl_ph: "Da-lub-ha-sa", tl_status: "Approved", ja: "", ja_ph: "", ja_status: "Pending", th: "ปรมาจารย์แห่งเอ็ค/ เอ็คมาสเตอร์ (พหูพจน์)", th_ph: "Bà-rá-maa-jaan hàeng Ék", th_status: "Approved", context: "Referring to an ECK Master(s)" },
-      { id: "TERM_A006", en: "Ancient Order of the Vairagi(s)", category: "Programs/Roles", scope: "Chela_Only", esc: "Initial caps for formal title", tl: "Sinaunang Lupon ng mga Vairagi", tl_ph: "", tl_status: "Approved", ja: "", ja_ph: "", ja_status: "Pending", th: "", th_ph: "", th_status: "Pending", context: "Brotherhood of ECK Masters" },
-      { id: "TERM_A009", en: "Arahata", category: "Roles/Titles", scope: "Chela_Only", esc: "Initial cap", tl: "", tl_ph: "", tl_status: "Pending", ja: "", ja_ph: "", ja_status: "Pending", th: "ครูผู้สอนทางจิตวิญญาณ", th_ph: "Kruu pûu sǎwn taang jìt-win-yaan", th_status: "Approved", context: "Spiritual teacher/class instructor" },
-      { id: "TERM_A013", en: "as Soul", category: "Spiritual Concepts", scope: "Public", esc: "Capital S for Soul", tl: "", tl_ph: "", tl_status: "Pending", ja: "魂として", ja_ph: "Tamashii toshite", ja_status: "Approved", th: "", th_ph: "", th_status: "Pending", context: "Functioning in true spiritual identity" },
-      { id: "TERM_A015", en: "Astral Plane", category: "Spiritual Concepts", scope: "Public", esc: "Initial caps for both words", tl: "antas na Astral/ daigdig na Astral", tl_ph: "", tl_status: "Approved", ja: "", ja_ph: "", ja_status: "Pending", th: "ภพภูมิแห่งจิตอารมณ์", th_ph: "Póp-puum hàeng jìt-aa-rom", th_status: "Approved", context: "The plane of emotion" },
-      { id: "TERM_A018", en: "Audible Life Stream", category: "Spiritual Concepts", scope: "Public", esc: "Initial caps", tl: "Naririning na Daloy ng Buhay", tl_ph: "", tl_status: "Approved", ja: "", ja_ph: "", ja_status: "Pending", th: "สายธารแห่งชีวิตที่ได้ยินได้", th_ph: "Sǎai-taan hàeng chee-wít têe dâai-yin dâai", th_status: "Approved", context: "Also known as Audible Life Current / ECK" }
-    ];
+    async function loadLiveData() {
+      if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("YOUR_GOOGLE_APPS_SCRIPT")) {
+        showToast("Please insert your Google Apps Script Web App URL.");
+        return;
+      }
+      showToast("🔄 Fetching live data from Google Sheet...");
+      try {
+        const response = await fetch(APPS_SCRIPT_URL);
+        const data = await response.json();
+        liveGlossary = data.glossary || [];
+        liveQuotes = data.quotes || [];
 
-    const quotesData = [
-      { id: "QTE_001", en: "Abundance flourishes in a grateful heart; gratitude is the secret of love.", source: "The Spiritual Laws of Life", author: "Harold Klemp", tl: "Yumayabong ang kasaganaan sa pusong nagpapasalamat; ang pasasalamat ang lihim ng pag-ibig.", ja: "", th: "" },
-      { id: "QTE_006", en: "The love and protection of the Holy Spirit, which we call the ECK, are with you in all spiritual concerns.", source: "The Spiritual Life", author: "Harold Klemp", tl: "Ang pagmamahal at pag-iingat ng Banal na Espiritu, na tinatawag nating ECK, ay sumasaiyo sa lahat ng aspetong espirituwal.", ja: "", th: "" },
-      { id: "QTE_009", en: "Singing HU, the sacred name for God, opens the channels of healing. HU sounds like the word hue, but drawn out.", source: "The Spiritual Life", author: "Harold Klemp", tl: "Ang pag-awit ng HU, ang sagradong pangalan ng Diyos, ay nagbubukas ng mga daluyan ng paghihilom.", ja: "", th: "" }
-    ];
-
-    const draftsData = [
-      { id: "DFT_001", en: "spiritual eye", lang: "Thai", proposed: "ดวงตาแห่งจิตวิญญาณ", by: "Oi", category: "Spiritual Concepts", escRec: 'Capitalize as "Spiritual Eye" per 1997 Style Sheet.', status: "Pending_Review", date: "2026-09-30 10:15" },
-      { id: "DFT_002", en: "Temple of Eck", lang: "Japanese", proposed: "エック・テンプル", by: "Setsuko", category: "Places", escRec: 'Capitalize "ECK" fully as "Temple of ECK" per Style Guide.', status: "Pending_Review", date: "2026-09-30 11:42" },
-      { id: "DFT_003", en: "Mahanta", lang: "Filipino", proposed: "(Mga) Mahanta", by: "Mila", category: "Roles/Titles", escRec: "Format correct (Capital M). Ready for integration.", status: "Approved", date: "2026-09-30 14:05" }
-    ];
+        document.getElementById("statTotalTerms").innerText = liveGlossary.length;
+        document.getElementById("statTotalQuotes").innerText = liveQuotes.length;
+        renderActiveTab();
+        showToast("✅ Successfully synced with Google Sheet!");
+      } catch (err) {
+        console.error(err);
+        showToast("❌ Error connecting to Google Sheet.");
+      }
+    }
 
     function renderGlossary() {
       const tbody = document.getElementById("glossaryTableBody");
       const q = document.getElementById("searchInput").value.toLowerCase();
-      const cat = document.getElementById("categoryFilter").value;
-      const scope = document.getElementById("scopeFilter").value;
-      const statusF = document.getElementById("statusFilter").value;
-      const userObj = USERS[currentUser];
 
-      const filtered = glossaryData.filter(item => {
-        const matchText = !q || item.en.toLowerCase().includes(q) || item.tl.toLowerCase().includes(q) || item.ja.toLowerCase().includes(q) || item.th.toLowerCase().includes(q);
-        const matchCat = cat === "ALL" || item.category === cat;
-        const matchScope = scope === "ALL" || item.scope === scope;
-        let matchStatus = true;
-        if (statusF === "MY_PENDING") {
-          if (userObj.lang === "Japanese") matchStatus = item.ja_status === "Pending";
-          else if (userObj.lang === "Thai") matchStatus = item.th_status === "Pending";
-          else if (userObj.lang === "Filipino") matchStatus = item.tl_status === "Pending";
-          else matchStatus = (item.tl_status === "Pending" || item.ja_status === "Pending" || item.th_status === "Pending");
-        } else if (statusF === "APPROVED") {
-          matchStatus = (item.tl_status === "Approved" && item.ja_status === "Approved" && item.th_status === "Approved");
-        }
-        return matchText && matchCat && matchScope && matchStatus;
+      const filtered = liveGlossary.filter(item => {
+        const en = String(item.English_Term || item.en || "").toLowerCase();
+        const tl = String(item.Filipino_Translation || item.tl || "").toLowerCase();
+        const ja = String(item.Japanese_Translation || item.ja || "").toLowerCase();
+        const th = String(item.Thai_Translation || item.th || "").toLowerCase();
+        return !q || en.includes(q) || tl.includes(q) || ja.includes(q) || th.includes(q);
       });
 
-      tbody.innerHTML = filtered.map(item => `
-        <tr>
-          <td>
-            <div class="term-title">
-              <span>${item.en}</span>
-              <button class="mini-btn" onclick="speakText('${item.en.replace(/'/g, "")}', 'en-US')">🔊</button>
-            </div>
-            <div class="esc-rule">ESC: ${item.esc}</div>
-            <div>
-              <span class="badge badge-category">${item.category}</span>
-              <span class="badge ${item.scope === 'Chela_Only' ? 'badge-chela' : 'badge-public'}">${item.scope}</span>
-            </div>
-          </td>
-          ${renderLangCell(item, 'Filipino', item.tl, item.tl_ph, item.tl_status, 'fil-PH')}
-          ${renderLangCell(item, 'Japanese', item.ja, item.ja_ph, item.ja_status, 'ja-JP')}
-          ${renderLangCell(item, 'Thai', item.th, item.th_ph, item.th_status, 'th-TH')}
-          <td style="color:var(--text-muted); font-size:0.83rem;">${item.context}</td>
-        </tr>
-      `).join("");
-    }
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:2rem;">No matching terms found.</td></tr>`;
+        return;
+      }
 
-    function renderLangCell(item, langName, text, phonetic, status, ttsLang) {
-      const userObj = USERS[currentUser];
-      const canEdit = userObj.lang === "ALL" || userObj.lang === langName;
-      const isApproved = status === "Approved" && text;
-      return `
-        <td>
-          <div>
-            <span class="status-dot ${isApproved ? 'dot-approved' : 'dot-pending'}"></span>
-            <span class="lang-text">${text || '<em style="color:var(--text-muted); font-weight:400;">Pending translation...</em>'}</span>
-          </div>
-          ${phonetic ? `<div class="phonetic">[${phonetic}]</div>` : ''}
-          <div class="mini-actions">
-            ${text ? `<button class="mini-btn" onclick="copyText('${text.replace(/'/g, "")}')">📋 Copy</button>` : ''}
-            ${text ? `<button class="mini-btn" onclick="speakText('${text.replace(/'/g, "")}', '${ttsLang}')">🔊 Audio</button>` : ''}
-            ${canEdit ? `<button class="mini-btn edit-highlight" onclick="openEditForTerm('${item.en.replace(/'/g, "")}', '${langName}')">✏️ ${text ? 'Edit' : 'Translate'}</button>` : ''}
-          </div>
-        </td>
-      `;
+      tbody.innerHTML = filtered.map(item => {
+        const enTerm = item.English_Term || item.en || "";
+        const category = item.Category_Domain || item.category || "General";
+        const scope = item.Audience_Scope || item.scope || "Public";
+        const escRule = item.ESC_Style_Rules || item.esc || "Standard";
+        
+        const tlText = item.Filipino_Translation || item.tl || "";
+        const tlStatus = item.Filipino_Status || item.tl_status || "Pending";
+        
+        const jaText = item.Japanese_Translation || item.ja || "";
+        const jaStatus = item.Japanese_Status || item.ja_status || "Pending";
+        
+        const thText = item.Thai_Translation || item.th || "";
+        const thStatus = item.Thai_Status || item.th_status || "Pending";
+
+        return `
+          <tr>
+            <td>
+              <div class="term-title"><span>${enTerm}</span></div>
+              <div class="esc-rule">ESC: ${escRule}</div>
+              <div><span class="badge badge-category">${category}</span><span class="badge badge-public">${scope}</span></div>
+            </td>
+            <td>
+              <div><span class="status-dot ${tlStatus === 'Approved' ? 'dot-approved' : 'dot-pending'}"></span><span class="lang-text">${tlText || '<em>Pending</em>'}</span></div>
+            </td>
+            <td>
+              <div><span class="status-dot ${jaStatus === 'Approved' ? 'dot-approved' : 'dot-pending'}"></span><span class="lang-text">${jaText || '<em>Pending</em>'}</span></div>
+            </td>
+            <td>
+              <div><span class="status-dot ${thStatus === 'Approved' ? 'dot-approved' : 'dot-pending'}"></span><span class="lang-text">${thText || '<em>Pending</em>'}</span></div>
+            </td>
+          </tr>
+        `;
+      }).join("");
     }
 
     function renderQuotes() {
       const container = document.getElementById("sectionQuotes");
       const q = document.getElementById("searchInput").value.toLowerCase();
-      const filtered = quotesData.filter(item => !q || item.en.toLowerCase().includes(q) || item.tl.toLowerCase().includes(q));
+      const filtered = liveQuotes.filter(item => {
+        const en = String(item.English_Quote || item.en || "").toLowerCase();
+        const src = String(item.Source_Book_Talk || item.source || "").toLowerCase();
+        return !q || en.includes(q) || src.includes(q);
+      });
+
       container.innerHTML = filtered.map(qt => `
         <div class="quote-card">
-          <div class="quote-en">“${qt.en}”</div>
-          <div class="quote-ref">— ${qt.author}, <em>${qt.source}</em> (${qt.id})</div>
-          <div class="quote-trans-box"><strong>🇵🇭 Filipino:</strong> ${qt.tl || '<em>Pending</em>'}</div>
-          <div class="quote-trans-box"><strong>🇯🇵 Japanese:</strong> ${qt.ja || '<em>Pending</em>'}</div>
-          <div class="quote-trans-box"><strong>🇹🇭 Thai:</strong> ${qt.th || '<em>Pending</em>'}</div>
+          <div class="quote-en">“${qt.English_Quote || qt.en || ""}”</div>
+          <div class="quote-ref">— ${qt.Author_Speaker || qt.author || "Harold Klemp"}, <em>${qt.Source_Book_Talk || qt.source || ""}</em> (${qt.Quote_ID || qt.id || ""})</div>
+          <div style="font-size:0.88rem; margin-top:0.4rem;"><strong>🇵🇭 Filipino:</strong> ${qt.Filipino_Translation || qt.tl || '<em>Pending</em>'}</div>
+          <div style="font-size:0.88rem; margin-top:0.4rem;"><strong>🇯🇵 Japanese:</strong> ${qt.Japanese_Translation || qt.ja || '<em>Pending</em>'}</div>
+          <div style="font-size:0.88rem; margin-top:0.4rem;"><strong>🇹🇭 Thai:</strong> ${qt.Thai_Translation || qt.th || '<em>Pending</em>'}</div>
         </div>
       `).join("");
-    }
-
-    function renderDrafts() {
-      const tbody = document.getElementById("draftsTableBody");
-      const isAdmin = USERS[currentUser].lang === "ALL";
-      document.getElementById("batchApproveBtn").style.display = isAdmin ? "inline-block" : "none";
-      tbody.innerHTML = draftsData.map((d, idx) => `
-        <tr>
-          <td>${d.status === "Pending_Review" && isAdmin ? `<input type="checkbox" class="draft-check" data-idx="${idx}" />` : '✓'}</td>
-          <td><strong>${d.en}</strong><div style="font-size:0.75rem; color:var(--text-muted);">${d.id} • ${d.category}</div></td>
-          <td><span class="badge badge-category">${d.lang}</span><div style="font-weight:600; margin-top:4px;">${d.proposed}</div></td>
-          <td>${d.by}<br><small style="color:var(--text-muted);">${d.date}</small></td>
-          <td><div class="esc-rule">${d.escRec}</div></td>
-          <td><span class="badge ${d.status === 'Approved' ? 'badge-public' : 'badge-chela'}">${d.status}</span></td>
-        </tr>
-      `).join("");
-    }
-
-    function updateStatsAndTodo() {
-      document.getElementById("statTotalTerms").innerText = "479";
-      document.getElementById("statTotalQuotes").innerText = "157";
-      const pendingDrafts = draftsData.filter(d => d.status === "Pending_Review").length;
-      document.getElementById("statPendingDrafts").innerText = pendingDrafts;
-
-      const userObj = USERS[currentUser];
-      let todoCount = userObj.lang === "ALL" ? pendingDrafts : 3;
-      document.getElementById("todoBadgeCount").innerText = todoCount;
-    }
-
-    function switchUser() {
-      currentUser = document.getElementById("userSelect").value;
-      updateStatsAndTodo();
-      renderActiveTab();
-      showToast(`Switched active view to ${currentUser} (${USERS[currentUser].role})`);
     }
 
     function switchTab(tab) {
       activeTab = tab;
       document.getElementById("tabBtnGlossary").classList.toggle("active", tab === "glossary");
       document.getElementById("tabBtnQuotes").classList.toggle("active", tab === "quotes");
-      document.getElementById("tabBtnDrafts").classList.toggle("active", tab === "drafts");
       document.getElementById("sectionGlossary").classList.toggle("hidden", tab !== "glossary");
       document.getElementById("sectionQuotes").classList.toggle("hidden", tab !== "quotes");
-      document.getElementById("sectionDrafts").classList.toggle("hidden", tab !== "drafts");
       renderActiveTab();
     }
 
     function renderActiveTab() {
       if (activeTab === "glossary") renderGlossary();
-      else if (activeTab === "quotes") renderQuotes();
-      else renderDrafts();
+      else renderQuotes();
     }
 
-    function handleTodoClick() {
-      if (USERS[currentUser].lang === "ALL") switchTab("drafts");
-      else {
-        switchTab("glossary");
-        document.getElementById("statusFilter").value = "MY_PENDING";
-        renderGlossary();
-      }
-    }
-
-    function checkESCStyle(val) {
-      const alertBox = document.getElementById("escLiveAlert");
-      if (!val.trim()) { alertBox.style.display = "none"; return; }
-      let suggestions = [];
-      if (/\b(1st|2nd|3rd|4th|5th)\b/i.test(val)) suggestions.push('Spell out ordinals (e.g., "First Initiate", "Third Eye").');
-      if (/\beck\b/.test(val) && !/\bECK\b/.test(val)) suggestions.push('Capitalize "ECK" in all-caps per ESC Style Guide.');
-      if (/\bsoul\b/.test(val)) suggestions.push('Capitalize "Soul" (initial cap S).');
-      alertBox.style.display = "block";
-      alertBox.innerHTML = suggestions.length ? "<strong>✨ ESC Style Reminder:</strong><br>" + suggestions.join("<br>") : "✅ <strong>ESC Style Check:</strong> Compliant.";
-    }
-
-    function openModal() { document.getElementById("termModal").classList.add("open"); }
-    function openEditForTerm(enTerm, lang) {
-      openModal();
-      document.getElementById("inputEnglishTerm").value = enTerm;
-      document.getElementById("inputTargetLang").value = lang;
-      checkESCStyle(enTerm);
-    }
-    function closeModal() { document.getElementById("termModal").classList.remove("open"); }
-
-    function submitDraft() {
-      const en = document.getElementById("inputEnglishTerm").value.trim();
-      if (!en) return;
-      draftsData.unshift({
-        id: "DFT_00" + (draftsData.length + 1),
-        en: en,
-        lang: document.getElementById("inputTargetLang").value,
-        proposed: document.getElementById("inputTranslation").value.trim() || "[Requested]",
-        by: currentUser,
-        category: document.getElementById("inputCategory").value,
-        escRec: "Verified by ESC Auto-Styler",
-        status: "Pending_Review",
-        date: "Just now"
-      });
-      closeModal();
-      updateStatsAndTodo();
-      switchTab("drafts");
-      showToast("Submitted to Drafts_Queue!");
-    }
-
-    function toggleSelectAllDrafts(masterCheck) {
-      document.querySelectorAll(".draft-check").forEach(cb => cb.checked = masterCheck.checked);
-    }
-
-    function batchApproveSelected() {
-      const checked = document.querySelectorAll(".draft-check:checked");
-      checked.forEach(cb => { draftsData[parseInt(cb.getAttribute("data-idx"))].status = "Approved"; });
-      updateStatsAndTodo();
-      renderDrafts();
-      showToast(`Approved ${checked.length} draft(s)!`);
-    }
-
-    function copyText(txt) { navigator.clipboard.writeText(txt); showToast(`Copied: "${txt}"`); }
-    function speakText(txt, langCode) {
-      if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(txt);
-      utter.lang = langCode;
-      window.speechSynthesis.speak(utter);
-    }
-    function exportCSV() { showToast("Exporting Master Glossary CSV..."); }
     function toggleDarkMode() { document.body.classList.toggle("dark-mode"); }
     function showToast(msg) {
       const t = document.getElementById("toastBox");
       t.innerText = msg;
       t.style.display = "block";
-      setTimeout(() => { t.style.display = "none"; }, 3000);
+      setTimeout(() => { t.style.display = "none"; }, 3500);
     }
 
-    updateStatsAndTodo();
-    renderActiveTab();
+    window.onload = function_load = function() {
+      loadLiveData();
+    };
   </script>
 </body>
 </html>
