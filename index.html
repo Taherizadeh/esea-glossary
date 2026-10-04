@@ -1,440 +1,796 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ECKANKAR ESEA | Unified Regional Glossary</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --eck-blue: #003893;
-      --eck-blue-dark: #00205b;
-      --eck-blue-light: #eef4fc;
-      --eck-gold: #d4af37;
-      --eck-gold-light: #f6e394;
-      --eck-gold-dark: #aa8214;
-      --bg-main: #f8fafd;
-      --bg-card: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --chela-badge: #7c3aed;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESEA Regional Glossary & Translation Portal</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Light Theme Palette (High Contrast & Professional) */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --header-bg: #00338D; /* Official Eckankar Royal Blue */
+            --header-text: #ffffff;
+            --gold-accent: #D4AF37; /* Metallic Gold */
+            --gold-hover: #b89628;
+            --card-bg: #ffffff;
+            --card-border: #cbd5e1;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --badge-bg: #e2e8f0;
+            --badge-text: #0f172a;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.15);
+        }
 
-    body.dark-mode {
-      --eck-blue: #2563eb;
-      --eck-blue-dark: #091326;
-      --eck-blue-light: #16243d;
-      --bg-main: #0b1528;
-      --bg-card: #132238;
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
-      --border-color: #233554;
-    }
+        [data-theme="dark"] {
+            /* Dark Theme Palette */
+            --bg-primary: #0b1329;
+            --bg-secondary: #131f3d;
+            --header-bg: #070d1e;
+            --header-text: #ffffff;
+            --card-bg: #131f3d;
+            --card-border: #1e2d54;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --badge-bg: #1e2d54;
+            --badge-text: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4);
+        }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
 
-    body {
-      font-family: 'Inter', 'Noto Sans JP', 'Noto Sans Thai', sans-serif;
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-    header {
-      background: linear-gradient(135deg, var(--eck-blue-dark) 0%, var(--eck-blue) 100%);
-      color: #ffffff;
-      border-bottom: 4px solid var(--eck-gold);
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 20px rgba(0, 32, 91, 0.25);
-    }
+        /* Header Layout */
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 1rem 2rem;
+            border-bottom: 4px solid var(--gold-accent);
+            box-shadow: var(--shadow-md);
+        }
 
-    .header-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
 
-    .brand-box { display: flex; align-items: center; gap: 1rem; }
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-    .ek-emblem {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--eck-gold);
-      overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
-    }
+        /* Gold EK Emblem Medallion */
+        .logo-emblem {
+            width: 52px;
+            height: 52px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+            border: 2px solid var(--gold-accent);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
 
-    .ek-emblem img { width: 100%; height: 100%; object-fit: cover; }
+        .logo-emblem img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
 
-    .brand-titles h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+        .brand-titles h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .brand-titles .region-tag {
-      background: linear-gradient(90deg, var(--eck-gold-light), var(--eck-gold));
-      color: #00205b;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
+        .brand-titles .region-badge {
+            background: var(--gold-accent);
+            color: #000000;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
 
-    .brand-titles p { font-size: 0.82rem; color: var(--eck-gold-light); }
+        .brand-titles p {
+            font-size: 0.85rem;
+            color: #dbeafe;
+            margin-top: 2px;
+        }
 
-    .header-controls { display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap; }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-    .icon-btn {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: #fff;
-      padding: 0.45rem 0.75rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .main-container { max-width: 1400px; margin: 1.5rem auto; padding: 0 1.5rem; }
+        .btn-gold {
+            background: var(--gold-accent);
+            color: #000000;
+            font-weight: 700;
+        }
+        .btn-gold:hover { background: var(--gold-hover); }
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .btn-outline:hover { background: rgba(255, 255, 255, 0.2); }
 
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--eck-gold);
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        /* Main Container */
+        main {
+            max-width: 1400px;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            width: 100%;
+        }
 
-    .stat-card h4 { font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); }
-    .stat-card .num { font-size: 1.5rem; font-weight: 700; color: var(--eck-blue); margin-top: 0.2rem; }
-    body.dark-mode .stat-card .num { color: var(--eck-gold-light); }
+        /* Metric Dashboard Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
 
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 0.75rem;
-    }
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 5px solid var(--gold-accent);
+            border-radius: 8px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .nav-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .metric-info h3 {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
 
-    .tab-btn {
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
+        .metric-info .value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 4px;
+        }
 
-    .tab-btn.active { background: var(--eck-blue); color: #ffffff; }
+        .metric-icon {
+            font-size: 2rem;
+            color: var(--gold-accent);
+            opacity: 0.85;
+        }
 
-    .filter-panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.25rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-    }
+        .status-online {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #10b981;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
 
-    .search-box { flex: 1; min-width: 260px; position: relative; }
-    .search-box input {
-      width: 100%;
-      padding: 0.65rem 1rem 0.65rem 2.4rem;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      background: var(--bg-main);
-      color: var(--text-main);
-      outline: none;
-    }
-    .search-box .search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulse 2s infinite;
+        }
 
-    .table-wrapper {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      overflow-x: auto;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
 
-    table { width: 100%; border-collapse: collapse; min-width: 980px; }
-    thead { background: var(--eck-blue-light); border-bottom: 2px solid var(--eck-gold); }
-    th { text-align: left; padding: 0.9rem 1rem; font-size: 0.78rem; text-transform: uppercase; color: var(--eck-blue); font-weight: 700; }
-    body.dark-mode th { color: var(--eck-gold-light); }
-    td { padding: 1rem; border-bottom: 1px solid var(--border-color); vertical-align: top; font-size: 0.9rem; }
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--card-border);
+            margin-bottom: 1.5rem;
+        }
 
-    .term-title { font-weight: 700; font-size: 1rem; color: var(--eck-blue); display: flex; align-items: center; gap: 0.4rem; }
-    body.dark-mode .term-title { color: #fff; }
+        .tab-btn {
+            padding: 0.75rem 1.25rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .esc-rule {
-      display: inline-block; margin-top: 0.3rem; font-size: 0.73rem;
-      background: rgba(212, 175, 55, 0.15); color: var(--eck-gold-dark);
-      border: 1px solid rgba(212, 175, 55, 0.4); padding: 2px 7px; border-radius: 4px; font-weight: 600;
-    }
+        .tab-btn.active {
+            color: var(--header-bg);
+            border-bottom-color: var(--gold-accent);
+            background: var(--card-bg);
+            border-radius: 6px 6px 0 0;
+        }
+        [data-theme="dark"] .tab-btn.active {
+            color: var(--gold-accent);
+        }
 
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; margin-right: 4px; margin-top: 4px; }
-    .badge-category { background: var(--eck-blue-light); color: var(--eck-blue); }
-    .badge-public { background: #dcfce7; color: #166534; }
+        /* Search Section */
+        .search-box-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+        }
 
-    .lang-text { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
-    .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
-    .dot-approved { background: var(--success); }
-    .dot-pending { background: var(--warning); }
+        .search-box-container i {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
 
-    .quotes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 1.25rem; }
-    .quote-card { background: var(--bg-card); border: 1px solid var(--border-color); border-top: 4px solid var(--eck-blue); border-radius: 12px; padding: 1.35rem; }
-    .quote-en { font-size: 0.98rem; font-style: italic; margin-bottom: 0.6rem; }
-    .quote-ref { font-size: 0.8rem; font-weight: 700; color: var(--eck-gold-dark); margin-bottom: 1rem; }
+        .search-input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
 
-    .toast {
-      position: fixed; bottom: 20px; right: 20px; background: var(--eck-blue-dark); color: #fff;
-      border-left: 4px solid var(--eck-gold); padding: 0.85rem 1.25rem; border-radius: 8px; font-size: 0.88rem; display: none; z-index: 300;
-    }
+        /* Content Cards Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.25rem;
+        }
 
-    .hidden { display: none !important; }
-  </style>
+        .data-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .data-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold-accent);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .category-chip {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-style-rule {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: rgba(212, 175, 55, 0.12);
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--gold-accent);
+            line-height: 1.4;
+        }
+
+        .translations-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            border-top: 1px dashed var(--card-border);
+            padding-top: 0.75rem;
+        }
+
+        .lang-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .lang-flag {
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-val {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .lang-val.pending {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* Quotes Styling */
+        .quote-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .quote-author {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            text-align: right;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 420px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header { padding: 1rem; }
+            .header-container { flex-direction: column; align-items: flex-start; }
+            .content-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <div class="brand-box">
-        <div class="ek-emblem">
-          <img src="EK_symbol_03_color_HI.jpg" alt="ECK" onerror="this.parentElement.innerHTML='EK'" />
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="brand-section">
+                <!-- Gold EK Symbol Emblem -->
+                <div class="logo-emblem">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Eckankar_symbol.jpg/600px-Eckankar_symbol.jpg" alt="EK Emblem" id="ekLogo">
+                </div>
+                <div class="brand-titles">
+                    <h1>ECKANKAR <span class="region-badge">ESEA REGION</span></h1>
+                    <p>The Path of Spiritual Freedom • ESEA Regional Glossary & Translation Portal</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline" id="syncBtn" onclick="fetchLiveStore()">
+                    <i class="fa-solid fa-rotate"></i> Live Sync
+                </button>
+                <button class="btn btn-outline" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">Theme</span>
+                </button>
+                <button class="btn btn-gold" id="loginTriggerBtn" onclick="openLoginModal()">
+                    <i class="fa-solid fa-right-to-bracket"></i> User Login
+                </button>
+            </div>
         </div>
-        <div class="brand-titles">
-          <h1>ECKANKAR <span class="region-tag">ESEA REGION</span></h1>
-          <p>The Path of Spiritual Freedom • Unified Regional Glossary (Live Google Sheet)</p>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Metrics Dashboard -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-info">
+                    <h3>Total Master Terms</h3>
+                    <div class="value" id="metricTerms">...</div>
+                </div>
+                <i class="fa-solid fa-book-bookmark metric-icon"></i>
+            </div>
+            <div class="metric-card">
+                <div class="metric-info">
+                    <h3>Master Quotes</h3>
+                    <div class="value" id="metricQuotes">...</div>
+                </div>
+                <i class="fa-solid fa-quote-right metric-icon"></i>
+            </div>
+            <div class="metric-card">
+                <div class="metric-info">
+                    <h3>System Connection</h3>
+                    <div class="value status-online">
+                        <span class="status-dot"></span> Connected to Central Sheet
+                    </div>
+                </div>
+                <i class="fa-solid fa-network-wired metric-icon"></i>
+            </div>
         </div>
-      </div>
 
-      <div class="header-controls">
-        <button class="icon-btn" onclick="loadLiveData()">🔄 Sync with Sheet</button>
-        <button class="icon-btn" onclick="toggleDarkMode()">🌓 Theme</button>
-      </div>
-    </div>
-  </header>
-
-  <div class="main-container">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div><h4>Master Terms (Sheet)</h4><div class="num" id="statTotalTerms">Loading...</div></div>
-        <span style="font-size:1.8rem;">📘</span>
-      </div>
-      <div class="stat-card">
-        <div><h4>Master Quotes (Sheet)</h4><div class="num" id="statTotalQuotes">Loading...</div></div>
-        <span style="font-size:1.8rem;">💬</span>
-      </div>
-      <div class="stat-card">
-        <div><h4>Status</h4><div class="num" style="font-size:1.1rem; color:var(--success);">Connected Live</div></div>
-        <span style="font-size:1.8rem;">🟢</span>
-      </div>
-    </div>
-
-    <div class="top-bar">
-      <div class="nav-tabs">
-        <button class="tab-btn active" id="tabBtnGlossary" onclick="switchTab('glossary')">📖 Master Glossary</button>
-        <button class="tab-btn" id="tabBtnQuotes" onclick="switchTab('quotes')">💬 Sacred Quotes (Master_Quotes)</button>
-      </div>
-    </div>
-
-    <div class="filter-panel">
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Search live terms, translations, or quotes..." oninput="renderActiveTab()" />
-      </div>
-    </div>
-
-    <div id="sectionGlossary" class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 25%;">English Term & ESC Style</th>
-            <th style="width: 25%;">🇵🇭 Filipino (Tagalog)</th>
-            <th style="width: 25%;">🇯🇵 Japanese</th>
-            <th style="width: 25%;">🇹🇭 Thai</th>
-          </tr>
-        </thead>
-        <tbody id="glossaryTableBody">
-          <tr><td colspan="4" style="text-align:center; padding:2rem;">Loading data from Google Sheet...</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div id="sectionQuotes" class="quotes-grid hidden"></div>
-  </div>
-
-  <div class="toast" id="toastBox"></div>
-
-  <script>
-    // ** لینک Web App گوگل اسکریپت خود را اینجا قرار دهید **
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwSsOlUYjco9iCKCNOCRp0NzQDcTYO4bIk_silteyLu0S4uWS33b9-C2eCFTbs2-4Z3g/exec";
-
-    let liveGlossary = [];
-    let liveQuotes = [];
-    let activeTab = "glossary";
-
-    async function loadLiveData() {
-      if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("YOUR_GOOGLE_APPS_SCRIPT")) {
-        showToast("Please insert your Google Apps Script Web App URL.");
-        return;
-      }
-      showToast("🔄 Fetching live data from Google Sheet...");
-      try {
-        const response = await fetch(APPS_SCRIPT_URL);
-        const data = await response.json();
-        liveGlossary = data.glossary || [];
-        liveQuotes = data.quotes || [];
-
-        document.getElementById("statTotalTerms").innerText = liveGlossary.length;
-        document.getElementById("statTotalQuotes").innerText = liveQuotes.length;
-        renderActiveTab();
-        showToast("✅ Successfully synced with Google Sheet!");
-      } catch (err) {
-        console.error(err);
-        showToast("❌ Error connecting to Google Sheet.");
-      }
-    }
-
-    function renderGlossary() {
-      const tbody = document.getElementById("glossaryTableBody");
-      const q = document.getElementById("searchInput").value.toLowerCase();
-
-      const filtered = liveGlossary.filter(item => {
-        const en = String(item.English_Term || item.en || "").toLowerCase();
-        const tl = String(item.Filipino_Translation || item.tl || "").toLowerCase();
-        const ja = String(item.Japanese_Translation || item.ja || "").toLowerCase();
-        const th = String(item.Thai_Translation || item.th || "").toLowerCase();
-        return !q || en.includes(q) || tl.includes(q) || ja.includes(q) || th.includes(q);
-      });
-
-      if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:2rem;">No matching terms found.</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = filtered.map(item => {
-        const enTerm = item.English_Term || item.en || "";
-        const category = item.Category_Domain || item.category || "General";
-        const scope = item.Audience_Scope || item.scope || "Public";
-        const escRule = item.ESC_Style_Rules || item.esc || "Standard";
-        
-        const tlText = item.Filipino_Translation || item.tl || "";
-        const tlStatus = item.Filipino_Status || item.tl_status || "Pending";
-        
-        const jaText = item.Japanese_Translation || item.ja || "";
-        const jaStatus = item.Japanese_Status || item.ja_status || "Pending";
-        
-        const thText = item.Thai_Translation || item.th || "";
-        const thStatus = item.Thai_Status || item.th_status || "Pending";
-
-        return `
-          <tr>
-            <td>
-              <div class="term-title"><span>${enTerm}</span></div>
-              <div class="esc-rule">ESC: ${escRule}</div>
-              <div><span class="badge badge-category">${category}</span><span class="badge badge-public">${scope}</span></div>
-            </td>
-            <td>
-              <div><span class="status-dot ${tlStatus === 'Approved' ? 'dot-approved' : 'dot-pending'}"></span><span class="lang-text">${tlText || '<em>Pending</em>'}</span></div>
-            </td>
-            <td>
-              <div><span class="status-dot ${jaStatus === 'Approved' ? 'dot-approved' : 'dot-pending'}"></span><span class="lang-text">${jaText || '<em>Pending</em>'}</span></div>
-            </td>
-            <td>
-              <div><span class="status-dot ${thStatus === 'Approved' ? 'dot-approved' : 'dot-pending'}"></span><span class="lang-text">${thText || '<em>Pending</em>'}</span></div>
-            </td>
-          </tr>
-        `;
-      }).join("");
-    }
-
-    function renderQuotes() {
-      const container = document.getElementById("sectionQuotes");
-      const q = document.getElementById("searchInput").value.toLowerCase();
-      const filtered = liveQuotes.filter(item => {
-        const en = String(item.English_Quote || item.en || "").toLowerCase();
-        const src = String(item.Source_Book_Talk || item.source || "").toLowerCase();
-        return !q || en.includes(q) || src.includes(q);
-      });
-
-      container.innerHTML = filtered.map(qt => `
-        <div class="quote-card">
-          <div class="quote-en">“${qt.English_Quote || qt.en || ""}”</div>
-          <div class="quote-ref">— ${qt.Author_Speaker || qt.author || "Harold Klemp"}, <em>${qt.Source_Book_Talk || qt.source || ""}</em> (${qt.Quote_ID || qt.id || ""})</div>
-          <div style="font-size:0.88rem; margin-top:0.4rem;"><strong>🇵🇭 Filipino:</strong> ${qt.Filipino_Translation || qt.tl || '<em>Pending</em>'}</div>
-          <div style="font-size:0.88rem; margin-top:0.4rem;"><strong>🇯🇵 Japanese:</strong> ${qt.Japanese_Translation || qt.ja || '<em>Pending</em>'}</div>
-          <div style="font-size:0.88rem; margin-top:0.4rem;"><strong>🇹🇭 Thai:</strong> ${qt.Thai_Translation || qt.th || '<em>Pending</em>'}</div>
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" id="tabTerms" onclick="switchTab('terms')">
+                <i class="fa-solid fa-list-check"></i> Master Glossary
+            </button>
+            <button class="tab-btn" id="tabQuotes" onclick="switchTab('quotes')">
+                <i class="fa-solid fa-comments"></i> Sacred Quotes
+            </button>
+            <button class="tab-btn" id="tabStyle" onclick="switchTab('style')">
+                <i class="fa-solid fa-book-open-reader"></i> ESC Style Guide
+            </button>
         </div>
-      `).join("");
-    }
 
-    function switchTab(tab) {
-      activeTab = tab;
-      document.getElementById("tabBtnGlossary").classList.toggle("active", tab === "glossary");
-      document.getElementById("tabBtnQuotes").classList.toggle("active", tab === "quotes");
-      document.getElementById("sectionGlossary").classList.toggle("hidden", tab !== "glossary");
-      document.getElementById("sectionQuotes").classList.toggle("hidden", tab !== "quotes");
-      renderActiveTab();
-    }
+        <!-- Search Box (Live Across Active Tab) -->
+        <div class="search-box-container">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search English terms, translations, quotes, or authors (type at least 2 characters)..." oninput="handleSearch()">
+        </div>
 
-    function renderActiveTab() {
-      if (activeTab === "glossary") renderGlossary();
-      else renderQuotes();
-    }
+        <!-- Dynamic Content View Area -->
+        <div class="content-grid" id="mainContentGrid">
+            <!-- Dynamic Content Cards Rendered Here -->
+        </div>
+    </main>
 
-    function toggleDarkMode() { document.body.classList.toggle("dark-mode"); }
-    function showToast(msg) {
-      const t = document.getElementById("toastBox");
-      t.innerText = msg;
-      t.style.display = "block";
-      setTimeout(() => { t.style.display = "none"; }, 3500);
-    }
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-card">
+            <h2 style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.25rem;">User Authentication</h2>
+            <div class="form-group">
+                <label>Username / Name</label>
+                <input type="text" id="loginUsername" class="form-control" placeholder="e.g. Peter, Faramarz, Setsuko, Judy">
+            </div>
+            <div class="form-group">
+                <label>Passcode</label>
+                <input type="password" id="loginPasscode" class="form-control" placeholder="Enter passcode from Users sheet">
+            </div>
+            <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                <button class="btn btn-outline" onclick="closeLoginModal()" style="color: var(--text-primary)">Cancel</button>
+                <button class="btn btn-gold" onclick="submitLogin()">Log In</button>
+            </div>
+        </div>
+    </div>
 
-    window.onload = function_load = function() {
-      loadLiveData();
-    };
-  </script>
+    <!-- JavaScript Logic -->
+    <script>
+        // WEB APP GOOGLE APPS SCRIPT ENDPOINT
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvJAnTipkrtODywvthd8e8iZ9WO5KMtdg-L1JPkjzSls0vw6iL2kck5RhY0yONaY8veA/exec';
+        let state = {
+            terms: [],
+            quotes: [],
+            styleGuide: [],
+            activeTab: 'terms',
+            currentUser: null,
+            theme: 'light'
+        };
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchLiveStore();
+        });
+
+        // Toggle Theme
+        function toggleTheme() {
+            state.theme = state.theme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', state.theme);
+            document.getElementById('themeIcon').className = state.theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+            document.getElementById('themeText').innerText = state.theme === 'light' ? 'Theme' : 'Theme';
+        }
+
+        // JSONP Fetcher to bypass CORS
+        function fetchLiveStore() {
+            document.getElementById('mainContentGrid').innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem;"><i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--gold-accent);"></i><p style="margin-top:1rem; color: var(--text-secondary);">Loading live data from Google Sheet database...</p></div>';
+            
+            const callbackName = 'jp_cb_' + Math.round(100000 * Math.random());
+            window[callbackName] = function(data) {
+                delete window[callbackName];
+                if (document.body.contains(script)) {
+                    document.body.removeChild(script);
+                }
+                if (data && data.success) {
+                    state.terms = data.data.terms || [];
+                    state.quotes = data.data.quotes || [];
+                    state.styleGuide = data.data.styleGuide || [];
+                    updateMetrics();
+                    renderContent();
+                }
+            };
+
+            const script = document.createElement('script');
+            script.src = SCRIPT_URL + '?action=getAllData&callback=' + callbackName;
+            document.body.appendChild(script);
+        }
+
+        function updateMetrics() {
+            document.getElementById('metricTerms').innerText = state.terms.length;
+            document.getElementById('metricQuotes').innerText = state.quotes.length;
+        }
+
+        function switchTab(tab) {
+            state.activeTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (tab === 'terms') document.getElementById('tabTerms').classList.add('active');
+            if (tab === 'quotes') document.getElementById('tabQuotes').classList.add('active');
+            if (tab === 'style') document.getElementById('tabStyle').classList.add('active');
+            renderContent();
+        }
+
+        function handleSearch() {
+            renderContent();
+        }
+
+        function renderContent() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const grid = document.getElementById('mainContentGrid');
+            grid.innerHTML = '';
+
+            if (state.activeTab === 'terms') {
+                const filtered = state.terms.filter(t => {
+                    const term = (t.English_Term || t.Term || '').toString().toLowerCase();
+                    const fil = (t.Filipino_Translation || t.Filipino || '').toString().toLowerCase();
+                    const jp = (t.Japanese_Translation || t.Japanese || '').toString().toLowerCase();
+                    const th = (t.Thai_Translation || t.Thai || '').toString().toLowerCase();
+                    return term.includes(query) || fil.includes(query) || jp.includes(query) || th.includes(query);
+                });
+
+                if (filtered.length === 0) {
+                    grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem; color: var(--text-muted);">No terms found matching your query.</div>';
+                    return;
+                }
+
+                filtered.forEach(item => {
+                    const termText = item.English_Term || item.Term || 'Untitled Term';
+                    const category = item.Category_Domain || item.Category || 'General';
+                    const scope = item.Audience_Scope || item.Scope || 'Public';
+                    const styleRule = item.ESC_Style_Rules || item.Style_Rule || '';
+                    const fil = item.Filipino_Translation || item.Filipino || '';
+                    const jp = item.Japanese_Translation || item.Japanese || '';
+                    const th = item.Thai_Translation || item.Thai || '';
+
+                    const card = document.createElement('div');
+                    card.className = 'data-card';
+                    card.innerHTML = `
+                        <div>
+                            <div class="card-header">
+                                <span class="category-chip">${escapeHtml(category)}</span>
+                                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${escapeHtml(scope)}</span>
+                            </div>
+                            <div class="card-title">${escapeHtml(termText)}</div>
+                            ${styleRule ? `<div class="card-style-rule"><i class="fa-solid fa-shield-cat" style="color: var(--gold-accent);"></i> ${escapeHtml(styleRule)}</div>` : ''}
+                        </div>
+                        <div class="translations-list">
+                            <div class="lang-row">
+                                <span class="lang-flag">🇵🇭 Filipino:</span> 
+                                <span class="lang-val ${!fil ? 'pending' : ''}">${fil ? escapeHtml(fil) : 'Pending'}</span>
+                            </div>
+                            <div class="lang-row">
+                                <span class="lang-flag">🇯🇵 Japanese:</span> 
+                                <span class="lang-val ${!jp ? 'pending' : ''}">${jp ? escapeHtml(jp) : 'Pending'}</span>
+                            </div>
+                            <div class="lang-row">
+                                <span class="lang-flag">🇹🇭 Thai:</span> 
+                                <span class="lang-val ${!th ? 'pending' : ''}">${th ? escapeHtml(th) : 'Pending'}</span>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+            } else if (state.activeTab === 'quotes') {
+                const filtered = state.quotes.filter(q => {
+                    const text = (q.English_Quote || q.Quote || '').toString().toLowerCase();
+                    const author = (q.Author_Speaker || q.Author || '').toString().toLowerCase();
+                    const book = (q.Source_Book_Talk || q.Source || '').toString().toLowerCase();
+                    return text.includes(query) || author.includes(query) || book.includes(query);
+                });
+
+                if (filtered.length === 0) {
+                    grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem; color: var(--text-muted);">No quotes found matching your query.</div>';
+                    return;
+                }
+
+                filtered.forEach(q => {
+                    const quoteText = q.English_Quote || q.Quote || '';
+                    const author = q.Author_Speaker || q.Author || 'Harold Klemp';
+                    const source = q.Source_Book_Talk || q.Source || 'ECK Book';
+                    const fil = q.Filipino_Translation || q.Filipino || '';
+                    const jp = q.Japanese_Translation || q.Japanese || '';
+                    const th = q.Thai_Translation || q.Thai || '';
+
+                    const card = document.createElement('div');
+                    card.className = 'data-card';
+                    card.innerHTML = `
+                        <div>
+                            <div class="quote-text">"${escapeHtml(quoteText)}"</div>
+                            <div class="quote-author">— ${escapeHtml(author)} (${escapeHtml(source)})</div>
+                        </div>
+                        <div class="translations-list" style="margin-top: 1rem;">
+                            <div class="lang-row">
+                                <span class="lang-flag">🇵🇭 Filipino:</span> 
+                                <span class="lang-val ${!fil ? 'pending' : ''}">${fil ? escapeHtml(fil) : 'Pending'}</span>
+                            </div>
+                            <div class="lang-row">
+                                <span class="lang-flag">🇯🇵 Japanese:</span> 
+                                <span class="lang-val ${!jp ? 'pending' : ''}">${jp ? escapeHtml(jp) : 'Pending'}</span>
+                            </div>
+                            <div class="lang-row">
+                                <span class="lang-flag">🇹🇭 Thai:</span> 
+                                <span class="lang-val ${!th ? 'pending' : ''}">${th ? escapeHtml(th) : 'Pending'}</span>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+            } else if (state.activeTab === 'style') {
+                grid.innerHTML = `
+                    <div class="data-card" style="grid-column: 1/-1;">
+                        <h2 style="margin-bottom:1rem; color: var(--gold-accent); font-family: 'Cinzel', serif;">ECKANKAR Style Guide Guidelines (ESC)</h2>
+                        <ul style="line-height:2; padding-left:1.5rem; color: var(--text-primary);">
+                            <li><strong>General vs Chela Terminology:</strong> Use <em>Eckankar</em> for public materials and ALL-CAPS <em>ECKANKAR</em> for Chela-Only publications according to the 1997 & 2021 ESC Style Sheets.</li>
+                            <li><strong>Titles & Mastership:</strong> Words such as <em>Mahanta</em>, <em>Living ECK Master</em>, and <em>Sugmad</em> are capitalized and maintained consistently across regional languages.</li>
+                            <li><strong>Quotes & Citation Rules:</strong> Book titles are italicized, talk titles are enclosed in quotation marks, and spiritual exercises maintain distinct formatting.</li>
+                        </ul>
+                    </div>
+                `;
+            }
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Modal Operations
+        function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
+        function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; }
+
+        function submitLogin() {
+            const user = document.getElementById('loginUsername').value.trim();
+            const pass = document.getElementById('loginPasscode').value.trim();
+
+            if (!user || !pass) {
+                alert('Please enter both username and passcode.');
+                return;
+            }
+
+            const callbackName = 'jp_login_' + Math.round(100000 * Math.random());
+            window[callbackName] = function(res) {
+                delete window[callbackName];
+                if (document.body.contains(script)) {
+                    document.body.removeChild(script);
+                }
+                if (res && res.success) {
+                    alert('Login successful! Role: ' + res.user.role);
+                    state.currentUser = res.user;
+                    document.getElementById('loginTriggerBtn').innerHTML = `<i class="fa-solid fa-user-check"></i> ${res.user.name} (${res.user.role})`;
+                    closeLoginModal();
+                } else {
+                    alert('Authentication Error: ' + (res.message || 'Invalid username or passcode.'));
+                }
+            };
+
+            const script = document.createElement('script');
+            script.src = `${SCRIPT_URL}?action=login&username=${encodeURIComponent(user)}&passcode=${encodeURIComponent(pass)}&callback=${callbackName}`;
+            document.body.appendChild(script);
+        }
+    </script>
 </body>
 </html>
