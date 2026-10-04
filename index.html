@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ESEA Regional Glossary & Translation Portal</title>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            /* Light Theme Palette (High Contrast & Professional) */
+            /* Light Theme Palette */
             --bg-primary: #f8fafc;
             --bg-secondary: #ffffff;
             --header-bg: #00338D; /* Official Eckankar Royal Blue */
@@ -22,7 +22,7 @@
             --text-primary: #0f172a;
             --text-secondary: #334155;
             --text-muted: #64748b;
-            --badge-bg: #e2e8f0;
+            --badge-bg: #f1f5f9;
             --badge-text: #0f172a;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.08);
@@ -39,7 +39,7 @@
             --card-border: #1e2d54;
             --text-primary: #f8fafc;
             --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
+            --text-muted: #64748b;
             --badge-bg: #1e2d54;
             --badge-text: #e2e8f0;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
@@ -50,8 +50,8 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
         }
 
         body {
@@ -66,7 +66,7 @@
         header {
             background: var(--header-bg);
             color: var(--header-text);
-            padding: 1rem 2rem;
+            padding: 1.25rem 2rem;
             border-bottom: 4px solid var(--gold-accent);
             box-shadow: var(--shadow-md);
         }
@@ -78,26 +78,26 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         .brand-section {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         /* Gold EK Emblem Medallion */
         .logo-emblem {
-            width: 52px;
-            height: 52px;
+            width: 58px;
+            height: 58px;
             background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
-            border: 2px solid var(--gold-accent);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            border: 3px solid var(--gold-accent);
             overflow: hidden;
             flex-shrink: 0;
         }
@@ -110,28 +110,30 @@
 
         .brand-titles h1 {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
+            font-size: 1.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             color: #ffffff;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
 
         .brand-titles .region-badge {
             background: var(--gold-accent);
             color: #000000;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 2px 8px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 3px 10px;
             border-radius: 4px;
             font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .brand-titles p {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: #dbeafe;
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
         .header-actions {
@@ -141,7 +143,7 @@
         }
 
         .btn {
-            padding: 0.5rem 1rem;
+            padding: 0.55rem 1.1rem;
             border-radius: 6px;
             font-size: 0.875rem;
             font-weight: 600;
@@ -160,11 +162,50 @@
         .btn-gold:hover { background: var(--gold-hover); }
 
         .btn-outline {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.25);
         }
-        .btn-outline:hover { background: rgba(255, 255, 255, 0.2); }
+        .btn-outline:hover { background: rgba(255, 255, 255, 0.22); }
+
+        /* Session Ribbon */
+        .session-ribbon {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--card-border);
+            padding: 0.75rem 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .session-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .user-info-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-badge {
+            background: rgba(0, 51, 141, 0.1);
+            color: var(--header-bg);
+            border: 1px solid rgba(0, 51, 141, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        [data-theme="dark"] .user-badge {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-accent);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
 
         /* Main Container */
         main {
@@ -175,10 +216,10 @@
             width: 100%;
         }
 
-        /* Metric Dashboard Cards */
+        /* Metrics Grid */
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.25rem;
             margin-bottom: 1.5rem;
         }
@@ -196,11 +237,10 @@
         }
 
         .metric-info h3 {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 700;
         }
 
         .metric-info .value {
@@ -219,9 +259,9 @@
         .status-online {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             color: #10b981;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
         }
 
@@ -246,6 +286,7 @@
             gap: 0.5rem;
             border-bottom: 2px solid var(--card-border);
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .tab-btn {
@@ -277,10 +318,10 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 0.75rem 1.25rem;
+            padding: 0.85rem 1.25rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.85rem;
             box-shadow: var(--shadow-sm);
             margin-bottom: 1.5rem;
         }
@@ -295,14 +336,14 @@
             outline: none;
             background: transparent;
             width: 100%;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-primary);
         }
 
-        /* Content Cards Grid */
+        /* Content Grid & Cards */
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 1.25rem;
         }
 
@@ -310,11 +351,12 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 1.25rem;
+            padding: 1.35rem;
             box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
         }
 
         .data-card:hover {
@@ -347,7 +389,7 @@
         }
 
         .card-style-rule {
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--text-secondary);
             background: rgba(212, 175, 55, 0.12);
             padding: 6px 10px;
@@ -360,17 +402,17 @@
         .translations-list {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+            gap: 0.6rem;
+            margin-top: 0.75rem;
             border-top: 1px dashed var(--card-border);
-            padding-top: 0.75rem;
+            padding-top: 0.85rem;
         }
 
         .lang-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
 
         .lang-flag {
@@ -386,11 +428,26 @@
             color: var(--text-primary);
         }
 
-        .lang-val.pending {
-            color: var(--text-muted);
-            font-weight: 400;
-            font-style: italic;
+        .card-actions {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
         }
+
+        .btn-sm {
+            padding: 0.35rem 0.75rem;
+            font-size: 0.78rem;
+            border-radius: 4px;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: #ffffff;
+        }
+        .btn-danger:hover { background: #dc2626; }
 
         /* Quotes Styling */
         .quote-text {
@@ -398,11 +455,11 @@
             line-height: 1.6;
             color: var(--text-primary);
             font-style: italic;
-            margin-bottom: 1rem;
+            margin-bottom: 0.85rem;
         }
 
         .quote-author {
-            font-size: 0.875rem;
+            font-size: 0.88rem;
             font-weight: 700;
             color: var(--gold-accent);
             text-align: right;
@@ -418,6 +475,7 @@
             justify-content: center;
             z-index: 1000;
             backdrop-filter: blur(4px);
+            padding: 1rem;
         }
 
         .modal-card {
@@ -425,20 +483,22 @@
             border: 1px solid var(--card-border);
             border-radius: 12px;
             width: 100%;
-            max-width: 420px;
+            max-width: 520px;
             padding: 2rem;
             box-shadow: var(--shadow-lg);
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .form-group {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.2rem;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             color: var(--text-secondary);
         }
 
@@ -450,7 +510,58 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             outline: none;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--gold-accent);
+        }
+
+        /* Analytics View */
+        .progress-bar-container {
+            margin-bottom: 1rem;
+        }
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .progress-track {
+            height: 12px;
+            background: var(--badge-bg);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--gold-accent);
+            border-radius: 6px;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.88rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        th {
+            background: var(--badge-bg);
+            color: var(--text-secondary);
+            font-weight: 700;
         }
 
         /* Responsive Design */
@@ -458,6 +569,7 @@
             header { padding: 1rem; }
             .header-container { flex-direction: column; align-items: flex-start; }
             .content-grid { grid-template-columns: 1fr; }
+            .session-container { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -481,7 +593,7 @@
                     <i class="fa-solid fa-rotate"></i> Live Sync
                 </button>
                 <button class="btn btn-outline" onclick="toggleTheme()">
-                    <i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">Theme</span>
+                    <i class="fa-solid fa-moon" id="themeIcon"></i> Theme
                 </button>
                 <button class="btn btn-gold" id="loginTriggerBtn" onclick="openLoginModal()">
                     <i class="fa-solid fa-right-to-bracket"></i> User Login
@@ -489,6 +601,29 @@
             </div>
         </div>
     </header>
+
+    <!-- Session Ribbon (Visible after Login) -->
+    <div class="session-ribbon" id="sessionRibbon" style="display: none;">
+        <div class="session-container">
+            <div class="user-info-group">
+                <span style="font-weight: 700; color: var(--text-primary);">Logged in as: <span id="sessionUserName">...</span></span>
+                <span class="user-badge" id="sessionUserRole">Role</span>
+                <span class="user-badge" id="sessionUserLang">Lang</span>
+                <span id="personalStatsBadge" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;"></span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                <button class="btn btn-gold btn-sm" id="addNewBtn" onclick="openAddModal()">
+                    <i class="fa-solid fa-plus"></i> Add Item
+                </button>
+                <button class="btn btn-outline btn-sm" id="pendingFilterBtn" onclick="togglePendingFilter()" style="color: var(--text-primary); border-color: var(--card-border);">
+                    <i class="fa-solid fa-filter"></i> Show My Pending
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="logoutUser()" style="color: #ef4444; border-color: #ef4444;">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content Area -->
     <main>
@@ -503,7 +638,7 @@
             </div>
             <div class="metric-card">
                 <div class="metric-info">
-                    <h3>Master Quotes</h3>
+                    <h3>Sacred Quotes</h3>
                     <div class="value" id="metricQuotes">...</div>
                 </div>
                 <i class="fa-solid fa-quote-right metric-icon"></i>
@@ -521,88 +656,113 @@
 
         <!-- Navigation Tabs -->
         <div class="nav-tabs">
-            <button class="tab-btn active" id="tabTerms" onclick="switchTab('terms')">
+            <button class="tab-btn active" onclick="switchTab('terms')">
                 <i class="fa-solid fa-list-check"></i> Master Glossary
             </button>
-            <button class="tab-btn" id="tabQuotes" onclick="switchTab('quotes')">
+            <button class="tab-btn" onclick="switchTab('quotes')">
                 <i class="fa-solid fa-comments"></i> Sacred Quotes
             </button>
-            <button class="tab-btn" id="tabStyle" onclick="switchTab('style')">
+            <button class="tab-btn" onclick="switchTab('style')">
                 <i class="fa-solid fa-book-open-reader"></i> ESC Style Guide
+            </button>
+            <button class="tab-btn" onclick="switchTab('analytics')">
+                <i class="fa-solid fa-chart-pie"></i> Analytics & Admin
             </button>
         </div>
 
-        <!-- Search Box (Live Across Active Tab) -->
-        <div class="search-box-container">
+        <!-- Search Box -->
+        <div class="search-box-container" id="searchContainer">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search English terms, translations, quotes, or authors (type at least 2 characters)..." oninput="handleSearch()">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search in all languages (English, 日本語, ไทย, Filipino), quotes, or categories..." oninput="handleSearch()">
         </div>
 
         <!-- Dynamic Content View Area -->
         <div class="content-grid" id="mainContentGrid">
-            <!-- Dynamic Content Cards Rendered Here -->
+            <!-- Content Cards Rendered Dynamically -->
         </div>
     </main>
 
     <!-- Login Modal -->
     <div class="modal-overlay" id="loginModal">
         <div class="modal-card">
-            <h2 style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.25rem;">User Authentication</h2>
+            <h2 style="margin-bottom: 0.5rem; color: var(--text-primary); font-size: 1.3rem; font-family: 'Cinzel', serif;">User Authentication</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">Enter your credentials registered in the Master Glossary database.</p>
+            
             <div class="form-group">
                 <label>Username / Name</label>
-                <input type="text" id="loginUsername" class="form-control" placeholder="e.g. Peter, Faramarz, Setsuko, Judy">
+                <input type="text" id="loginUsername" class="form-control" placeholder="Enter your username">
             </div>
             <div class="form-group">
                 <label>Passcode</label>
-                <input type="password" id="loginPasscode" class="form-control" placeholder="Enter passcode from Users sheet">
+                <input type="password" id="loginPasscode" class="form-control" placeholder="Enter your passcode">
             </div>
-            <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
-                <button class="btn btn-outline" onclick="closeLoginModal()" style="color: var(--text-primary)">Cancel</button>
-                <button class="btn btn-gold" onclick="submitLogin()">Log In</button>
+
+            <div style="margin-top: 1rem; margin-bottom: 1.5rem; padding: 0.75rem; background: var(--badge-bg); border-radius: 6px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                <i class="fa-solid fa-circle-info" style="color: var(--gold-accent);"></i> 
+                To request a new username/passcode or reset password, contact RESA Peter Skrivanic: 
+                <a href="mailto:resa.eastasia@gmail.com" style="color: var(--header-bg); font-weight: 700; text-decoration: underline;">resa.eastasia@gmail.com</a>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+                <button class="btn btn-outline" onclick="closeLoginModal()" style="color: var(--text-primary); border-color: var(--card-border);">Cancel</button>
+                <button class="btn btn-gold" onclick="submitLogin()">Sign In</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit/Add Item Modal -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal-card">
+            <h2 id="editModalTitle" style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.25rem;">Edit Entry</h2>
+            <div id="editFormFields">
+                <!-- Dynamically Generated Inputs based on User Role -->
+            </div>
+            <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
+                <button class="btn btn-outline" onclick="closeEditModal()" style="color: var(--text-primary); border-color: var(--card-border);">Cancel</button>
+                <button class="btn btn-gold" id="saveEditBtn" onclick="saveItemChanges()">Save Changes</button>
             </div>
         </div>
     </div>
 
     <!-- JavaScript Logic -->
     <script>
-        // WEB APP GOOGLE APPS SCRIPT ENDPOINT
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvJAnTipkrtODywvthd8e8iZ9WO5KMtdg-L1JPkjzSls0vw6iL2kck5RhY0yONaY8veA/exec';
+        // HARDCODED GOOGLE APPS SCRIPT WEB APP ENDPOINT
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyU_EH-mhT8qPaneoBwyv2aQXLe_uQrE9G1xf3IMq7TP6RaZhqWFBtCUh-2B40U8yBHjg/exec';
+
         let state = {
             terms: [],
             quotes: [],
             styleGuide: [],
+            logs: [],
             activeTab: 'terms',
             currentUser: null,
+            filterPendingOnly: false,
+            activeEditingItem: null,
             theme: 'light'
         };
 
-        // Initialize App
         window.addEventListener('DOMContentLoaded', () => {
             fetchLiveStore();
         });
 
-        // Toggle Theme
         function toggleTheme() {
             state.theme = state.theme === 'light' ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', state.theme);
             document.getElementById('themeIcon').className = state.theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
-            document.getElementById('themeText').innerText = state.theme === 'light' ? 'Theme' : 'Theme';
         }
 
-        // JSONP Fetcher to bypass CORS
         function fetchLiveStore() {
-            document.getElementById('mainContentGrid').innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem;"><i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--gold-accent);"></i><p style="margin-top:1rem; color: var(--text-secondary);">Loading live data from Google Sheet database...</p></div>';
+            document.getElementById('mainContentGrid').innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem;"><i class="fa-solid fa-spinner fa-spin fa-2x"></i><p style="margin-top:1rem; font-weight:600;">Connecting & syncing live data from Google Sheets...</p></div>';
             
             const callbackName = 'jp_cb_' + Math.round(100000 * Math.random());
             window[callbackName] = function(data) {
                 delete window[callbackName];
-                if (document.body.contains(script)) {
-                    document.body.removeChild(script);
-                }
+                document.body.removeChild(script);
                 if (data && data.success) {
-                    state.terms = data.data.terms || [];
-                    state.quotes = data.data.quotes || [];
+                    state.terms = (data.data.terms || []).filter(t => t.Status !== 'Deleted');
+                    state.quotes = (data.data.quotes || []).filter(q => q.Status !== 'Deleted');
                     state.styleGuide = data.data.styleGuide || [];
+                    state.logs = data.data.logs || [];
                     updateMetrics();
                     renderContent();
                 }
@@ -616,19 +776,64 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvJAnTipkrtODywvthd
         function updateMetrics() {
             document.getElementById('metricTerms').innerText = state.terms.length;
             document.getElementById('metricQuotes').innerText = state.quotes.length;
+            
+            if (state.currentUser) {
+                let pendingCount = 0;
+                let langKey = state.currentUser.language ? state.currentUser.language + '_Translation' : '';
+                
+                if (langKey) {
+                    pendingCount = state.terms.filter(t => t[langKey] === 'Pending' || !t[langKey]).length;
+                } else {
+                    pendingCount = state.terms.filter(t => t.Status === 'Pending').length;
+                }
+                
+                document.getElementById('personalStatsBadge').innerText = `My Tasks: ${pendingCount} Pending`;
+            }
         }
 
         function switchTab(tab) {
             state.activeTab = tab;
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if (tab === 'terms') document.getElementById('tabTerms').classList.add('active');
-            if (tab === 'quotes') document.getElementById('tabQuotes').classList.add('active');
-            if (tab === 'style') document.getElementById('tabStyle').classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            const searchContainer = document.getElementById('searchContainer');
+            if (tab === 'analytics' || tab === 'style') {
+                searchContainer.style.display = 'none';
+            } else {
+                searchContainer.style.display = 'flex';
+            }
+            
             renderContent();
         }
 
         function handleSearch() {
             renderContent();
+        }
+
+        function togglePendingFilter() {
+            state.filterPendingOnly = !state.filterPendingOnly;
+            const btn = document.getElementById('pendingFilterBtn');
+            if (state.filterPendingOnly) {
+                btn.style.background = 'var(--gold-accent)';
+                btn.style.color = '#000000';
+            } else {
+                btn.style.background = 'transparent';
+                btn.style.color = 'var(--text-primary)';
+            }
+            renderContent();
+        }
+
+        function playAudio(text, langCode) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                if (langCode === 'ja') utterance.lang = 'ja-JP';
+                else if (langCode === 'th') utterance.lang = 'th-TH';
+                else if (langCode === 'fil') utterance.lang = 'fil-PH';
+                else utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Audio playback not supported in your browser.');
+            }
         }
 
         function renderContent() {
@@ -637,130 +842,205 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvJAnTipkrtODywvthd
             grid.innerHTML = '';
 
             if (state.activeTab === 'terms') {
-                const filtered = state.terms.filter(t => {
-                    const term = (t.English_Term || t.Term || '').toString().toLowerCase();
-                    const fil = (t.Filipino_Translation || t.Filipino || '').toString().toLowerCase();
-                    const jp = (t.Japanese_Translation || t.Japanese || '').toString().toLowerCase();
-                    const th = (t.Thai_Translation || t.Thai || '').toString().toLowerCase();
-                    return term.includes(query) || fil.includes(query) || jp.includes(query) || th.includes(query);
+                let list = state.terms;
+
+                if (state.filterPendingOnly && state.currentUser) {
+                    let langKey = state.currentUser.language ? state.currentUser.language + '_Translation' : '';
+                    if (langKey) {
+                        list = list.filter(t => t[langKey] === 'Pending' || !t[langKey]);
+                    } else {
+                        list = list.filter(t => t.Status === 'Pending');
+                    }
+                }
+
+                const filtered = list.filter(t => {
+                    const term = (t.English_Term || '').toLowerCase();
+                    const fil = (t.Filipino_Translation || '').toLowerCase();
+                    const jp = (t.Japanese_Translation || '').toLowerCase();
+                    const th = (t.Thai_Translation || '').toLowerCase();
+                    const cat = (t.Category_Domain || '').toLowerCase();
+                    return term.includes(query) || fil.includes(query) || jp.includes(query) || th.includes(query) || cat.includes(query);
                 });
 
                 if (filtered.length === 0) {
-                    grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem; color: var(--text-muted);">No terms found matching your query.</div>';
+                    grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem; color:var(--text-muted);">No glossary terms found matching your query.</div>';
                     return;
                 }
 
                 filtered.forEach(item => {
-                    const termText = item.English_Term || item.Term || 'Untitled Term';
-                    const category = item.Category_Domain || item.Category || 'General';
-                    const scope = item.Audience_Scope || item.Scope || 'Public';
-                    const styleRule = item.ESC_Style_Rules || item.Style_Rule || '';
-                    const fil = item.Filipino_Translation || item.Filipino || '';
-                    const jp = item.Japanese_Translation || item.Japanese || '';
-                    const th = item.Thai_Translation || item.Thai || '';
-
                     const card = document.createElement('div');
                     card.className = 'data-card';
                     card.innerHTML = `
                         <div>
                             <div class="card-header">
-                                <span class="category-chip">${escapeHtml(category)}</span>
-                                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">${escapeHtml(scope)}</span>
+                                <span class="category-chip">${item.Category_Domain || 'General'}</span>
+                                <span style="font-size: 0.78rem; color: var(--text-muted); font-weight:600;">${item.Audience_Scope || 'Public'}</span>
                             </div>
-                            <div class="card-title">${escapeHtml(termText)}</div>
-                            ${styleRule ? `<div class="card-style-rule"><i class="fa-solid fa-shield-cat" style="color: var(--gold-accent);"></i> ${escapeHtml(styleRule)}</div>` : ''}
+                            <div class="card-title">${item.English_Term || ''} 
+                                <button onclick="playAudio('${item.English_Term.replace(/'/g, "\\'")}', 'en')" style="border:none; background:none; cursor:pointer; color:var(--gold-accent);">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            ${item.ESC_Style_Rules ? `<div class="card-style-rule"><i class="fa-solid fa-shield-cat"></i> <strong>ESC Style:</strong> ${item.ESC_Style_Rules}</div>` : ''}
                         </div>
                         <div class="translations-list">
                             <div class="lang-row">
                                 <span class="lang-flag">🇵🇭 Filipino:</span> 
-                                <span class="lang-val ${!fil ? 'pending' : ''}">${fil ? escapeHtml(fil) : 'Pending'}</span>
+                                <span class="lang-val">${item.Filipino_Translation || 'Pending'}</span>
                             </div>
                             <div class="lang-row">
                                 <span class="lang-flag">🇯🇵 Japanese:</span> 
-                                <span class="lang-val ${!jp ? 'pending' : ''}">${jp ? escapeHtml(jp) : 'Pending'}</span>
+                                <span class="lang-val">${item.Japanese_Translation || 'Pending'}</span>
                             </div>
                             <div class="lang-row">
                                 <span class="lang-flag">🇹🇭 Thai:</span> 
-                                <span class="lang-val ${!th ? 'pending' : ''}">${th ? escapeHtml(th) : 'Pending'}</span>
+                                <span class="lang-val">${item.Thai_Translation || 'Pending'}</span>
                             </div>
                         </div>
+                        ${state.currentUser ? `
+                            <div class="card-actions">
+                                <button class="btn btn-outline btn-sm" onclick="openEditTermModal('${item.Term_ID}')" style="color:var(--text-primary); border-color:var(--card-border);">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="confirmDeleteTerm('${item.Term_ID}')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        ` : ''}
                     `;
                     grid.appendChild(card);
                 });
 
             } else if (state.activeTab === 'quotes') {
                 const filtered = state.quotes.filter(q => {
-                    const text = (q.English_Quote || q.Quote || '').toString().toLowerCase();
-                    const author = (q.Author_Speaker || q.Author || '').toString().toLowerCase();
-                    const book = (q.Source_Book_Talk || q.Source || '').toString().toLowerCase();
+                    const text = (q.English_Quote || '').toLowerCase();
+                    const author = (q.Author_Speaker || '').toLowerCase();
+                    const book = (q.Source_Book_Talk || '').toLowerCase();
                     return text.includes(query) || author.includes(query) || book.includes(query);
                 });
 
                 if (filtered.length === 0) {
-                    grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem; color: var(--text-muted);">No quotes found matching your query.</div>';
+                    grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem; color:var(--text-muted);">No sacred quotes found matching your query.</div>';
                     return;
                 }
 
                 filtered.forEach(q => {
-                    const quoteText = q.English_Quote || q.Quote || '';
-                    const author = q.Author_Speaker || q.Author || 'Harold Klemp';
-                    const source = q.Source_Book_Talk || q.Source || 'ECK Book';
-                    const fil = q.Filipino_Translation || q.Filipino || '';
-                    const jp = q.Japanese_Translation || q.Japanese || '';
-                    const th = q.Thai_Translation || q.Thai || '';
-
                     const card = document.createElement('div');
                     card.className = 'data-card';
                     card.innerHTML = `
                         <div>
-                            <div class="quote-text">"${escapeHtml(quoteText)}"</div>
-                            <div class="quote-author">— ${escapeHtml(author)} (${escapeHtml(source)})</div>
+                            <div class="quote-text">"${q.English_Quote || ''}"</div>
+                            <div class="quote-author">— ${q.Author_Speaker || 'Harold Klemp'} <em>(${q.Source_Book_Talk || 'ECK Publication'})</em></div>
                         </div>
-                        <div class="translations-list" style="margin-top: 1rem;">
-                            <div class="lang-row">
-                                <span class="lang-flag">🇵🇭 Filipino:</span> 
-                                <span class="lang-val ${!fil ? 'pending' : ''}">${fil ? escapeHtml(fil) : 'Pending'}</span>
-                            </div>
-                            <div class="lang-row">
-                                <span class="lang-flag">🇯🇵 Japanese:</span> 
-                                <span class="lang-val ${!jp ? 'pending' : ''}">${jp ? escapeHtml(jp) : 'Pending'}</span>
-                            </div>
-                            <div class="lang-row">
-                                <span class="lang-flag">🇹🇭 Thai:</span> 
-                                <span class="lang-val ${!th ? 'pending' : ''}">${th ? escapeHtml(th) : 'Pending'}</span>
-                            </div>
+                        <div class="translations-list" style="margin-top:1rem;">
+                            <div class="lang-row"><span class="lang-flag">🇵🇭 Filipino:</span> <span class="lang-val">${q.Filipino_Translation || 'Pending'}</span></div>
+                            <div class="lang-row"><span class="lang-flag">🇯🇵 Japanese:</span> <span class="lang-val">${q.Japanese_Translation || 'Pending'}</span></div>
+                            <div class="lang-row"><span class="lang-flag">🇹🇭 Thai:</span> <span class="lang-val">${q.Thai_Translation || 'Pending'}</span></div>
                         </div>
+                        ${state.currentUser ? `
+                            <div class="card-actions">
+                                <button class="btn btn-outline btn-sm" onclick="openEditQuoteModal('${q.Quote_ID}')" style="color:var(--text-primary); border-color:var(--card-border);">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="confirmDeleteQuote('${q.Quote_ID}')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        ` : ''}
                     `;
                     grid.appendChild(card);
                 });
 
             } else if (state.activeTab === 'style') {
                 grid.innerHTML = `
-                    <div class="data-card" style="grid-column: 1/-1;">
-                        <h2 style="margin-bottom:1rem; color: var(--gold-accent); font-family: 'Cinzel', serif;">ECKANKAR Style Guide Guidelines (ESC)</h2>
-                        <ul style="line-height:2; padding-left:1.5rem; color: var(--text-primary);">
-                            <li><strong>General vs Chela Terminology:</strong> Use <em>Eckankar</em> for public materials and ALL-CAPS <em>ECKANKAR</em> for Chela-Only publications according to the 1997 & 2021 ESC Style Sheets.</li>
-                            <li><strong>Titles & Mastership:</strong> Words such as <em>Mahanta</em>, <em>Living ECK Master</em>, and <em>Sugmad</em> are capitalized and maintained consistently across regional languages.</li>
-                            <li><strong>Quotes & Citation Rules:</strong> Book titles are italicized, talk titles are enclosed in quotation marks, and spiritual exercises maintain distinct formatting.</li>
+                    <div class="data-card" style="grid-column: 1/-1; line-height:1.7;">
+                        <h2 style="font-family:'Cinzel',serif; color:var(--header-bg); margin-bottom:1rem; border-bottom:2px solid var(--gold-accent); padding-bottom:0.5rem;">
+                            Eckankar Editorial & Formatting Style Standards (ESC 1997 & 2026 Word List)
+                        </h2>
+                        
+                        <h3 style="color:var(--gold-accent); margin-top:1rem;">1. Capitalization & Sacred Terms</h3>
+                        <ul style="padding-left:1.5rem; margin-bottom:1rem; color:var(--text-secondary);">
+                            <li><strong>Eckankar vs. ECKANKAR:</strong> Use <em>Eckankar</em> in all public materials. Use <em>ECKANKAR</em> (ALL CAPS) strictly in Chela-only membership literature and official legal references.</li>
+                            <li><strong>The Mahanta:</strong> Always capitalize <em>Mahanta</em>, <em>Living ECK Master</em>, <em>Inner Master</em>, and <em>Peddar Zaskq</em>.</li>
+                            <li><strong>Divine Names:</strong> Capitalize <em>SUGMAD</em>, <em>ECK</em>, <em>HU</em>, and <em>Holy Spirit</em>.</li>
                         </ul>
+
+                        <h3 style="color:var(--gold-accent); margin-top:1rem;">2. Publications, Books & Discourses</h3>
+                        <ul style="padding-left:1.5rem; margin-bottom:1rem; color:var(--text-secondary);">
+                            <li><strong>Book Titles:</strong> Italics (e.g., <em>The Shariyat-Ki-Sugmad</em>, <em>The Art of Spiritual Dreaming</em>).</li>
+                            <li><strong>Discourses & Talks:</strong> Enclose in quotation marks (e.g., "The Living Word, Book 2").</li>
+                        </ul>
+
+                        <h3 style="color:var(--gold-accent); margin-top:1rem;">3. Regional Language Standards (ESEA)</h3>
+                        <ul style="padding-left:1.5rem; color:var(--text-secondary);">
+                            <li><strong>Japanese (日本語):</strong> Maintain standardized Furigana phonetics for specialized terms like <em>Soul Travel (ソウル・トラベル)</em>.</li>
+                            <li><strong>Thai (ไทย):</strong> Use official ESC-approved Thai transliterations for <em>HU</em> and <em>Sugmad</em>.</li>
+                            <li><strong>Filipino:</strong> Respect official diacritical marks in spiritual terminology.</li>
+                        </ul>
+                    </div>
+                `;
+
+            } else if (state.activeTab === 'analytics') {
+                let total = state.terms.length || 1;
+                let jpDone = state.terms.filter(t => t.Japanese_Translation && t.Japanese_Translation !== 'Pending').length;
+                let thDone = state.terms.filter(t => t.Thai_Translation && t.Thai_Translation !== 'Pending').length;
+                let filDone = state.terms.filter(t => t.Filipino_Translation && t.Filipino_Translation !== 'Pending').length;
+
+                let jpPct = Math.round((jpDone / total) * 100);
+                let thPct = Math.round((thDone / total) * 100);
+                let filPct = Math.round((filDone / total) * 100);
+
+                grid.innerHTML = `
+                    <div class="data-card" style="grid-column: 1/-1;">
+                        <h2 style="font-family:'Cinzel',serif; color:var(--header-bg); margin-bottom:1.5rem;">Regional Translation Completion Rates</h2>
+                        
+                        <div class="progress-bar-container">
+                            <div class="progress-label"><span>🇯🇵 Japanese Translation</span> <span>${jpPct}% (${jpDone}/${total})</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: ${jpPct}%;"></div></div>
+                        </div>
+                        
+                        <div class="progress-bar-container">
+                            <div class="progress-label"><span>🇹🇭 Thai Translation</span> <span>${thPct}% (${thDone}/${total})</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: ${thPct}%;"></div></div>
+                        </div>
+
+                        <div class="progress-bar-container">
+                            <div class="progress-label"><span>🇵🇭 Filipino Translation</span> <span>${filPct}% (${filDone}/${total})</span></div>
+                            <div class="progress-track"><div class="progress-fill" style="width: ${filPct}%;"></div></div>
+                        </div>
+
+                        <h3 style="margin-top:2rem; margin-bottom:1rem; color:var(--text-primary);">Recent System Activity Logs</h3>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>User</th>
+                                        <th>Action</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${state.logs.slice(-10).reverse().map(l => `
+                                        <tr>
+                                            <td>${l.Timestamp ? new Date(l.Timestamp).toLocaleString() : 'N/A'}</td>
+                                            <td><strong>${l.User || 'System'}</strong></td>
+                                            <td><span class="category-chip">${l.Action || 'Log'}</span></td>
+                                            <td>${l.Details || ''}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 `;
             }
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-
-        // Modal Operations
+        // Modal Handlers
         function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
         function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; }
+        function closeEditModal() { document.getElementById('editModal').style.display = 'none'; }
 
         function submitLogin() {
             const user = document.getElementById('loginUsername').value.trim();
@@ -774,21 +1054,251 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvJAnTipkrtODywvthd
             const callbackName = 'jp_login_' + Math.round(100000 * Math.random());
             window[callbackName] = function(res) {
                 delete window[callbackName];
-                if (document.body.contains(script)) {
-                    document.body.removeChild(script);
-                }
+                document.body.removeChild(script);
                 if (res && res.success) {
-                    alert('Login successful! Role: ' + res.user.role);
+                    alert('Authenticated successfully as ' + res.user.name);
                     state.currentUser = res.user;
-                    document.getElementById('loginTriggerBtn').innerHTML = `<i class="fa-solid fa-user-check"></i> ${res.user.name} (${res.user.role})`;
+                    
+                    document.getElementById('sessionUserName').innerText = res.user.name;
+                    document.getElementById('sessionUserRole').innerText = res.user.role;
+                    document.getElementById('sessionUserLang').innerText = res.user.language || 'All Languages';
+                    document.getElementById('sessionRibbon').style.display = 'block';
+                    document.getElementById('loginTriggerBtn').style.display = 'none';
+                    
                     closeLoginModal();
+                    updateMetrics();
+                    renderContent();
                 } else {
-                    alert('Authentication Error: ' + (res.message || 'Invalid username or passcode.'));
+                    alert('Authentication failed: ' + (res.message || 'Invalid username or passcode.'));
                 }
             };
 
             const script = document.createElement('script');
             script.src = `${SCRIPT_URL}?action=login&username=${encodeURIComponent(user)}&passcode=${encodeURIComponent(pass)}&callback=${callbackName}`;
+            document.body.appendChild(script);
+        }
+
+        function logoutUser() {
+            state.currentUser = null;
+            document.getElementById('sessionRibbon').style.display = 'none';
+            document.getElementById('loginTriggerBtn').style.display = 'inline-flex';
+            updateMetrics();
+            renderContent();
+        }
+
+        function openEditTermModal(termId) {
+            const item = state.terms.find(t => t.Term_ID === termId);
+            if (!item) return;
+
+            state.activeEditingItem = { type: 'term', id: termId };
+            const container = document.getElementById('editFormFields');
+            const role = state.currentUser.role;
+            const userLang = state.currentUser.language;
+
+            let isFullAdmin = (role === 'Admin' || role === 'Developer');
+
+            container.innerHTML = `
+                <div class="form-group">
+                    <label>English Term</label>
+                    <input type="text" id="formEnglishTerm" class="form-control" value="${item.English_Term || ''}" ${isFullAdmin ? '' : 'readonly'}>
+                </div>
+                ${isFullAdmin ? `
+                    <div class="form-group">
+                        <label>Category Domain</label>
+                        <input type="text" id="formCategory" class="form-control" value="${item.Category_Domain || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Audience Scope</label>
+                        <select id="formScope" class="form-control">
+                            <option value="Public" ${item.Audience_Scope === 'Public' ? 'selected' : ''}>Public</option>
+                            <option value="Chela_Only" ${item.Audience_Scope === 'Chela_Only' ? 'selected' : ''}>Chela_Only</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>ESC Style Rules</label>
+                        <input type="text" id="formEscRules" class="form-control" value="${item.ESC_Style_Rules || ''}">
+                    </div>
+                ` : ''}
+                <div class="form-group">
+                    <label>🇵🇭 Filipino Translation</label>
+                    <input type="text" id="formFilipino" class="form-control" value="${item.Filipino_Translation || ''}" ${isFullAdmin || userLang === 'Filipino' ? '' : 'readonly'}>
+                </div>
+                <div class="form-group">
+                    <label>🇯🇵 Japanese Translation</label>
+                    <input type="text" id="formJapanese" class="form-control" value="${item.Japanese_Translation || ''}" ${isFullAdmin || userLang === 'Japanese' ? '' : 'readonly'}>
+                </div>
+                <div class="form-group">
+                    <label>🇹🇭 Thai Translation</label>
+                    <input type="text" id="formThai" class="form-control" value="${item.Thai_Translation || ''}" ${isFullAdmin || userLang === 'Thai' ? '' : 'readonly'}>
+                </div>
+            `;
+
+            document.getElementById('editModalTitle').innerText = 'Edit Glossary Term';
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function openEditQuoteModal(quoteId) {
+            const item = state.quotes.find(q => q.Quote_ID === quoteId);
+            if (!item) return;
+
+            state.activeEditingItem = { type: 'quote', id: quoteId };
+            const container = document.getElementById('editFormFields');
+            const role = state.currentUser.role;
+            const userLang = state.currentUser.language;
+            let isFullAdmin = (role === 'Admin' || role === 'Developer');
+
+            container.innerHTML = `
+                <div class="form-group">
+                    <label>English Quote</label>
+
+                    <textarea id="formQuoteText" class="form-control" rows="3" ${isFullAdmin ? '' : 'readonly'}>${item.English_Quote || ''}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Author / Speaker</label>
+                    <input type="text" id="formAuthor" class="form-control" value="${item.Author_Speaker || ''}" ${isFullAdmin ? '' : 'readonly'}>
+                </div>
+                <div class="form-group">
+                    <label>Source Book / Talk</label>
+                    <input type="text" id="formBook" class="form-control" value="${item.Source_Book_Talk || ''}" ${isFullAdmin ? '' : 'readonly'}>
+                </div>
+                <div class="form-group">
+                    <label>🇵🇭 Filipino Translation</label>
+                    <input type="text" id="formFilipino" class="form-control" value="${item.Filipino_Translation || ''}" ${isFullAdmin || userLang === 'Filipino' ? '' : 'readonly'}>
+                </div>
+                <div class="form-group">
+                    <label>🇯🇵 Japanese Translation</label>
+                    <input type="text" id="formJapanese" class="form-control" value="${item.Japanese_Translation || ''}" ${isFullAdmin || userLang === 'Japanese' ? '' : 'readonly'}>
+                </div>
+                <div class="form-group">
+                    <label>🇹🇭 Thai Translation</label>
+                    <input type="text" id="formThai" class="form-control" value="${item.Thai_Translation || ''}" ${isFullAdmin || userLang === 'Thai' ? '' : 'readonly'}>
+                </div>
+            `;
+
+            document.getElementById('editModalTitle').innerText = 'Edit Sacred Quote';
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function openAddModal() {
+            state.activeEditingItem = { type: 'new_term' };
+            const container = document.getElementById('editFormFields');
+            
+            container.innerHTML = `
+                <div class="form-group">
+                    <label>English Term *</label>
+                    <input type="text" id="formEnglishTerm" class="form-control" placeholder="Enter term name...">
+                </div>
+                <div class="form-group">
+                    <label>Category Domain</label>
+                    <input type="text" id="formCategory" class="form-control" placeholder="e.g. Spiritual Concepts, Roles">
+                </div>
+                <div class="form-group">
+                    <label>Audience Scope</label>
+                    <select id="formScope" class="form-control">
+                        <option value="Public">Public</option>
+                        <option value="Chela_Only">Chela_Only</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>ESC Style Rules</label>
+                    <input type="text" id="formEscRules" class="form-control" placeholder="Style sheet guidelines...">
+                </div>
+            `;
+
+            document.getElementById('editModalTitle').innerText = 'Add New Glossary Term';
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function saveItemChanges() {
+            if (!state.activeEditingItem) return;
+
+            const callbackName = 'jp_save_' + Math.round(100000 * Math.random());
+            window[callbackName] = function(res) {
+                delete window[callbackName];
+                document.body.removeChild(script);
+                if (res && res.success) {
+                    alert('Saved successfully!');
+                    closeEditModal();
+                    fetchLiveStore();
+                } else {
+                    alert('Save failed: ' + (res.message || 'Unknown error'));
+                }
+            };
+
+            let action = '';
+            let params = `user=${encodeURIComponent(state.currentUser.name)}`;
+
+            if (state.activeEditingItem.type === 'term') {
+                action = 'updateTerm';
+                params += `&termId=${state.activeEditingItem.id}`;
+                if (document.getElementById('formEnglishTerm')) params += `&englishTerm=${encodeURIComponent(document.getElementById('formEnglishTerm').value)}`;
+                if (document.getElementById('formCategory')) params += `&category=${encodeURIComponent(document.getElementById('formCategory').value)}`;
+                if (document.getElementById('formScope')) params += `&scope=${encodeURIComponent(document.getElementById('formScope').value)}`;
+                if (document.getElementById('formEscRules')) params += `&escRules=${encodeURIComponent(document.getElementById('formEscRules').value)}`;
+                if (document.getElementById('formFilipino')) params += `&filipino=${encodeURIComponent(document.getElementById('formFilipino').value)}`;
+                if (document.getElementById('formJapanese')) params += `&japanese=${encodeURIComponent(document.getElementById('formJapanese').value)}`;
+                if (document.getElementById('formThai')) params += `&thai=${encodeURIComponent(document.getElementById('formThai').value)}`;
+
+            } else if (state.activeEditingItem.type === 'quote') {
+                action = 'updateQuote';
+                params += `&quoteId=${state.activeEditingItem.id}`;
+                if (document.getElementById('formQuoteText')) params += `&quoteText=${encodeURIComponent(document.getElementById('formQuoteText').value)}`;
+                if (document.getElementById('formAuthor')) params += `&author=${encodeURIComponent(document.getElementById('formAuthor').value)}`;
+                if (document.getElementById('formBook')) params += `&book=${encodeURIComponent(document.getElementById('formBook').value)}`;
+                if (document.getElementById('formFilipino')) params += `&filipino=${encodeURIComponent(document.getElementById('formFilipino').value)}`;
+                if (document.getElementById('formJapanese')) params += `&japanese=${encodeURIComponent(document.getElementById('formJapanese').value)}`;
+                if (document.getElementById('formThai')) params += `&thai=${encodeURIComponent(document.getElementById('formThai').value)}`;
+
+            } else if (state.activeEditingItem.type === 'new_term') {
+                action = 'addTerm';
+                params += `&englishTerm=${encodeURIComponent(document.getElementById('formEnglishTerm').value)}`;
+                params += `&category=${encodeURIComponent(document.getElementById('formCategory').value || 'General')}`;
+                params += `&scope=${encodeURIComponent(document.getElementById('formScope').value || 'Public')}`;
+                params += `&escRules=${encodeURIComponent(document.getElementById('formEscRules').value || '')}`;
+            }
+
+            const script = document.createElement('script');
+            script.src = `${SCRIPT_URL}?action=${action}&${params}&callback=${callbackName}`;
+            document.body.appendChild(script);
+        }
+
+        function confirmDeleteTerm(termId) {
+            if (!confirm('Are you sure you want to delete this term?')) return;
+
+            const callbackName = 'jp_del_' + Math.round(100000 * Math.random());
+            window[callbackName] = function(res) {
+                delete window[callbackName];
+                document.body.removeChild(script);
+                if (res && res.success) {
+                    alert('Term deleted successfully.');
+                    fetchLiveStore();
+                } else {
+                    alert('Delete failed.');
+                }
+            };
+
+            const script = document.createElement('script');
+            script.src = `${SCRIPT_URL}?action=deleteTerm&id=${termId}&user=${encodeURIComponent(state.currentUser.name)}&callback=${callbackName}`;
+            document.body.appendChild(script);
+        }
+
+        function confirmDeleteQuote(quoteId) {
+            if (!confirm('Are you sure you want to delete this sacred quote?')) return;
+
+            const callbackName = 'jp_delq_' + Math.round(100000 * Math.random());
+            window[callbackName] = function(res) {
+                delete window[callbackName];
+                document.body.removeChild(script);
+                if (res && res.success) {
+                    alert('Quote deleted successfully.');
+                    fetchLiveStore();
+                } else {
+                    alert('Delete failed.');
+                }
+            };
+
+            const script = document.createElement('script');
+            script.src = `${SCRIPT_URL}?action=deleteQuote&id=${quoteId}&user=${encodeURIComponent(state.currentUser.name)}&callback=${callbackName}`;
             document.body.appendChild(script);
         }
     </script>
