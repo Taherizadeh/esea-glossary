@@ -77,13 +77,21 @@
             display: none !important;
         }
 
+        /* Sticky Header & Navigation Wrapper */
+        .sticky-top-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg-primary);
+            box-shadow: var(--shadow-md);
+        }
+
         /* Header Layout */
         header {
             background: var(--header-bg);
             color: var(--header-text);
-            padding: 1rem 2rem;
+            padding: 0.85rem 2rem;
             border-bottom: 4px solid var(--gold-accent);
-            box-shadow: var(--shadow-md);
         }
 
         .header-container {
@@ -104,14 +112,14 @@
 
         /* Gold EK Emblem Medallion */
         .logo-emblem {
-            width: 56px;
-            height: 56px;
+            width: 52px;
+            height: 52px;
             background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 14px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
             border: 2px solid var(--gold-accent);
             overflow: hidden;
             flex-shrink: 0;
@@ -125,9 +133,9 @@
 
         .brand-titles h1 {
             font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -146,7 +154,7 @@
         }
 
         .brand-titles p {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #dbeafe;
             margin-top: 2px;
             font-style: italic;
@@ -159,9 +167,9 @@
         }
 
         .btn {
-            padding: 0.55rem 1.1rem;
+            padding: 0.5rem 1rem;
             border-radius: 6px;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             border: none;
@@ -200,8 +208,7 @@
         .session-bar {
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--card-border);
-            padding: 0.6rem 2rem;
-            box-shadow: var(--shadow-sm);
+            padding: 0.5rem 2rem;
         }
 
         .session-container {
@@ -210,7 +217,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .user-badge {
@@ -254,60 +261,12 @@
             100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
-        /* Main Container */
-        main {
+        /* Controls Container inside Sticky Wrapper */
+        .controls-container {
             max-width: 1400px;
-            margin: 1.5rem auto;
-            padding: 0 1.5rem;
-            flex: 1;
-            width: 100%;
-        }
-
-        /* Metric Dashboard Cards */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .metric-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-left: 5px solid var(--gold-accent);
-            border-radius: 8px;
-            padding: 1.25rem;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .metric-card.alert-card {
-            border-left-color: var(--btn-red);
-        }
-
-        .metric-info h3 {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .metric-info .value {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-top: 4px;
-        }
-
-        .metric-icon {
-            font-size: 2rem;
-            color: var(--gold-accent);
-            opacity: 0.85;
-        }
-        .metric-card.alert-card .metric-icon {
-            color: var(--btn-red);
+            margin: 0 auto;
+            padding: 0.75rem 2rem 0.5rem 2rem;
+            background: var(--bg-primary);
         }
 
         /* Toolbar & Controls */
@@ -316,8 +275,8 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.25rem;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
         }
 
         .filter-group {
@@ -328,9 +287,9 @@
         }
 
         .filter-btn {
-            padding: 0.45rem 0.9rem;
+            padding: 0.4rem 0.85rem;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             border: 1px solid var(--card-border);
             background: var(--card-bg);
@@ -357,21 +316,22 @@
             display: flex;
             gap: 0.5rem;
             border-bottom: 2px solid var(--card-border);
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.75rem;
+            background: var(--bg-primary);
         }
 
         .tab-btn {
-            padding: 0.75rem 1.25rem;
+            padding: 0.65rem 1.1rem;
             background: transparent;
             border: none;
             color: var(--text-secondary);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             cursor: pointer;
             border-bottom: 3px solid transparent;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .tab-btn.active {
@@ -389,17 +349,16 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 0.75rem 1.25rem;
+            padding: 0.65rem 1rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
             box-shadow: var(--shadow-sm);
-            margin-bottom: 1.5rem;
         }
 
         .search-box-container i {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .search-input {
@@ -407,8 +366,64 @@
             outline: none;
             background: transparent;
             width: 100%;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: var(--text-primary);
+        }
+
+        /* Main Scrollable Content */
+        main {
+            max-width: 1400px;
+            margin: 1.25rem auto;
+            padding: 0 2rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        /* Metric Dashboard Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 5px solid var(--gold-accent);
+            border-radius: 8px;
+            padding: 1.1rem 1.25rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .metric-card.alert-card {
+            border-left-color: var(--btn-red);
+        }
+
+        .metric-info h3 {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-info .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 4px;
+        }
+
+        .metric-icon {
+            font-size: 1.8rem;
+            color: var(--gold-accent);
+            opacity: 0.85;
+        }
+        .metric-card.alert-card .metric-icon {
+            color: var(--btn-red);
         }
 
         /* Content Cards Grid */
@@ -462,7 +477,7 @@
         .scope-chela { background: #fef3c7; color: #92400e; }
 
         .card-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
@@ -535,7 +550,27 @@
             border-top: 1px solid var(--card-border);
         }
 
-        /* Modal Base */
+        /* Global Loading & Modal Overlays */
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(11, 19, 41, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            backdrop-filter: blur(4px);
+        }
+
+        .loading-box {
+            background: var(--card-bg);
+            border: 2px solid var(--gold-accent);
+            border-radius: 12px;
+            padding: 2rem 3rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -543,7 +578,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 2000;
             backdrop-filter: blur(4px);
             padding: 1rem;
         }
@@ -556,7 +591,7 @@
             max-width: 580px;
             max-height: 90vh;
             overflow-y: auto;
-            padding: 2rem;
+            padding: 1.75rem;
             box-shadow: var(--shadow-lg);
         }
 
@@ -564,18 +599,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             border-bottom: 1px solid var(--card-border);
             padding-bottom: 0.75rem;
         }
 
         .modal-header h2 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text-primary);
         }
 
         .form-group {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.15rem;
         }
 
         .form-group label {
@@ -588,13 +623,13 @@
 
         .form-control {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.7rem;
             border: 1px solid var(--card-border);
             border-radius: 6px;
             background: var(--bg-primary);
             color: var(--text-primary);
             outline: none;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
         }
 
         .form-control:focus {
@@ -611,7 +646,7 @@
             border: 1px solid var(--card-border);
             border-radius: 6px;
             padding: 0.85rem;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: var(--text-primary);
             margin-bottom: 1rem;
             line-height: 1.5;
@@ -621,7 +656,7 @@
             display: flex;
             justify-content: flex-end;
             gap: 0.6rem;
-            margin-top: 1.5rem;
+            margin-top: 1.25rem;
             padding-top: 1rem;
             border-top: 1px solid var(--card-border);
             flex-wrap: wrap;
@@ -635,16 +670,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 2000;
+            z-index: 2500;
             padding: 1.5rem;
         }
 
         .login-box {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 2.5rem;
+            padding: 2.25rem;
             width: 100%;
-            max-width: 440px;
+            max-width: 420px;
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
             text-align: center;
             border: 1px solid var(--gold-accent);
@@ -677,75 +712,77 @@
         }
         .login-help-text a:hover { text-decoration: underline; }
 
-        /* ESC Style Guide Interactive Accordion */
-        .style-guide-card {
+        /* ESC Style Guide & User Guide Cards */
+        .guide-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
-        .style-guide-title {
-            font-size: 1.1rem;
+        .guide-title {
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--header-bg);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.5rem;
         }
-        [data-theme="dark"] .style-guide-title { color: var(--gold-accent); }
+        [data-theme="dark"] .guide-title { color: var(--gold-accent); }
+
+        .rule-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .rule-item {
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.92rem;
+        }
+
+        .rule-item::before {
+            content: "•";
+            color: var(--gold-accent);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.2rem;
+        }
+
+        .small-caps {
+            font-variant: small-caps;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
-            header { padding: 1rem; }
+            header { padding: 0.85rem 1rem; }
+            .controls-container { padding: 0.75rem 1rem; }
+            main { padding: 0 1rem; }
             .header-container { flex-direction: column; align-items: flex-start; }
             .content-grid { grid-template-columns: 1fr; }
             .modal-card { padding: 1.25rem; }
         }
-
-        /* Sticky Header Section Layout */
-        .sticky-header-wrapper {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: var(--bg-primary);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-            border-bottom: 2px solid var(--gold-accent);
-        }
-
-        .sticky-controls-panel {
-            background: var(--bg-primary);
-            padding: 0.75rem 2rem 0.25rem 2rem;
-        }
-
-        .sticky-controls-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .sticky-controls-panel .toolbar {
-            margin-bottom: 0.75rem;
-        }
-
-        .sticky-controls-panel .nav-tabs {
-            margin-bottom: 0.75rem;
-        }
-
-        .sticky-controls-panel .search-box-container {
-            margin-bottom: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .sticky-controls-panel {
-                padding: 0.5rem 1rem 0.25rem 1rem;
-            }
-        }
-
     </style>
 </head>
 <body class="auth-locked">
+
+    <!-- GLOBAL LOADING OVERLAY -->
+    <div class="loading-overlay" id="globalLoadingOverlay" style="display:none;">
+        <div class="loading-box">
+            <i class="fa-solid fa-spinner fa-spin fa-3x" style="color:var(--gold-accent);"></i>
+            <p id="globalLoadingText" style="margin-top:1rem; font-weight:600; color:var(--text-primary);">Loading live data...</p>
+        </div>
+    </div>
 
     <!-- MANDATORY FULL SCREEN LOGIN -->
     <div class="login-screen-overlay" id="loginScreen">
@@ -758,13 +795,13 @@
             
             <div class="form-group" style="text-align: left;">
                 <label>Username / Name</label>
-                <input type="text" id="loginUsername" class="form-control" placeholder="Enter your username">
+                <input type="text" id="loginUsername" class="form-control" placeholder="Enter your username" onkeypress="if(event.key==='Enter') submitLogin()">
             </div>
             <div class="form-group" style="text-align: left;">
                 <label>Passcode</label>
-                <input type="password" id="loginPasscode" class="form-control" placeholder="Enter your passcode">
+                <input type="password" id="loginPasscode" class="form-control" placeholder="Enter your passcode" onkeypress="if(event.key==='Enter') submitLogin()">
             </div>
-            <button class="btn btn-gold" style="width: 100%; justify-content: center; padding: 0.75rem; margin-top: 0.5rem;" onclick="submitLogin()">
+            <button type="button" class="btn btn-gold" id="loginSubmitBtn" style="width: 100%; justify-content: center; padding: 0.75rem; margin-top: 0.5rem;" onclick="submitLogin()">
                 <i class="fa-solid fa-right-to-bracket"></i> Sign In to Portal
             </button>
 
@@ -777,14 +814,14 @@
 
     <!-- MAIN APP CONTAINER -->
     <div id="appContainer">
-        <!-- Sticky Top Header & Controls Wrapper -->
-        <div class="sticky-header-wrapper">
+        <!-- Sticky Top Section -->
+        <div class="sticky-top-wrapper">
             <!-- Header -->
             <header>
                 <div class="header-container">
                     <div class="brand-section">
                         <div class="logo-emblem">
-                            <img src="./EK_symbol_03_color_HI.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Eckankar_symbol.jpg/600px-Eckankar_symbol.jpg'" alt="EK Emblem">
+                            <img src="EK_symbol_03_color_HI.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Eckankar_symbol.jpg/600px-Eckankar_symbol.jpg'" alt="EK Emblem">
                         </div>
                         <div class="brand-titles">
                             <h1>ECKANKAR <span class="region-badge">ESEA REGION</span></h1>
@@ -792,13 +829,13 @@
                         </div>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-outline" onclick="fetchLiveStore()">
+                        <button type="button" class="btn btn-outline" onclick="fetchLiveStore()">
                             <i class="fa-solid fa-rotate"></i> Sync
                         </button>
-                        <button class="btn btn-outline" onclick="toggleTheme()">
+                        <button type="button" class="btn btn-outline" onclick="toggleTheme()">
                             <i class="fa-solid fa-moon" id="themeIcon"></i>
                         </button>
-                        <button class="btn btn-outline" onclick="logout()">
+                        <button type="button" class="btn btn-outline" onclick="logout()">
                             <i class="fa-solid fa-right-from-bracket"></i> Logout
                         </button>
                     </div>
@@ -819,50 +856,51 @@
                 </div>
             </div>
 
-            <!-- Sticky Controls Bar (Toolbar, Tabs, Search) -->
-            <div class="sticky-controls-panel">
-                <div class="sticky-controls-container">
-                    <!-- Toolbar & Add Button -->
-                    <div class="toolbar">
-                        <div class="filter-group">
-                            <button class="filter-btn active" id="filterAllBtn" onclick="setFilter('all')">
-                                <i class="fa-solid fa-border-all"></i> All Items
-                            </button>
-                            <button class="filter-btn" id="filterPendingBtn" onclick="setFilter('pending')">
-                                <i class="fa-solid fa-clock"></i> Show My Pending Only
-                            </button>
-                            <div id="adminFilterContainer" style="display:inline-block;"></div>
-                        </div>
-                        <div>
-                            <button class="btn btn-gold" onclick="openAddModal()">
-                                <i class="fa-solid fa-plus"></i> Add New Item
-                            </button>
-                        </div>
+            <!-- Controls Container -->
+            <div class="controls-container">
+                <!-- Toolbar & Add Button -->
+                <div class="toolbar">
+                    <div class="filter-group">
+                        <button type="button" class="filter-btn active" id="filterAllBtn" onclick="setFilter('all')">
+                            <i class="fa-solid fa-border-all"></i> All Items
+                        </button>
+                        <button type="button" class="filter-btn" id="filterPendingBtn" onclick="setFilter('pending')">
+                            <i class="fa-solid fa-clock"></i> Show My Pending Only
+                        </button>
+                        <div id="adminFilterContainer" style="display:inline-block;"></div>
                     </div>
+                    <div>
+                        <button type="button" class="btn btn-gold" onclick="openAddModal()">
+                            <i class="fa-solid fa-plus"></i> Add New Item
+                        </button>
+                    </div>
+                </div>
 
-                    <!-- Navigation Tabs -->
-                    <div class="nav-tabs">
-                        <button class="tab-btn active" id="tabTerms" onclick="switchTab('terms')">
-                            <i class="fa-solid fa-list-check"></i> Master Glossary
-                        </button>
-                        <button class="tab-btn" id="tabQuotes" onclick="switchTab('quotes')">
-                            <i class="fa-solid fa-comments"></i> Sacred Quotes
-                        </button>
-                        <button class="tab-btn" id="tabStyle" onclick="switchTab('style')">
-                            <i class="fa-solid fa-book-open-reader"></i> ESC Style Guide
-                        </button>
-                    </div>
+                <!-- Navigation Tabs (4 TABS) -->
+                <div class="nav-tabs">
+                    <button type="button" class="tab-btn active" id="tabTerms" onclick="switchTab('terms')">
+                        <i class="fa-solid fa-list-check"></i> Master Glossary
+                    </button>
+                    <button type="button" class="tab-btn" id="tabQuotes" onclick="switchTab('quotes')">
+                        <i class="fa-solid fa-comments"></i> Sacred Quotes
+                    </button>
+                    <button type="button" class="tab-btn" id="tabStyle" onclick="switchTab('style')">
+                        <i class="fa-solid fa-book-open-reader"></i> ESC Style Guide
+                    </button>
+                    <button type="button" class="tab-btn" id="tabGuide" onclick="switchTab('guide')">
+                        <i class="fa-solid fa-circle-question"></i> User Guide
+                    </button>
+                </div>
 
-                    <!-- Search Box -->
-                    <div class="search-box-container">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="searchInput" class="search-input" placeholder="Search in all languages (English, 日本語, ไทย, Filipino), quotes, or style rules..." oninput="renderContent()">
-                    </div>
+                <!-- Search Box -->
+                <div class="search-box-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search in all languages (English, 日本語, ไทย, Filipino), quotes, or style rules..." oninput="renderContent()">
                 </div>
             </div>
         </div>
 
-        <!-- Main Content -->
+        <!-- Main Content Grid -->
         <main>
             <!-- Metrics Grid -->
             <div class="metrics-grid">
@@ -889,7 +927,7 @@
                 </div>
             </div>
 
-            <!-- Content Grid -->
+            <!-- Dynamic Cards Container -->
             <div class="content-grid" id="mainContentGrid">
                 <!-- Cards Rendered Dynamically -->
             </div>
@@ -947,26 +985,26 @@
             </div>
 
             <div class="modal-footer" id="addModalFooter">
-                <!-- Dynamic Action Buttons -->
+                <!-- Buttons rendered dynamically -->
             </div>
         </div>
     </div>
 
-    <!-- DUPLICATE CHECK CONFIRMATION MODAL -->
+    <!-- DUPLICATE CHECK WARNING MODAL -->
     <div class="modal-overlay" id="duplicateModal">
-        <div class="modal-card">
+        <div class="modal-card" style="max-width: 500px;">
             <div class="modal-header">
-                <h2>Existing Items Found</h2>
+                <h2 style="color: var(--btn-yellow);"><i class="fa-solid fa-triangle-exclamation"></i> Similar Items Found</h2>
                 <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="closeDuplicateModal()"></i>
             </div>
             <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
-                Matching items already exist in the database. If the term you are adding is listed below, click it to edit. Otherwise, click <strong>Continue as New Item</strong>.
+                Similar terms already exist in the Master Glossary. Please select an existing item to edit, or click <strong>Continue as New Item</strong> if this is distinct.
             </p>
-            <div id="duplicateList" style="max-height: 200px; overflow-y: auto; margin-bottom: 1rem;">
-                <!-- Duplicates list rendered here -->
+            <div id="duplicateListContainer" style="max-height: 200px; overflow-y: auto; margin-bottom: 1rem;">
+                <!-- List of matches -->
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-gray" onclick="closeDuplicateModal()">Continue as New Item</button>
+            <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+                <button type="button" class="btn btn-gray" onclick="closeDuplicateModal()">Continue as New Item</button>
             </div>
         </div>
     </div>
@@ -975,50 +1013,21 @@
     <div class="modal-overlay" id="editModal">
         <div class="modal-card">
             <div class="modal-header">
-                <h2>Edit Item Translation</h2>
+                <h2>Edit Item Details</h2>
                 <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="closeEditModal()"></i>
             </div>
-
-            <!-- Read-only English Reference Block -->
-            <div id="editEnglishReference" class="read-only-box">
-                <!-- Populated dynamically -->
-            </div>
-
-            <!-- Editable English Fields for Admin -->
-            <div id="editAdminFields" style="display:none;">
-                <div class="form-group">
-                    <label>English Term / Quote</label>
-                    <input type="text" id="editEnglishText" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Category / Domain</label>
-                    <select id="editCategory" class="form-control"></select>
-                </div>
-                <div class="form-group">
-                    <label>Audience Scope</label>
-                    <select id="editAudience" class="form-control">
-                        <option value="Public">Public</option>
-                        <option value="Chela_Only">Chela-Only</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>ESC Style Rules</label>
-                    <textarea id="editStyleRules" class="form-control"></textarea>
-                </div>
-            </div>
-
-            <!-- Editable Translations Container -->
-            <div id="editTranslationsContainer">
-                <!-- Populated dynamically based on user role -->
+            
+            <div id="editModalBody">
+                <!-- Dynamic inputs -->
             </div>
 
             <div class="modal-footer" id="editModalFooter">
-                <!-- Dynamic Action Buttons -->
+                <!-- Buttons rendered dynamically -->
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JavaScript Application Logic -->
     <script>
         // WEB APP GOOGLE APPS SCRIPT ENDPOINT
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyRhHyO0hnceA_A8JUj-T3GGfYmBQgvWmIHi0WNSXYkq9RwOztD18P2HyTQvYjHZZg-iw/exec';
@@ -1027,25 +1036,70 @@
             terms: [],
             quotes: [],
             styleGuide: [],
-            categories: ['Spiritual Concepts', 'Roles/Titles', 'Books/Talks', 'Sacred Names', 'Initiations', 'General'],
+            categories: ['Spiritual Concepts', 'Roles/Titles', 'Books/Talks', 'Programs/Roles', 'Places', 'People', 'Core Terms'],
             activeTab: 'terms',
-            activeFilter: 'all', // 'all', 'pending', 'incomplete'
+            activeFilter: 'all',
             currentUser: null,
-            theme: 'light',
-            editingItem: null,
-            editingType: 'term'
+            theme: 'light'
         };
 
-        window.addEventListener('DOMContentLoaded', () => {
-            // App locked until login
-        });
+        // Loading Overlay Control
+        function showLoading(msg) {
+            document.getElementById('globalLoadingText').innerText = msg || 'Loading...';
+            document.getElementById('globalLoadingOverlay').style.display = 'flex';
+        }
 
+        function hideLoading() {
+            document.getElementById('globalLoadingOverlay').style.display = 'none';
+        }
+
+        // Toggle Theme
         function toggleTheme() {
             state.theme = state.theme === 'light' ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', state.theme);
             document.getElementById('themeIcon').className = state.theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
         }
 
+        // JSONP Fetch with Timeout Handling
+        function fetchLiveStore() {
+            showLoading('Connecting to Master Google Sheet...');
+            
+            const cbName = 'jp_cb_' + Math.round(100000 * Math.random());
+            let timedOut = false;
+
+            const timer = setTimeout(() => {
+                timedOut = true;
+                hideLoading();
+                alert('Connection to Google Sheet timed out. Please click Sync to try again.');
+            }, 12000);
+
+            window[cbName] = function(data) {
+                if (timedOut) return;
+                clearTimeout(timer);
+                delete window[cbName];
+                if (script.parentNode) document.body.removeChild(script);
+                hideLoading();
+
+                if (data && data.success) {
+                    state.terms = data.data.terms || [];
+                    state.quotes = data.data.quotes || [];
+                    state.styleGuide = data.data.styleGuide || [];
+                    if (data.data.categories && data.data.categories.length > 0) {
+                        state.categories = data.data.categories;
+                    }
+                    updateMetricsAndBadges();
+                    renderContent();
+                } else {
+                    alert('Error loading data: ' + (data ? data.message : 'Unknown error'));
+                }
+            };
+
+            const script = document.createElement('script');
+            script.src = SCRIPT_URL + '?action=getAllData&callback=' + cbName;
+            document.body.appendChild(script);
+        }
+
+        // Submit Login with Feedback & Single Click
         function submitLogin() {
             const user = document.getElementById('loginUsername').value.trim();
             const pass = document.getElementById('loginPasscode').value.trim();
@@ -1055,10 +1109,30 @@
                 return;
             }
 
+            const btn = document.getElementById('loginSubmitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...';
+            showLoading('Authenticating credentials...');
+
             const cbName = 'jp_login_' + Math.round(100000 * Math.random());
+            let timedOut = false;
+
+            const timer = setTimeout(() => {
+                timedOut = true;
+                hideLoading();
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Sign In to Portal';
+                alert('Authentication timed out. Please check your network and try again.');
+            }, 10000);
+
             window[cbName] = function(res) {
+                if (timedOut) return;
+                clearTimeout(timer);
                 delete window[cbName];
-                document.body.removeChild(script);
+                if (script.parentNode) document.body.removeChild(script);
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Sign In to Portal';
+
                 if (res && res.success) {
                     state.currentUser = res.user;
                     document.body.classList.remove('auth-locked');
@@ -1068,7 +1142,8 @@
                     
                     fetchLiveStore();
                 } else {
-                    alert('Error: ' + (res.message || 'Invalid credentials.'));
+                    hideLoading();
+                    alert('Error: ' + (res ? res.message : 'Invalid credentials.'));
                 }
             };
 
@@ -1081,32 +1156,11 @@
             state.currentUser = null;
             document.body.classList.add('auth-locked');
             document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPasscode').value = '';
         }
 
-        function fetchLiveStore() {
-            document.getElementById('mainContentGrid').innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:3rem;"><i class="fa-solid fa-spinner fa-spin fa-2x"></i><p style="margin-top:1rem;">Loading live data from Master Sheet...</p></div>';
-            
-            const cbName = 'jp_cb_' + Math.round(100000 * Math.random());
-            window[cbName] = function(data) {
-                delete window[cbName];
-                document.body.removeChild(script);
-                if (data && data.success) {
-                    state.terms = data.data.terms || [];
-                    state.quotes = data.data.quotes || [];
-                    state.styleGuide = data.data.styleGuide || [];
-                    if (data.data.categories && data.data.categories.length > 0) {
-                        state.categories = data.data.categories;
-                    }
-                    updateMetricsAndBadges();
-                    renderContent();
-                }
-            };
-
-            const script = document.createElement('script');
-            script.src = SCRIPT_URL + '?action=getAllData&callback=' + cbName;
-            document.body.appendChild(script);
-        }
-
+        // Helper Role Checkers
         function isAdmin() {
             if (!state.currentUser) return false;
             const r = (state.currentUser.role || '').toLowerCase();
@@ -1115,44 +1169,50 @@
         }
 
         function getUserLang() {
-            if (!state.currentUser) return 'English';
-            return state.currentUser.language || 'Filipino';
+            if (!state.currentUser) return 'All';
+            return state.currentUser.language || 'All';
         }
 
         function updateMetricsAndBadges() {
-            document.getElementById('metricTerms').innerText = state.terms.length;
-            document.getElementById('metricQuotes').innerText = state.quotes.length;
+            // Count total active terms and quotes
+            const activeTerms = state.terms.filter(t => t.Approval_State !== 'Deleted');
+            const activeQuotes = state.quotes.filter(q => q.Approval_State !== 'Deleted');
+
+            document.getElementById('metricTerms').innerText = activeTerms.length;
+            document.getElementById('metricQuotes').innerText = activeQuotes.length;
 
             const uLang = getUserLang();
-            let pendingCount = 0;
-            let incompleteCount = 0;
-
-            // Calculate pending tasks for translator
             const langKey = uLang === 'Japanese' ? 'Japanese' : (uLang === 'Thai' ? 'Thai' : 'Filipino');
-            const statusCol = 'Status_' + langKey;
-
-            state.terms.forEach(t => {
-                if (t[statusCol] === 'Pending') pendingCount++;
-                if (!t.Category_Domain || !t.Audience_Scope || !t.ESC_Style_Rules) incompleteCount++;
-            });
-
-            const badgeContainer = document.getElementById('sessionTaskBadgeContainer');
-            const adminFilterContainer = document.getElementById('adminFilterContainer');
+            const statusCol = langKey + '_Status';
 
             if (isAdmin()) {
-                document.getElementById('metricTaskTitle').innerText = 'Incomplete Metadata Terms';
+                // Admin task count: incomplete metadata terms
+                const incompleteCount = activeTerms.filter(t => !t.Category_Domain || !t.Audience_Scope || !t.ESC_Style_Rules).length;
+                document.getElementById('metricTaskTitle').innerText = 'Incomplete Metadata';
                 document.getElementById('metricTaskCount').innerText = incompleteCount;
-                badgeContainer.innerHTML = `<span class="alert-badge"><i class="fa-solid fa-triangle-exclamation"></i> ${incompleteCount} Terms Need Metadata Completion</span>`;
-                adminFilterContainer.innerHTML = `
-                    <button class="filter-btn ${state.activeFilter === 'incomplete' ? 'active' : ''}" onclick="setFilter('incomplete')">
-                        <i class="fa-solid fa-file-circle-exclamation"></i> Incomplete Metadata (${incompleteCount})
+
+                // Admin filter button
+                document.getElementById('adminFilterContainer').innerHTML = `
+                    <button type="button" class="filter-btn" id="filterIncompleteBtn" onclick="setFilter('incomplete')">
+                        <i class="fa-solid fa-triangle-exclamation" style="color:var(--btn-red);"></i> Incomplete Metadata (${incompleteCount})
                     </button>
                 `;
+
+                document.getElementById('sessionTaskBadgeContainer').innerHTML = incompleteCount > 0 ? 
+                    `<span class="alert-badge"><i class="fa-solid fa-bell"></i> ${incompleteCount} Incomplete Metadata Terms</span>` : '';
+
             } else {
+                // Translator task count: items where translator's language is Pending
+                const pendingTermsCount = activeTerms.filter(t => t[statusCol] === 'Pending').length;
+                const pendingQuotesCount = activeQuotes.filter(q => q[statusCol] === 'Pending').length;
+                const totalPending = pendingTermsCount + pendingQuotesCount;
+
                 document.getElementById('metricTaskTitle').innerText = 'My Pending Tasks';
-                document.getElementById('metricTaskCount').innerText = pendingCount;
-                badgeContainer.innerHTML = `<span class="alert-badge"><i class="fa-solid fa-clock"></i> My Tasks: ${pendingCount} Pending</span>`;
-                adminFilterContainer.innerHTML = '';
+                document.getElementById('metricTaskCount').innerText = totalPending;
+                document.getElementById('adminFilterContainer').innerHTML = '';
+
+                document.getElementById('sessionTaskBadgeContainer').innerHTML = totalPending > 0 ? 
+                    `<span class="alert-badge"><i class="fa-solid fa-bell"></i> My Tasks: ${totalPending} Pending</span>` : '';
             }
         }
 
@@ -1162,6 +1222,7 @@
             if (tab === 'terms') document.getElementById('tabTerms').classList.add('active');
             if (tab === 'quotes') document.getElementById('tabQuotes').classList.add('active');
             if (tab === 'style') document.getElementById('tabStyle').classList.add('active');
+            if (tab === 'guide') document.getElementById('tabGuide').classList.add('active');
             renderContent();
         }
 
@@ -1169,25 +1230,33 @@
             state.activeFilter = filter;
             document.getElementById('filterAllBtn').classList.toggle('active', filter === 'all');
             document.getElementById('filterPendingBtn').classList.toggle('active', filter === 'pending');
-            const incBtn = document.querySelector('#adminFilterContainer .filter-btn');
+            const incBtn = document.getElementById('filterIncompleteBtn');
             if (incBtn) incBtn.classList.toggle('active', filter === 'incomplete');
             renderContent();
         }
 
+        // Render Cards & Tab Contents
         function renderContent() {
             const query = document.getElementById('searchInput').value.trim().toLowerCase();
             const grid = document.getElementById('mainContentGrid');
             grid.innerHTML = '';
 
             if (state.activeTab === 'style') {
-                renderStyleGuide(grid);
+                renderStyleGuide(grid, query);
                 return;
             }
 
-            const items = state.activeTab === 'terms' ? state.terms : state.quotes;
+            if (state.activeTab === 'guide') {
+                renderUserGuide(grid);
+                return;
+            }
+
+            const rawItems = state.activeTab === 'terms' ? state.terms : state.quotes;
+            const items = rawItems.filter(i => i.Approval_State !== 'Deleted');
+
             const uLang = getUserLang();
             const langKey = uLang === 'Japanese' ? 'Japanese' : (uLang === 'Thai' ? 'Thai' : 'Filipino');
-            const statusCol = 'Status_' + langKey;
+            const statusCol = langKey + '_Status';
 
             const filtered = items.filter(item => {
                 // Text Search
@@ -1201,6 +1270,9 @@
 
                 // Filter Logic
                 if (state.activeFilter === 'pending') {
+                    if (isAdmin()) {
+                        return item.Filipino_Status === 'Pending' || item.Japanese_Status === 'Pending' || item.Thai_Status === 'Pending';
+                    }
                     return item[statusCol] === 'Pending';
                 }
                 if (state.activeFilter === 'incomplete') {
@@ -1219,13 +1291,12 @@
                 card.className = 'data-card';
 
                 if (state.activeTab === 'terms') {
+                    const isChela = item.Audience_Scope === 'Chela_Only';
                     card.innerHTML = `
                         <div>
                             <div class="card-header">
                                 <span class="category-chip">${item.Category_Domain || 'General'}</span>
-                                <span class="scope-badge ${item.Audience_Scope === 'Chela_Only' ? 'scope-chela' : 'scope-public'}">
-                                    ${item.Audience_Scope === 'Chela_Only' ? 'Chela-Only' : 'Public'}
-                                </span>
+                                <span class="scope-badge ${isChela ? 'scope-chela' : 'scope-public'}">${isChela ? 'Chela-Only' : 'Public'}</span>
                             </div>
                             <div class="card-title">${item.English_Term || ''}</div>
                             ${item.ESC_Style_Rules ? `<div class="card-style-rule"><i class="fa-solid fa-shield-cat"></i> ${item.ESC_Style_Rules}</div>` : ''}
@@ -1234,80 +1305,66 @@
                             <div class="lang-row">
                                 <span class="flag-icon">🇵🇭</span>
                                 <div class="lang-content">
-                                    <span class="lang-val">${item.Filipino_Translation || 'Pending'}</span>
-                                    <span class="status-pill ${item.Status_Filipino === 'Approved' ? 'status-approved' : 'status-pending'}">
-                                        ${item.Status_Filipino === 'Approved' ? '<i class="fa-solid fa-check"></i> Approved' : '<i class="fa-solid fa-clock"></i> Pending'}
-                                    </span>
+                                    <span class="lang-val">${item.Filipino_Translation || '—'}</span>
+                                    <span class="status-pill ${item.Filipino_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Filipino_Status || 'Pending'}</span>
                                 </div>
                             </div>
                             <div class="lang-row">
                                 <span class="flag-icon">🇯🇵</span>
                                 <div class="lang-content">
-                                    <span class="lang-val">${item.Japanese_Translation || 'Pending'}</span>
-                                    <span class="status-pill ${item.Status_Japanese === 'Approved' ? 'status-approved' : 'status-pending'}">
-                                        ${item.Status_Japanese === 'Approved' ? '<i class="fa-solid fa-check"></i> Approved' : '<i class="fa-solid fa-clock"></i> Pending'}
-                                    </span>
+                                    <span class="lang-val">${item.Japanese_Translation || '—'}</span>
+                                    <span class="status-pill ${item.Japanese_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Japanese_Status || 'Pending'}</span>
                                 </div>
                             </div>
                             <div class="lang-row">
                                 <span class="flag-icon">🇹🇭</span>
                                 <div class="lang-content">
-                                    <span class="lang-val">${item.Thai_Translation || 'Pending'}</span>
-                                    <span class="status-pill ${item.Status_Thai === 'Approved' ? 'status-approved' : 'status-pending'}">
-                                        ${item.Status_Thai === 'Approved' ? '<i class="fa-solid fa-check"></i> Approved' : '<i class="fa-solid fa-clock"></i> Pending'}
-                                    </span>
+                                    <span class="lang-val">${item.Thai_Translation || '—'}</span>
+                                    <span class="status-pill ${item.Thai_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Thai_Status || 'Pending'}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="card-actions">
-                            <button class="btn btn-outline" style="color:var(--text-primary); border-color:var(--card-border);" onclick="openEditModal('${escapeHtml(item.English_Term)}', 'term')">
+                            <button type="button" class="btn btn-outline" style="color:var(--text-primary); border-color:var(--card-border);" onclick="openEditModal('${item.Term_ID}', 'term')">
                                 <i class="fa-solid fa-pen-to-square"></i> Edit
                             </button>
-                            ${isAdmin() ? `<button class="btn btn-red" onclick="deleteItem('${escapeHtml(item.English_Term)}', 'term')"><i class="fa-solid fa-trash"></i></button>` : ''}
+                            ${isAdmin() ? `<button type="button" class="btn btn-red" onclick="deleteItem('${item.Term_ID}', 'term')"><i class="fa-solid fa-trash"></i> Delete</button>` : ''}
                         </div>
                     `;
                 } else {
                     card.innerHTML = `
                         <div>
-                            <div style="font-size:1.05rem; font-style:italic; line-height:1.6; margin-bottom:0.75rem;">"${item.English_Quote || ''}"</div>
-                            <div style="font-size:0.85rem; font-weight:700; color:var(--gold-accent); margin-bottom:1rem; text-align:right;">
-                                — ${item.Author_Speaker || 'Harold Klemp'} (${item.Source_Book_Talk || 'ECK Book'})
-                            </div>
+                            <div style="font-size: 1.05rem; line-height: 1.6; font-style: italic; margin-bottom: 0.75rem;">"${item.English_Quote || ''}"</div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: var(--gold-accent); text-align: right; margin-bottom: 1rem;">— ${item.Author_Speaker || 'Harold Klemp'} (${item.Source_Book_Talk || 'ECK Book'})</div>
                         </div>
                         <div class="translations-list">
                             <div class="lang-row">
                                 <span class="flag-icon">🇵🇭</span>
                                 <div class="lang-content">
-                                    <span class="lang-val">${item.Filipino_Translation || 'Pending'}</span>
-                                    <span class="status-pill ${item.Status_Filipino === 'Approved' ? 'status-approved' : 'status-pending'}">
-                                        ${item.Status_Filipino === 'Approved' ? 'Approved' : 'Pending'}
-                                    </span>
+                                    <span class="lang-val">${item.Filipino_Translation || '—'}</span>
+                                    <span class="status-pill ${item.Filipino_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Filipino_Status || 'Pending'}</span>
                                 </div>
                             </div>
                             <div class="lang-row">
                                 <span class="flag-icon">🇯🇵</span>
                                 <div class="lang-content">
-                                    <span class="lang-val">${item.Japanese_Translation || 'Pending'}</span>
-                                    <span class="status-pill ${item.Status_Japanese === 'Approved' ? 'status-approved' : 'status-pending'}">
-                                        ${item.Status_Japanese === 'Approved' ? 'Approved' : 'Pending'}
-                                    </span>
+                                    <span class="lang-val">${item.Japanese_Translation || '—'}</span>
+                                    <span class="status-pill ${item.Japanese_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Japanese_Status || 'Pending'}</span>
                                 </div>
                             </div>
                             <div class="lang-row">
                                 <span class="flag-icon">🇹🇭</span>
                                 <div class="lang-content">
-                                    <span class="lang-val">${item.Thai_Translation || 'Pending'}</span>
-                                    <span class="status-pill ${item.Status_Thai === 'Approved' ? 'status-approved' : 'status-pending'}">
-                                        ${item.Status_Thai === 'Approved' ? 'Approved' : 'Pending'}
-                                    </span>
+                                    <span class="lang-val">${item.Thai_Translation || '—'}</span>
+                                    <span class="status-pill ${item.Thai_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Thai_Status || 'Pending'}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="card-actions">
-                            <button class="btn btn-outline" style="color:var(--text-primary); border-color:var(--card-border);" onclick="openEditModal('${escapeHtml(item.English_Quote)}', 'quote')">
+                            <button type="button" class="btn btn-outline" style="color:var(--text-primary); border-color:var(--card-border);" onclick="openEditModal('${item.Quote_ID}', 'quote')">
                                 <i class="fa-solid fa-pen-to-square"></i> Edit
                             </button>
-                            ${isAdmin() ? `<button class="btn btn-red" onclick="deleteItem('${escapeHtml(item.English_Quote)}', 'quote')"><i class="fa-solid fa-trash"></i></button>` : ''}
+                            ${isAdmin() ? `<button type="button" class="btn btn-red" onclick="deleteItem('${item.Quote_ID}', 'quote')"><i class="fa-solid fa-trash"></i> Delete</button>` : ''}
                         </div>
                     `;
                 }
@@ -1315,369 +1372,403 @@
             });
         }
 
-        function renderStyleGuide(grid) {
-            grid.innerHTML = `
-                <div class="style-guide-card" style="grid-column: 1/-1;">
-                    <div class="style-guide-title"><i class="fa-solid fa-book-bookmark"></i> Official ECKANKAR Style Sheet & Terminology Guidelines</div>
-                    <p style="color:var(--text-secondary); margin-bottom:1.5rem; font-size:0.95rem;">
-                        Compiled from official editorial references (1997 Oct Style Sheet, Master Regional Glossary, and 2026 Word List).
-                    </p>
+        // Render Comprehensive ESC Style Guide
+        function renderStyleGuide(container, query) {
+            container.innerHTML = `
+                <div style="grid-column: 1/-1;">
+                    <div class="guide-card">
+                        <div class="guide-title"><i class="fa-solid fa-shield-cat"></i> ECKANKAR Capitalization & Formatting Rules (ESC Style Sheets 1997 & 2026)</div>
+                        <ul class="rule-list">
+                            <li class="rule-item">
+                                <strong>MAHANTA Capitalization:</strong> For chela publications, discourses, and formal ECK writings, <span class="small-caps">MAHANTA</span> is formatted in <strong>Small Caps</strong> or ALL CAPS (<span class="small-caps">MAHANTA</span>). In general or public literature, write <em>Mahanta</em> with an initial capital M.
+                            </li>
+                            <li class="rule-item">
+                                <strong>ECKANKAR Terminology:</strong> Write <strong>ECKANKAR</strong> in ALL CAPS when addressing members and chelas. Write <em>Eckankar</em> (initial cap only) in general public text and body paragraphs for the public.
+                            </li>
+                            <li class="rule-item">
+                                <strong>SUGMAD:</strong> Written as <strong>SUGMAD</strong> in ALL CAPS for chela-only study materials, and <em>Sugmad</em> with an initial cap for public writings.
+                            </li>
+                            <li class="rule-item">
+                                <strong>Soul & Spirit Capitalization:</strong> Always capitalize <strong>Soul</strong> and <strong>Spirit</strong> when referring to the divine spark or the Holy Spirit. Use capitalized pronouns: <em>Its</em>, <em>Itself</em>.
+                            </li>
+                            <li class="rule-item">
+                                <strong>Titles of the Living ECK Master:</strong> Always capitalize <em>Living ECK Master</em>, <em>Inner Master</em>, <em>Outer Master</em>, and <em>Spiritual Traveler</em> when referring to Sri Harold Klemp.
+                            </li>
+                            <li class="rule-item">
+                                <strong>Sacred Names (HU):</strong> <strong>HU</strong> is always written in ALL CAPS. Use initial capitals for <em>HU Chant</em> and <em>HU Song</em>.
+                            </li>
+                            <li class="rule-item">
+                                <strong>Initiations & Circles:</strong> Spell out ordinals and capitalize: <em>First Initiate</em>, <em>Second Initiation</em>, <em>Fifth Circle</em>, <em>High Initiate</em>. Generic references stay lowercase (e.g., <em>an initiate of ECK</em>).
+                            </li>
+                            <li class="rule-item">
+                                <strong>Passions & Virtues of the Mind:</strong> Keep lowercase in running text: <em>five passions of the mind</em> (lust, anger, greed, vanity, attachment) and <em>five virtues</em> (discrimination, forgiveness and tolerance, contentment, humility, detachment).
+                            </li>
+                        </ul>
+                    </div>
 
-                    <h3 style="color:var(--gold-accent); margin-bottom:0.75rem;"><i class="fa-solid fa-font"></i> 1. Capitalization & Public vs. Chela Scope</h3>
-                    <ul style="line-height:1.8; margin-bottom:1.5rem; padding-left:1.5rem; color:var(--text-primary);">
-                        <li><strong>Eckankar vs. ECKANKAR:</strong> Use <em>Eckankar</em> in general public communications. Use ALL CAPS <em>ECKANKAR</em> specifically for Chela-Only / initiate audiences.</li>
-                        <li><strong>Mahanta:</strong> Always capitalized when referring to the spiritual leader, Mahanta, the Living ECK Master.</li>
-                        <li><strong>HU:</strong> Always ALL CAPS. Refers to the sacred name for God and ancient love song to God.</li>
-                        <li><strong>Soul / Soul Travel:</strong> Capitalize <em>Soul</em> when referring to the divine spark/true self. <em>Soul Travel</em> is capitalized as a formal spiritual practice.</li>
-                        <li><strong>Divine Spirit / ECK:</strong> Capitalized as formal names for the Holy Spirit of Light and Sound.</li>
-                    </ul>
+                    <div class="guide-card">
+                        <div class="guide-title"><i class="fa-solid fa-italic"></i> Typography: Italics vs. Quotation Marks</div>
+                        <ul class="rule-list">
+                            <li class="rule-item">
+                                <strong>Book Titles:</strong> Always italicize book titles (e.g., <em>The Shariyat-Ki-Sugmad</em>, <em>Touching the Face of God</em>, <em>Animals Are Souls Too!</em>).
+                            </li>
+                            <li class="rule-item">
+                                <strong>Discourse Series Titles:</strong> Italicize or underline discourse titles (e.g., <em>The Easy Way Discourses</em>, <em>Soul Travel 1—The Illuminated Way</em>, <em>The Master 1 Discourses</em>).
+                            </li>
+                            <li class="rule-item">
+                                <strong>Articles, Talks, Songs & Spiritual Exercises:</strong> Enclose specific talk titles, articles, song titles, and spiritual exercise titles in quotation marks (e.g., "A New Start", "The Language of Soul", "On the Sunny Side of the Street").
+                            </li>
+                            <li class="rule-item">
+                                <strong>Periodicals & Newsletters:</strong> Italicize periodical titles (e.g., <em>The Mystic World</em>, <em>The ECKANKAR Journal</em>, <em>The RESA Star</em>). Note: lower-case an initial "the" when mentioned in text (e.g., "I read it in the <em>Mystic World</em>").
+                            </li>
+                        </ul>
+                    </div>
 
-                    <h3 style="color:var(--gold-accent); margin-bottom:0.75rem;"><i class="fa-solid fa-quote-left"></i> 2. Formatting Book Titles & Discourse Titles</h3>
-                    <ul style="line-height:1.8; margin-bottom:1.5rem; padding-left:1.5rem; color:var(--text-primary);">
-                        <li><strong>Book Titles:</strong> Format in <em>Italics</em> (e.g., <em>The Shariyat-Ki-Sugmad</em>, <em>The Spiritual Exercises of ECK</em>).</li>
-                        <li><strong>Discourses & Talks:</strong> Enclose in quotation marks (e.g., "The Power of HU", "Wisdom of the Heart").</li>
-                        <li><strong>Periodicals:</strong> <em>Mystic World</em> is italicized as a formal publication name.</li>
-                    </ul>
+                    <div class="guide-card">
+                        <div class="guide-title"><i class="fa-solid fa-font"></i> Hyphenation & Non-Breaking Names</div>
+                        <ul class="rule-list">
+                            <li class="rule-item">
+                                <strong>Non-Breaking Sacred Names:</strong> Never hyphenate or split sacred names across line breaks: <em>Sri Harold Klemp</em>, <em>ECKANKAR</em>, <em>Living ECK Master</em>, <em>Mahanta</em>, <em>SUGMAD</em>.
+                            </li>
+                            <li class="rule-item">
+                                <strong>Compound Terms:</strong> Use hyphens for specific compound descriptors: <em>Co-worker</em>, <em>out-of-body</em> (as an adjective), <em>God-Realization</em>, <em>self-Realization</em>.
+                            </li>
+                        </ul>
+                    </div>
 
-                    <h3 style="color:var(--gold-accent); margin-bottom:0.75rem;"><i class="fa-solid fa-language"></i> 3. ESEA Regional Language Transliteration Standards</h3>
-                    <ul style="line-height:1.8; padding-left:1.5rem; color:var(--text-primary);">
-                        <li><strong>Japanese (日本語):</strong> Use standardized Furigana / Katakana phonetics for spiritual terms. Sacred terms like <em>HU</em> remain in Roman capitals alongside Katakana.</li>
-                        <li><strong>Thai (ไทย):</strong> Use standardized official Thai spelling from the 2026 ESEA Word List to maintain consistency across discourses.</li>
-                        <li><strong>Filipino:</strong> Standardize diacritics and capitalization matching the English master terminology.</li>
-                    </ul>
+                    <div class="guide-card">
+                        <div class="guide-title"><i class="fa-solid fa-globe"></i> Regional Language Phonetics & Pronunciation Guidelines</div>
+                        <ul class="rule-list">
+                            <li class="rule-item">
+                                <strong>🇯🇵 Japanese:</strong> Maintain standardized Katakana transliteration and Furigana phonetic guides (e.g., エッカンカー for ECKANKAR, マハンタ for Mahanta, ヒュー for HU).
+                            </li>
+                            <li class="rule-item">
+                                <strong>🇹🇭 Thai:</strong> Follow standard Thai script definitions alongside phonetic transliterations (e.g., เอ็คแค็นคาร์ for ECKANKAR, มาฮานธา for Mahanta, ฮิว for HU).
+                            </li>
+                            <li class="rule-item">
+                                <strong>🇵🇭 Filipino:</strong> Maintain standardized Tagalog terminology and diacritics (e.g., Kaluluwa for Soul, Banal na Espiritu for Holy Spirit, ECKist for ECK member).
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             `;
         }
 
-        // Add Modal Operations
-        function openAddModal() {
-            const modal = document.getElementById('addModal');
-            document.getElementById('addCategory').innerHTML = state.categories.map(c => `<option value="${c}">${c}</option>`).join('');
-            
-            const adminGroup = document.getElementById('addAdminMetadataGroup');
-            const translationsContainer = document.getElementById('addTranslationsContainer');
-            const footer = document.getElementById('addModalFooter');
-
-            if (isAdmin()) {
-                adminGroup.style.display = 'block';
-                translationsContainer.innerHTML = `
-                    <div class="form-group"><label>🇵🇭 Filipino Translation</label><input type="text" id="addFilipino" class="form-control"></div>
-                    <div class="form-group"><label>🇯🇵 Japanese Translation</label><input type="text" id="addJapanese" class="form-control"></div>
-                    <div class="form-group"><label>🇹🇭 Thai Translation</label><input type="text" id="addThai" class="form-control"></div>
-                `;
-                footer.innerHTML = `
-                    <button class="btn btn-red" onclick="closeAddModal()">Cancel</button>
-                    <button class="btn btn-green" onclick="submitAddItem('Approved')">Save & Approve</button>
-                `;
-            } else {
-                adminGroup.style.display = 'none';
-                const uLang = getUserLang();
-                const flag = uLang === 'Japanese' ? '🇯🇵' : (uLang === 'Thai' ? '🇹🇭' : '🇵🇭');
-                translationsContainer.innerHTML = `
-                    <div class="form-group">
-                        <label>${flag} ${uLang} Translation <span style="color:red">*</span></label>
-                        <input type="text" id="addLangTranslation" class="form-control" placeholder="Enter translation in ${uLang}...">
+        // Render Step-by-Step User Guide Tab
+        function renderUserGuide(container) {
+            container.innerHTML = `
+                <div style="grid-column: 1/-1;">
+                    <div class="guide-card">
+                        <div class="guide-title"><i class="fa-solid fa-user-pen"></i> Translator Quick Start Guide</div>
+                        <ul class="rule-list">
+                            <li class="rule-item">
+                                <strong>1. Log In to Portal:</strong> Enter your assigned Username and Passcode. The system automatically loads your assigned regional language (Japanese 🇯🇵, Thai 🇹🇭, or Filipino 🇵🇭).
+                            </li>
+                            <li class="rule-item">
+                                <strong>2. Locate Pending Items:</strong> Click the red filter button <strong>Show My Pending Only</strong> at the top to isolate terms or quotes awaiting your translation.
+                            </li>
+                            <li class="rule-item">
+                                <strong>3. Edit Translation:</strong> Click the <strong>Edit</strong> button on any item card. The original English term and ESC Style Rules will be displayed in a clean, read-only box. Enter your translation into your assigned language field below it.
+                            </li>
+                            <li class="rule-item">
+                                <strong>4. Save Options:</strong>
+                                <br>• <strong>Save as Draft</strong> (Gray button): Saves your working draft without changing status from Pending.
+                                <br>• <strong>Save & Approve</strong> (Green button): Marks your translation as official and sets status to Approved.
+                                <br>• <strong>Revert to Pending</strong> (Orange button): If an item was previously approved but needs revision, use this to return it to Pending status.
+                            </li>
+                            <li class="rule-item">
+                                <strong>5. Propose New Terms:</strong> Click <strong>+ Add New Item</strong> at the top. Enter the English term. The system will automatically check for duplicates. If none match, enter your translation and click Save.
+                            </li>
+                        </ul>
                     </div>
-                `;
-                footer.innerHTML = `
-                    <button class="btn btn-red" onclick="closeAddModal()">Cancel</button>
-                    <button class="btn btn-gray" onclick="submitAddItem('Pending')">Save as Draft</button>
-                    <button class="btn btn-green" onclick="submitAddItem('Approved')">Save & Approve</button>
-                `;
-            }
 
-            modal.style.display = 'flex';
+                    <div class="guide-card">
+                        <div class="guide-title"><i class="fa-solid fa-user-gear"></i> Admin & Developer Workflow</div>
+                        <ul class="rule-list">
+                            <li class="rule-item">
+                                <strong>Full Regional Access:</strong> Admins and Developers can view, edit, and approve terms in all 4 languages (English, Filipino, Japanese, Thai).
+                            </li>
+                            <li class="rule-item">
+                                <strong>Complete Incomplete Metadata:</strong> Click the <strong>Incomplete Metadata</strong> filter button to view terms added by translators that lack English metadata. Fill in <em>Category / Domain</em>, <em>Audience Scope</em>, and <em>ESC Style Rules</em>, then click <strong>Save & Approve</strong>.
+                            </li>
+                            <li class="rule-item">
+                                <strong>Delete / Archive Items:</strong> Click <strong>Delete</strong> on any card to archive the item. Archived items are set to <em>Deleted</em> in the Master Google Sheet and hidden from all regional views.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add Modal Functions
+        function openAddModal() {
+            if (!state.currentUser) {
+                alert('Please log in first.');
+                return;
+            }
+            document.getElementById('addEnglishText').value = '';
+            document.getElementById('addStyleRules').value = '';
+            
+            // Populate categories dropdown
+            const catSelect = document.getElementById('addCategory');
+            catSelect.innerHTML = state.categories.map(c => `<option value="${c}">${c}</option>`).join('');
+
+            toggleAddTypeFields();
+            document.getElementById('addModal').style.display = 'flex';
         }
 
         function closeAddModal() { document.getElementById('addModal').style.display = 'none'; }
 
         function toggleAddTypeFields() {
             const type = document.getElementById('addType').value;
-            const label = document.getElementById('addEnglishLabel');
-            label.innerText = type === 'term' ? 'English Term / Phrase *' : 'English Quote *';
+            const isAdminUser = isAdmin();
+            const uLang = getUserLang();
+
+            document.getElementById('addEnglishLabel').innerText = type === 'term' ? 'English Term / Phrase *' : 'English Quote *';
+            
+            // Metadata visible to Admin or when proposing
+            document.getElementById('addAdminMetadataGroup').style.display = isAdminUser ? 'block' : 'none';
+
+            const container = document.getElementById('addTranslationsContainer');
+            container.innerHTML = '';
+
+            if (isAdminUser) {
+                container.innerHTML = `
+                    <div class="form-group"><label>🇵🇭 Filipino Translation</label><input type="text" id="addFil" class="form-control"></div>
+                    <div class="form-group"><label>🇯🇵 Japanese Translation</label><input type="text" id="addJp" class="form-control"></div>
+                    <div class="form-group"><label>🇹🇭 Thai Translation</label><input type="text" id="addTh" class="form-control"></div>
+                `;
+            } else {
+                const langLabel = uLang === 'Japanese' ? '🇯🇵 Japanese Translation' : (uLang === 'Thai' ? '🇹🇭 Thai Translation' : '🇵🇭 Filipino Translation');
+                const langId = uLang === 'Japanese' ? 'addJp' : (uLang === 'Thai' ? 'addTh' : 'addFil');
+                container.innerHTML = `<div class="form-group"><label>${langLabel}</label><input type="text" id="${langId}" class="form-control"></div>`;
+            }
+
+            const footer = document.getElementById('addModalFooter');
+            footer.innerHTML = `
+                <button type="button" class="btn btn-red" onclick="closeAddModal()">Cancel</button>
+                <button type="button" class="btn btn-gray" onclick="submitAddItem('Pending')">Save as Draft</button>
+                <button type="button" class="btn btn-green" onclick="submitAddItem('Approved')">Save & Approve</button>
+            `;
         }
 
         function checkForDuplicates() {
-            const text = document.getElementById('addEnglishText').value.trim().toLowerCase();
-            if (!text || text.length < 3) return;
+            const val = document.getElementById('addEnglishText').value.trim().toLowerCase();
+            if (!val || val.length < 3) return;
 
             const type = document.getElementById('addType').value;
             const items = type === 'term' ? state.terms : state.quotes;
-            
+
             const matches = items.filter(i => {
-                const eng = ((i.English_Term || i.English_Quote) || '').toLowerCase();
-                return eng.includes(text);
+                const text = ((i.English_Term || i.English_Quote) || '').toLowerCase();
+                return text.includes(val) || val.includes(text);
             });
 
             if (matches.length > 0) {
-                const dupList = document.getElementById('duplicateList');
-                dupList.innerHTML = matches.map(m => {
-                    const eng = m.English_Term || m.English_Quote;
-                    return `
-                        <div class="read-only-box" style="cursor:pointer; margin-bottom:0.5rem;" onclick="selectDuplicate('${escapeHtml(eng)}', '${type}')">
-                            <strong>${eng}</strong> <span style="font-size:0.75rem; color:var(--text-muted);">[Click to Edit Existing]</span>
-                        </div>
-                    `;
-                }).join('');
+                const container = document.getElementById('duplicateListContainer');
+                container.innerHTML = matches.map(m => `
+                    <div style="padding:0.5rem; border-bottom:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-weight:600;">${m.English_Term || m.English_Quote}</span>
+                        <button type="button" class="btn btn-outline" style="padding:2px 8px; font-size:0.75rem; color:var(--text-primary);" onclick="closeDuplicateModal(); closeAddModal(); openEditModal('${m.Term_ID || m.Quote_ID}', '${type}')">Edit This</button>
+                    </div>
+                `).join('');
                 document.getElementById('duplicateModal').style.display = 'flex';
             }
         }
 
         function closeDuplicateModal() { document.getElementById('duplicateModal').style.display = 'none'; }
 
-        function selectDuplicate(engText, type) {
-            closeDuplicateModal();
-            closeAddModal();
-            openEditModal(engText, type);
-        }
-
-        function submitAddItem(statusChoice) {
+        function submitAddItem(status) {
             const type = document.getElementById('addType').value;
-            const engText = document.getElementById('addEnglishText').value.trim();
+            const text = document.getElementById('addEnglishText').value.trim();
 
-            if (!engText) {
-                alert('Please enter the English term or quote.');
+            if (!text) {
+                alert('Please enter the English text.');
                 return;
             }
 
-            let params = {
-                action: type === 'term' ? 'addTerm' : 'addQuote',
-                user: state.currentUser ? state.currentUser.name : 'User'
+            showLoading('Saving new item...');
+
+            const fil = document.getElementById('addFil') ? document.getElementById('addFil').value.trim() : '';
+            const jp = document.getElementById('addJp') ? document.getElementById('addJp').value.trim() : '';
+            const th = document.getElementById('addTh') ? document.getElementById('addTh').value.trim() : '';
+
+            const params = new URLSearchParams();
+            params.append('action', type === 'term' ? 'addTerm' : 'addQuote');
+            params.append('englishText', text);
+            params.append('category', document.getElementById('addCategory') ? document.getElementById('addCategory').value : 'Spiritual Concepts');
+            params.append('audience', document.getElementById('addAudience') ? document.getElementById('addAudience').value : 'Public');
+            params.append('styleRules', document.getElementById('addStyleRules') ? document.getElementById('addStyleRules').value : '');
+            params.append('filipino', fil);
+            params.append('japanese', jp);
+            params.append('thai', th);
+            params.append('status', status);
+            params.append('user', state.currentUser.name);
+
+            const cbName = 'jp_add_' + Math.round(100000 * Math.random());
+            window[cbName] = function(res) {
+                delete window[cbName];
+                if (script.parentNode) document.body.removeChild(script);
+                hideLoading();
+                closeAddModal();
+
+                if (res && res.success) {
+                    alert('Item added successfully.');
+                    fetchLiveStore();
+                } else {
+                    alert('Error adding item: ' + (res ? res.message : 'Unknown error'));
+                }
             };
 
-            if (type === 'term') {
-                params.englishTerm = engText;
-                if (isAdmin()) {
-                    params.category = document.getElementById('addCategory').value;
-                    params.audience = document.getElementById('addAudience').value;
-                    params.styleRules = document.getElementById('addStyleRules').value;
-                    params.filipinoTranslation = document.getElementById('addFilipino').value;
-                    params.japaneseTranslation = document.getElementById('addJapanese').value;
-                    params.thaiTranslation = document.getElementById('addThai').value;
-                    params.statusFilipino = statusChoice;
-                    params.statusJapanese = statusChoice;
-                    params.statusThai = statusChoice;
-                } else {
-                    const uLang = getUserLang();
-                    const trans = document.getElementById('addLangTranslation').value;
-                    if (uLang === 'Japanese') {
-                        params.japaneseTranslation = trans;
-                        params.statusJapanese = statusChoice;
-                    } else if (uLang === 'Thai') {
-                        params.thaiTranslation = trans;
-                        params.statusThai = statusChoice;
-                    } else {
-                        params.filipinoTranslation = trans;
-                        params.statusFilipino = statusChoice;
-                    }
-                }
-            } else {
-                params.englishQuote = engText;
-                if (isAdmin()) {
-                    params.filipinoTranslation = document.getElementById('addFilipino').value;
-                    params.japaneseTranslation = document.getElementById('addJapanese').value;
-                    params.thaiTranslation = document.getElementById('addThai').value;
-                    params.statusFilipino = statusChoice;
-                    params.statusJapanese = statusChoice;
-                    params.statusThai = statusChoice;
-                } else {
-                    const uLang = getUserLang();
-                    const trans = document.getElementById('addLangTranslation').value;
-                    if (uLang === 'Japanese') params.japaneseTranslation = trans;
-                    else if (uLang === 'Thai') params.thaiTranslation = trans;
-                    else params.filipinoTranslation = trans;
-                }
-            }
-
-            executeApiCall(params, () => {
-                closeAddModal();
-                fetchLiveStore();
-            });
+            const script = document.createElement('script');
+            script.src = `${SCRIPT_URL}?${params.toString()}&callback=${cbName}`;
+            document.body.appendChild(script);
         }
 
         // Edit Modal Operations
-        function openEditModal(engText, type) {
-            state.editingType = type;
+        function openEditModal(id, type) {
             const items = type === 'term' ? state.terms : state.quotes;
-            const item = items.find(i => (i.English_Term || i.English_Quote) === engText);
-            
+            const item = items.find(i => (i.Term_ID === id || i.Quote_ID === id));
             if (!item) return;
-            state.editingItem = item;
 
-            const refBox = document.getElementById('editEnglishReference');
-            const adminFields = document.getElementById('editAdminFields');
-            const container = document.getElementById('editTranslationsContainer');
-            const footer = document.getElementById('editModalFooter');
+            const body = document.getElementById('editModalBody');
+            const isAdminUser = isAdmin();
+            const uLang = getUserLang();
 
-            if (type === 'term') {
-                refBox.innerHTML = `
-                    <div style="font-weight:700; font-size:1.1rem; color:var(--text-primary);">${item.English_Term}</div>
-                    <div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Category: ${item.Category_Domain || 'General'} | Audience: ${item.Audience_Scope || 'Public'}</div>
-                    ${item.ESC_Style_Rules ? `<div style="font-size:0.8rem; margin-top:6px; color:var(--gold-accent);">Rules: ${item.ESC_Style_Rules}</div>` : ''}
-                `;
-            } else {
-                refBox.innerHTML = `
-                    <div style="font-style:italic;">"${item.English_Quote}"</div>
-                    <div style="font-size:0.85rem; font-weight:700; margin-top:4px; color:var(--gold-accent);">— ${item.Author_Speaker || 'Harold Klemp'}</div>
-                `;
-            }
-
-            if (isAdmin()) {
-                adminFields.style.display = 'block';
-                document.getElementById('editEnglishText').value = item.English_Term || item.English_Quote || '';
-                document.getElementById('editCategory').innerHTML = state.categories.map(c => `<option value="${c}" ${c === item.Category_Domain ? 'selected' : ''}>${c}</option>`).join('');
-                document.getElementById('editAudience').value = item.Audience_Scope || 'Public';
-                document.getElementById('editStyleRules').value = item.ESC_Style_Rules || '';
-
-                container.innerHTML = `
-                    <div class="form-group"><label>🇵🇭 Filipino Translation</label><input type="text" id="editFilipino" class="form-control" value="${escapeHtml(item.Filipino_Translation || '')}"></div>
-                    <div class="form-group"><label>🇯🇵 Japanese Translation</label><input type="text" id="editJapanese" class="form-control" value="${escapeHtml(item.Japanese_Translation || '')}"></div>
-                    <div class="form-group"><label>🇹🇭 Thai Translation</label><input type="text" id="editThai" class="form-control" value="${escapeHtml(item.Thai_Translation || '')}"></div>
-                `;
-
-                footer.innerHTML = `
-                    <button class="btn btn-red" onclick="closeEditModal()">Cancel</button>
-                    <button class="btn btn-green" onclick="submitEditItem('Approved')">Save Changes</button>
-                `;
-            } else {
-                adminFields.style.display = 'none';
-                const uLang = getUserLang();
-                const langKey = uLang === 'Japanese' ? 'Japanese' : (uLang === 'Thai' ? 'Thai' : 'Filipino');
-                const transVal = item[langKey + '_Translation'] || '';
-                const currStatus = item['Status_' + langKey] || 'Pending';
-                const flag = uLang === 'Japanese' ? '🇯🇵' : (uLang === 'Thai' ? '🇹🇭' : '🇵🇭');
-
-                container.innerHTML = `
+            if (isAdminUser) {
+                body.innerHTML = `
+                    <input type="hidden" id="editId" value="${id}">
+                    <input type="hidden" id="editType" value="${type}">
+                    
                     <div class="form-group">
-                        <label>${flag} ${uLang} Translation</label>
-                        <input type="text" id="editLangTranslation" class="form-control" value="${escapeHtml(transVal)}">
+                        <label>English Text</label>
+                        <input type="text" id="editEnglish" class="form-control" value="${item.English_Term || item.English_Quote || ''}">
+                    </div>
+
+                    ${type === 'term' ? `
+                    <div class="form-group">
+                        <label>Category / Domain</label>
+                        <select id="editCategory" class="form-control">
+                            ${state.categories.map(c => `<option value="${c}" ${c === item.Category_Domain ? 'selected' : ''}>${c}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Audience Scope</label>
+                        <select id="editAudience" class="form-control">
+                            <option value="Public" ${item.Audience_Scope === 'Public' ? 'selected' : ''}>Public</option>
+                            <option value="Chela_Only" ${item.Audience_Scope === 'Chela_Only' ? 'selected' : ''}>Chela_Only</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>ESC Style Rules</label>
+                        <textarea id="editStyleRules" class="form-control">${item.ESC_Style_Rules || ''}</textarea>
+                    </div>
+                    ` : ''}
+
+                    <div class="form-group"><label>🇵🇭 Filipino Translation</label><input type="text" id="editFil" class="form-control" value="${item.Filipino_Translation || ''}"></div>
+                    <div class="form-group"><label>🇯🇵 Japanese Translation</label><input type="text" id="editJp" class="form-control" value="${item.Japanese_Translation || ''}"></div>
+                    <div class="form-group"><label>🇹🇭 Thai Translation</label><input type="text" id="editTh" class="form-control" value="${item.Thai_Translation || ''}"></div>
+                `;
+            } else {
+                // Read-Only English View for Translators
+                const langLabel = uLang === 'Japanese' ? '🇯🇵 Japanese Translation' : (uLang === 'Thai' ? '🇹🇭 Thai Translation' : '🇵🇭 Filipino Translation');
+                const langId = uLang === 'Japanese' ? 'editJp' : (uLang === 'Thai' ? 'editTh' : 'editFil');
+                const currentVal = uLang === 'Japanese' ? (item.Japanese_Translation || '') : (uLang === 'Thai' ? (item.Thai_Translation || '') : (item.Filipino_Translation || ''));
+
+                body.innerHTML = `
+                    <input type="hidden" id="editId" value="${id}">
+                    <input type="hidden" id="editType" value="${type}">
+                    
+                    <label style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">English Reference</label>
+                    <div class="read-only-box">
+                        <strong>${item.English_Term || item.English_Quote}</strong>
+                        ${item.ESC_Style_Rules ? `<div style="font-size:0.8rem; color:var(--gold-accent); margin-top:0.4rem;">Note: ${item.ESC_Style_Rules}</div>` : ''}
+                    </div>
+
+                    <div class="form-group">
+                        <label>${langLabel}</label>
+                        <input type="text" id="${langId}" class="form-control" value="${currentVal}">
                     </div>
                 `;
-
-                if (currStatus === 'Pending') {
-                    footer.innerHTML = `
-                        <button class="btn btn-red" onclick="closeEditModal()">Cancel</button>
-                        <button class="btn btn-gray" onclick="submitEditItem('Pending')">Save as Draft</button>
-                        <button class="btn btn-green" onclick="submitEditItem('Approved')">Save & Approve</button>
-                    `;
-                } else {
-                    footer.innerHTML = `
-                        <button class="btn btn-red" onclick="closeEditModal()">Cancel</button>
-                        <button class="btn btn-yellow" onclick="submitEditItem('Pending')">Revert to Pending</button>
-                        <button class="btn btn-green" onclick="submitEditItem('Approved')">Save Changes</button>
-                    `;
-                }
             }
+
+            const footer = document.getElementById('editModalFooter');
+            footer.innerHTML = `
+                <button type="button" class="btn btn-red" onclick="closeEditModal()">Cancel</button>
+                <button type="button" class="btn btn-yellow" onclick="submitUpdateItem('Pending')">Save as Draft</button>
+                <button type="button" class="btn btn-green" onclick="submitUpdateItem('Approved')">Save & Approve</button>
+            `;
 
             document.getElementById('editModal').style.display = 'flex';
         }
 
         function closeEditModal() { document.getElementById('editModal').style.display = 'none'; }
 
-        function submitEditItem(statusChoice) {
-            const item = state.editingItem;
-            const type = state.editingType;
+        function submitUpdateItem(status) {
+            const id = document.getElementById('editId').value;
+            const type = document.getElementById('editType').value;
 
-            let params = {
-                action: type === 'term' ? 'updateTerm' : 'updateQuote',
-                user: state.currentUser ? state.currentUser.name : 'User'
-            };
+            showLoading('Updating item...');
 
-            if (type === 'term') {
-                params.englishTerm = item.English_Term;
-                if (isAdmin()) {
-                    params.englishTermNew = document.getElementById('editEnglishText').value;
-                    params.category = document.getElementById('editCategory').value;
-                    params.audience = document.getElementById('editAudience').value;
-                    params.styleRules = document.getElementById('editStyleRules').value;
-                    params.filipinoTranslation = document.getElementById('editFilipino').value;
-                    params.japaneseTranslation = document.getElementById('editJapanese').value;
-                    params.thaiTranslation = document.getElementById('editThai').value;
-                } else {
-                    const uLang = getUserLang();
-                    const trans = document.getElementById('editLangTranslation').value;
-                    if (uLang === 'Japanese') {
-                        params.japaneseTranslation = trans;
-                        params.statusJapanese = statusChoice;
-                    } else if (uLang === 'Thai') {
-                        params.thaiTranslation = trans;
-                        params.statusThai = statusChoice;
-                    } else {
-                        params.filipinoTranslation = trans;
-                        params.statusFilipino = statusChoice;
-                    }
-                }
-            } else {
-                params.englishQuote = item.English_Quote;
-                if (isAdmin()) {
-                    params.filipinoTranslation = document.getElementById('editFilipino').value;
-                    params.japaneseTranslation = document.getElementById('editJapanese').value;
-                    params.thaiTranslation = document.getElementById('editThai').value;
-                } else {
-                    const uLang = getUserLang();
-                    const trans = document.getElementById('editLangTranslation').value;
-                    if (uLang === 'Japanese') {
-                        params.japaneseTranslation = trans;
-                        params.statusJapanese = statusChoice;
-                    } else if (uLang === 'Thai') {
-                        params.thaiTranslation = trans;
-                        params.statusThai = statusChoice;
-                    } else {
-                        params.filipinoTranslation = trans;
-                        params.statusFilipino = statusChoice;
-                    }
-                }
-            }
+            const params = new URLSearchParams();
+            params.append('action', type === 'term' ? 'updateTerm' : 'updateQuote');
+            params.append('id', id);
+            params.append('status', status);
+            params.append('user', state.currentUser.name);
 
-            executeApiCall(params, () => {
-                closeEditModal();
-                fetchLiveStore();
-            });
-        }
+            if (document.getElementById('editEnglish')) params.append('englishText', document.getElementById('editEnglish').value);
+            if (document.getElementById('editCategory')) params.append('category', document.getElementById('editCategory').value);
+            if (document.getElementById('editAudience')) params.append('audience', document.getElementById('editAudience').value);
+            if (document.getElementById('editStyleRules')) params.append('styleRules', document.getElementById('editStyleRules').value);
 
-        function deleteItem(engText, type) {
-            if (!confirm(`Are you sure you want to delete this ${type}? This action will mark it as deleted.`)) return;
+            if (document.getElementById('editFil')) params.append('filipino', document.getElementById('editFil').value);
+            if (document.getElementById('editJp')) params.append('japanese', document.getElementById('editJp').value);
+            if (document.getElementById('editTh')) params.append('thai', document.getElementById('editTh').value);
 
-            let params = {
-                action: type === 'term' ? 'deleteTerm' : 'deleteQuote',
-                user: state.currentUser ? state.currentUser.name : 'Admin'
-            };
-
-            if (type === 'term') params.englishTerm = engText;
-            else params.englishQuote = engText;
-
-            executeApiCall(params, () => {
-                fetchLiveStore();
-            });
-        }
-
-        function executeApiCall(params, onSuccess) {
-            let queryArr = [];
-            for (let k in params) {
-                queryArr.push(`${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`);
-            }
-
-            const cbName = 'jp_api_' + Math.round(100000 * Math.random());
-            queryArr.push(`callback=${cbName}`);
-
+            const cbName = 'jp_upd_' + Math.round(100000 * Math.random());
             window[cbName] = function(res) {
                 delete window[cbName];
-                document.body.removeChild(script);
+                if (script.parentNode) document.body.removeChild(script);
+                hideLoading();
+                closeEditModal();
+
                 if (res && res.success) {
-                    if (onSuccess) onSuccess();
+                    alert('Item updated successfully.');
+                    fetchLiveStore();
                 } else {
-                    alert('Error: ' + (res.message || 'Operation failed.'));
+                    alert('Error updating item: ' + (res ? res.message : 'Unknown error'));
                 }
             };
 
             const script = document.createElement('script');
-            script.src = `${SCRIPT_URL}?${queryArr.join('&')}`;
+            script.src = `${SCRIPT_URL}?${params.toString()}&callback=${cbName}`;
             document.body.appendChild(script);
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        function deleteItem(id, type) {
+            if (!confirm('Are you sure you want to delete this item? It will be archived in the Google Sheet.')) return;
+
+            showLoading('Deleting item...');
+
+            const action = type === 'term' ? 'deleteTerm' : 'deleteQuote';
+            const cbName = 'jp_del_' + Math.round(100000 * Math.random());
+
+            window[cbName] = function(res) {
+                delete window[cbName];
+                if (script.parentNode) document.body.removeChild(script);
+                hideLoading();
+
+                if (res && res.success) {
+                    alert('Item archived successfully.');
+                    fetchLiveStore();
+                } else {
+                    alert('Error deleting item: ' + (res ? res.message : 'Unknown error'));
+                }
+            };
+
+            const script = document.createElement('script');
+            script.src = `${SCRIPT_URL}?action=${action}&id=${id}&user=${encodeURIComponent(state.currentUser.name)}&callback=${cbName}`;
+            document.body.appendChild(script);
         }
     </script>
 </body>
