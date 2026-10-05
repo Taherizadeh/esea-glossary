@@ -929,7 +929,7 @@
                         <div id="adminFilterContainer" style="display:inline-block;"></div>
                     </div>
                     <div>
-                        <button type="button" class="btn btn-gold" onclick="openAddModal()">
+                        <button type="button" class="btn btn-gold" id="addItemBtn" onclick="openAddModal()">
                             <i class="fa-solid fa-plus"></i> Add New Item
                         </button>
                     </div>
@@ -1254,11 +1254,26 @@
         }
 
         // Helper Role Checkers
+        function getUserRole() {
+            if (!state.currentUser) return 'viewer';
+            return (state.currentUser.role || 'viewer').toLowerCase().trim();
+        }
+
+        function isViewer() {
+            const r = getUserRole();
+            return r === 'viewer' || r === 'public' || r === 'guest';
+        }
+
         function isAdmin() {
             if (!state.currentUser) return false;
-            const r = (state.currentUser.role || '').toLowerCase();
-            const l = (state.currentUser.language || '').toLowerCase();
+            const r = getUserRole();
+            if (r === 'viewer' || r === 'public' || r === 'guest') return false;
+            const l = (state.currentUser.language || '').toLowerCase().trim();
             return r === 'admin' || r === 'developer' || l === 'all languages' || l === 'all';
+        }
+
+        function isTranslator() {
+            return !isAdmin() && !isViewer();
         }
 
         function getUserLang() {
@@ -1280,25 +1295,22 @@
             return val.toString().trim();
         }
 
-        function updateMetricsAndBadges() {
-            // Count total active terms and quotes
-            const activeTerms = state.terms.filter(t => t.Approval_State !== 'Deleted');
-            const activeQuotes = state.quotes.filter(q => q.Approval_State !== 'Deleted');
+                function updateMetricsAndBadges() {
+            const activeTerms = state.terms.filter(t => t.Approval_State !== 'Deleted' && t.Status !== 'Deleted');
+            const activeQuotes = state.quotes.filter(q => q.Approval_State !== 'Deleted' && q.Status !== 'Deleted');
 
             document.getElementById('metricTerms').innerText = activeTerms.length;
             document.getElementById('metricQuotes').innerText = activeQuotes.length;
 
-            const uLang = getUserLang();
-            const langKey = uLang === 'Japanese' ? 'Japanese' : (uLang === 'Thai' ? 'Thai' : 'Filipino');
-            const statusCol = langKey + '_Status';
+            const taskCard = document.getElementById('metricTaskCard');
 
             if (isAdmin()) {
-                // Admin task count: incomplete metadata terms
                 const incompleteCount = activeTerms.filter(t => !t.Category_Domain || !t.Audience_Scope || !t.ESC_Style_Rules).length;
                 document.getElementById('metricTaskTitle').innerText = 'Incomplete Metadata';
                 document.getElementById('metricTaskCount').innerText = incompleteCount;
+                document.getElementById('metricTaskCount').style.color = 'var(--btn-red)';
+                if (taskCard) taskCard.classList.add('alert-card');
 
-                // Admin filter button
                 document.getElementById('adminFilterContainer').innerHTML = `
                     <button type="button" class="filter-btn" id="filterIncompleteBtn" onclick="setFilter('incomplete')">
                         <i class="fa-solid fa-triangle-exclamation" style="color:var(--btn-red);"></i> Incomplete Metadata (${incompleteCount})
@@ -1308,22 +1320,54 @@
                 document.getElementById('sessionTaskBadgeContainer').innerHTML = incompleteCount > 0 ? 
                     `<span class="alert-badge"><i class="fa-solid fa-bell"></i> ${incompleteCount} Incomplete Metadata Terms</span>` : '';
 
-            } else {
-                // Translator task count: items where translator's language is Pending
-                const pendingTermsCount = activeTerms.filter(t => t[statusCol] === 'Pending').length;
-                const pendingQuotesCount = activeQuotes.filter(q => q[statusCol] === 'Pending').length;
+                const pBtn = document.getElementById('filterPendingBtn');
+                if (pBtn) pBtn.style.display = 'inline-flex';
+                const aBtn = document.getElementById('addItemBtn');
+                if (aBtn) aBtn.style.display = 'inline-flex';
+
+            } else if (isTranslator()) {
+                const uLang = getUserLang();
+                const pendingTermsCount = activeTerms.filter(t => getItemStatus(t, uLang) === 'Pending').length;
+                const pendingQuotesCount = activeQuotes.filter(q => getItemStatus(q, uLang) === 'Pending').length;
                 const totalPending = pendingTermsCount + pendingQuotesCount;
 
                 document.getElementById('metricTaskTitle').innerText = 'My Pending Tasks';
                 document.getElementById('metricTaskCount').innerText = totalPending;
+                document.getElementById('metricTaskCount').style.color = 'var(--btn-red)';
+                if (taskCard) taskCard.classList.add('alert-card');
+
                 document.getElementById('adminFilterContainer').innerHTML = '';
 
                 document.getElementById('sessionTaskBadgeContainer').innerHTML = totalPending > 0 ? 
                     `<span class="alert-badge"><i class="fa-solid fa-bell"></i> My Tasks: ${totalPending} Pending</span>` : '';
+
+                const pBtn = document.getElementById('filterPendingBtn');
+                if (pBtn) pBtn.style.display = 'inline-flex';
+                const aBtn = document.getElementById('addItemBtn');
+                if (aBtn) aBtn.style.display = 'inline-flex';
+
+            } else {
+                // Viewer Mode
+                document.getElementById('metricTaskTitle').innerText = 'Access Mode';
+                document.getElementById('metricTaskCount').innerText = 'Read-Only';
+                document.getElementById('metricTaskCount').style.color = 'var(--gold-accent)';
+                if (taskCard) taskCard.classList.remove('alert-card');
+
+                document.getElementById('adminFilterContainer').innerHTML = '';
+
+                document.getElementById('sessionTaskBadgeContainer').innerHTML = `
+                    <span class="role-tag" style="background:rgba(212, 175, 55, 0.15); color:var(--gold-accent); border:1px solid var(--gold-accent); padding:4px 12px; font-weight:600;">
+                        <i class="fa-solid fa-eye"></i> Viewer Mode (Read-Only)
+                    </span>`;
+
+                const pBtn = document.getElementById('filterPendingBtn');
+                if (pBtn) pBtn.style.display = 'none';
+                const aBtn = document.getElementById('addItemBtn');
+                if (aBtn) aBtn.style.display = 'none';
             }
         }
 
-        function switchTab(tab) {
+function switchTab(tab) {
             state.activeTab = tab;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             if (tab === 'terms') document.getElementById('tabTerms').classList.add('active');
@@ -1565,6 +1609,24 @@
             container.innerHTML = `
                 <div style="grid-column: 1/-1;">
                     <div class="guide-card">
+                        <div class="guide-title"><i class="fa-solid fa-eye"></i> Viewer Quick Reference (Read-Only Access)</div>
+                        <ul class="rule-list">
+                            <li class="rule-item">
+                                <strong>1. Read-Only Access:</strong> Viewers (such as Judy) can search and reference all approved regional terms, sacred quotes, and ESC style guidelines across all 3 regional languages (Filipino 🇵🇭, Japanese 🇯🇵, Thai 🇹🇭).
+                            </li>
+                            <li class="rule-item">
+                                <strong>2. Multilingual Search:</strong> Use the live search bar at the top to search across English terms, translations, sacred quotes, or style guidelines simultaneously.
+                            </li>
+                            <li class="rule-item">
+                                <strong>3. Category & Scope Browsing:</strong> Browse terms by Category / Domain or filter by Public vs. Chela-Only audience scope.
+                            </li>
+                            <li class="rule-item">
+                                <strong>4. Action Controls:</strong> Viewer accounts are strictly read-only. Action buttons (Edit, Archive/Delete, Add New Item, Pending Filter) are hidden. For updates or translation requests, contact an assigned Translator or RESA Admin.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-card">
                         <div class="guide-title"><i class="fa-solid fa-user-pen"></i> Translator Quick Start Guide</div>
                         <ul class="rule-list">
                             <li class="rule-item">
@@ -1608,6 +1670,7 @@
 
         // Add Modal Functions
         function openAddModal() {
+            if (isViewer()) { showToast("Viewer accounts have read-only access.", "error"); return; }
             if (!state.currentUser) {
                 showToast('Please log in first.', 'error');
                 return;
@@ -1733,8 +1796,9 @@
 
         // Edit Modal Operations
         function openEditModal(id, type) {
+            if (isViewer()) { showToast("Viewer accounts have read-only access.", "error"); return; }
             const items = type === 'term' ? state.terms : state.quotes;
-            const item = items.find(i => (i.Term_ID === id || i.Quote_ID === id));
+            const item = items.find(i => (i._rowIndex == id || i.Term_ID === id || i.Quote_ID === id || i.English_Term === id || i.English_Quote === id));
             if (!item) return;
 
             const body = document.getElementById('editModalBody');
