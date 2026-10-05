@@ -1119,7 +1119,7 @@
         }
 
         // WEB APP GOOGLE APPS SCRIPT ENDPOINT
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyRhHyO0hnceA_A8JUj-T3GGfYmBQgvWmIHi0WNSXYkq9RwOztD18P2HyTQvYjHZZg-iw/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGqcIkDJTF0iWis4Fh9rCiL9kme3tQCpFQllgcHeP_GtfZlMv9EQcL8he_4j0ceo-u5w/exec';
 
         let state = {
             terms: [],
@@ -1266,6 +1266,20 @@
             return state.currentUser.language || 'All';
         }
 
+        
+        function getItemStatus(item, langOverride) {
+            if (!item) return 'Pending';
+            const lang = langOverride || getUserLang();
+            const langKey = lang === 'Japanese' ? 'Japanese' : (lang === 'Thai' ? 'Thai' : 'Filipino');
+            
+            const st1 = item['Status_' + langKey];
+            const st2 = item[langKey + '_Status'];
+            const st3 = item.Status;
+            
+            const val = st1 || st2 || st3 || 'Pending';
+            return val.toString().trim();
+        }
+
         function updateMetricsAndBadges() {
             // Count total active terms and quotes
             const activeTerms = state.terms.filter(t => t.Approval_State !== 'Deleted');
@@ -1399,21 +1413,21 @@
                                 <span class="flag-icon">🇵🇭</span>
                                 <div class="lang-content">
                                     <span class="lang-val">${item.Filipino_Translation || '—'}</span>
-                                    <span class="status-pill ${item.Filipino_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Filipino_Status || 'Pending'}</span>
+                                    <span class="status-pill ${getItemStatus(item, 'Filipino') === 'Approved' ? 'status-approved' : 'status-pending'}">${getItemStatus(item, 'Filipino')}</span>
                                 </div>
                             </div>
                             <div class="lang-row">
                                 <span class="flag-icon">🇯🇵</span>
                                 <div class="lang-content">
                                     <span class="lang-val">${item.Japanese_Translation || '—'}</span>
-                                    <span class="status-pill ${item.Japanese_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Japanese_Status || 'Pending'}</span>
+                                    <span class="status-pill ${getItemStatus(item, 'Japanese') === 'Approved' ? 'status-approved' : 'status-pending'}">${getItemStatus(item, 'Japanese')}</span>
                                 </div>
                             </div>
                             <div class="lang-row">
                                 <span class="flag-icon">🇹🇭</span>
                                 <div class="lang-content">
                                     <span class="lang-val">${item.Thai_Translation || '—'}</span>
-                                    <span class="status-pill ${item.Thai_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Thai_Status || 'Pending'}</span>
+                                    <span class="status-pill ${getItemStatus(item, 'Thai') === 'Approved' ? 'status-approved' : 'status-pending'}">${getItemStatus(item, 'Thai')}</span>
                                 </div>
                             </div>
                         </div>
@@ -1435,21 +1449,21 @@
                                 <span class="flag-icon">🇵🇭</span>
                                 <div class="lang-content">
                                     <span class="lang-val">${item.Filipino_Translation || '—'}</span>
-                                    <span class="status-pill ${item.Filipino_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Filipino_Status || 'Pending'}</span>
+                                    <span class="status-pill ${getItemStatus(item, 'Filipino') === 'Approved' ? 'status-approved' : 'status-pending'}">${getItemStatus(item, 'Filipino')}</span>
                                 </div>
                             </div>
                             <div class="lang-row">
                                 <span class="flag-icon">🇯🇵</span>
                                 <div class="lang-content">
                                     <span class="lang-val">${item.Japanese_Translation || '—'}</span>
-                                    <span class="status-pill ${item.Japanese_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Japanese_Status || 'Pending'}</span>
+                                    <span class="status-pill ${getItemStatus(item, 'Japanese') === 'Approved' ? 'status-approved' : 'status-pending'}">${getItemStatus(item, 'Japanese')}</span>
                                 </div>
                             </div>
                             <div class="lang-row">
                                 <span class="flag-icon">🇹🇭</span>
                                 <div class="lang-content">
                                     <span class="lang-val">${item.Thai_Translation || '—'}</span>
-                                    <span class="status-pill ${item.Thai_Status === 'Approved' ? 'status-approved' : 'status-pending'}">${item.Thai_Status || 'Pending'}</span>
+                                    <span class="status-pill ${getItemStatus(item, 'Thai') === 'Approved' ? 'status-approved' : 'status-pending'}">${getItemStatus(item, 'Thai')}</span>
                                 </div>
                             </div>
                         </div>
@@ -1473,8 +1487,7 @@
                         <div class="guide-title"><i class="fa-solid fa-shield-cat"></i> ECKANKAR Capitalization & Formatting Rules (ESC Style Sheets 1997 & 2026)</div>
                         <ul class="rule-list">
                             <li class="rule-item">
-                                <strong>MAHANTA Capitalization:</strong> For chela publications, discourses, and formal ECK writings, <span class="small-caps">MAHANTA</span> is formatted in <strong>Small Caps</strong> or ALL CAPS (<span class="small-caps">MAHANTA</span>). In general or public literature, write <em>Mahanta</em> with an initial capital M.
-                            </li>
+                                <strong>MAHANTA Capitalization:</strong> For chela publications, discourses, and formal ECK writings, <span class="small-caps" style="font-variant: small-caps; font-weight: bold; font-size: 1.1em; letter-spacing: 0.5px;">Mᴀʜᴀɴᴛᴀ</span> is formatted in <strong>Small-Caps</strong> (<strong>Mᴀʜᴀɴᴛᴀ</strong>) or ALL CAPS (<strong>MAHANTA</strong>). In general or public literature, write <em>Mahanta</em> with an initial capital M.</li>
                             <li class="rule-item">
                                 <strong>ECKANKAR Terminology:</strong> Write <strong>ECKANKAR</strong> in ALL CAPS when addressing members and chelas. Write <em>Eckankar</em> (initial cap only) in general public text and body paragraphs for the public.
                             </li>
@@ -1576,10 +1589,10 @@
                     </div>
 
                     <div class="guide-card">
-                        <div class="guide-title"><i class="fa-solid fa-user-gear"></i> Admin & Developer Workflow</div>
+                        <div class="guide-title"><i class="fa-solid fa-user-gear"></i> Admin Workflow</div>
                         <ul class="rule-list">
                             <li class="rule-item">
-                                <strong>Full Regional Access:</strong> Admins and Developers can view, edit, and approve terms in all 4 languages (English, Filipino, Japanese, Thai).
+                                <strong>Full Regional Access:</strong> Admins can view, edit, and approve terms in all 4 languages (English, Filipino, Japanese, Thai).
                             </li>
                             <li class="rule-item">
                                 <strong>Complete Incomplete Metadata:</strong> Click the <strong>Incomplete Metadata</strong> filter button to view terms added by translators that lack English metadata. Fill in <em>Category / Domain</em>, <em>Audience Scope</em>, and <em>ESC Style Rules</em>, then click <strong>Save & Approve</strong>.
