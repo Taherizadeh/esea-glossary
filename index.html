@@ -1119,7 +1119,7 @@
         }
 
         // WEB APP GOOGLE APPS SCRIPT ENDPOINT
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGqcIkDJTF0iWis4Fh9rCiL9kme3tQCpFQllgcHeP_GtfZlMv9EQcL8he_4j0ceo-u5w/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmjjrCE-cuquPdicbHZcrLGnBoshYzPwHb3BT1qONgp_g5E7b8HWR5Jnbsne06LcHLag/exec';
 
         let state = {
             terms: [],
@@ -1877,23 +1877,49 @@ function switchTab(tab) {
         function submitUpdateItem(status) {
             const id = document.getElementById('editId').value;
             const type = document.getElementById('editType').value;
+            const items = type === 'term' ? state.terms : state.quotes;
+            const item = items.find(i => (i._rowIndex == id || i.Term_ID === id || i.Quote_ID === id || i.English_Term === id || i.English_Quote === id));
 
             showLoading('Updating item...');
 
             const params = new URLSearchParams();
             params.append('action', type === 'term' ? 'updateTerm' : 'updateQuote');
             params.append('id', id);
+            params.append('rowIndex', item ? (item._rowIndex || id) : id);
             params.append('status', status);
             params.append('user', state.currentUser.name);
+            params.append('userLang', getUserLang());
 
-            if (document.getElementById('editEnglish')) params.append('englishText', document.getElementById('editEnglish').value);
+            if (isAdmin()) {
+                params.append('statusAll', 'true');
+            }
+
+            const engText = document.getElementById('editEnglish') ? document.getElementById('editEnglish').value : (item ? (item.English_Term || item.English_Quote || '') : '');
+            params.append('englishText', engText);
+            params.append('englishTerm', engText);
+            params.append('englishQuote', engText);
+
             if (document.getElementById('editCategory')) params.append('category', document.getElementById('editCategory').value);
             if (document.getElementById('editAudience')) params.append('audience', document.getElementById('editAudience').value);
             if (document.getElementById('editStyleRules')) params.append('styleRules', document.getElementById('editStyleRules').value);
 
-            if (document.getElementById('editFil')) params.append('filipino', document.getElementById('editFil').value);
-            if (document.getElementById('editJp')) params.append('japanese', document.getElementById('editJp').value);
-            if (document.getElementById('editTh')) params.append('thai', document.getElementById('editTh').value);
+            const filVal = document.getElementById('editFil') ? document.getElementById('editFil').value : '';
+            if (filVal) {
+                params.append('filipino', filVal);
+                params.append('filipinoTranslation', filVal);
+            }
+
+            const jpVal = document.getElementById('editJp') ? document.getElementById('editJp').value : '';
+            if (jpVal) {
+                params.append('japanese', jpVal);
+                params.append('japaneseTranslation', jpVal);
+            }
+
+            const thVal = document.getElementById('editTh') ? document.getElementById('editTh').value : '';
+            if (thVal) {
+                params.append('thai', thVal);
+                params.append('thaiTranslation', thVal);
+            }
 
             const cbName = 'jp_upd_' + Math.round(100000 * Math.random());
             window[cbName] = function(res) {
@@ -1920,6 +1946,10 @@ function switchTab(tab) {
 
             showLoading('Deleting item...');
 
+            const items = type === 'term' ? state.terms : state.quotes;
+            const item = items.find(i => (i._rowIndex == id || i.Term_ID === id || i.Quote_ID === id || i.English_Term === id || i.English_Quote === id));
+            const engText = item ? (item.English_Term || item.English_Quote || '') : id;
+
             const action = type === 'term' ? 'deleteTerm' : 'deleteQuote';
             const cbName = 'jp_del_' + Math.round(100000 * Math.random());
 
@@ -1937,9 +1967,8 @@ function switchTab(tab) {
             };
 
             const script = document.createElement('script');
-            script.src = `${SCRIPT_URL}?action=${action}&id=${id}&user=${encodeURIComponent(state.currentUser.name)}&callback=${cbName}`;
+            script.src = `${SCRIPT_URL}?action=${action}&id=${encodeURIComponent(id)}&rowIndex=${encodeURIComponent(id)}&englishTerm=${encodeURIComponent(engText)}&englishQuote=${encodeURIComponent(engText)}&user=${encodeURIComponent(state.currentUser.name)}&callback=${cbName}`;
             document.body.appendChild(script);
         }
-    </script>
-</body>
-</html>
+
+        
