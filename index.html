@@ -772,9 +772,67 @@
             .content-grid { grid-template-columns: 1fr; }
             .modal-card { padding: 1.25rem; }
         }
+    
+        /* Toast Notifications */
+        #toastContainer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+        .toast-item {
+            pointer-events: auto;
+            min-width: 280px;
+            max-width: 420px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInRight 0.3s ease forwards;
+        }
+        .toast-success { background-color: #10b981; }
+        .toast-error { background-color: #ef4444; }
+        .toast-info { background-color: #00338D; border: 1px solid #D4AF37; }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* In-Modal Alert Banners */
+        .in-modal-alert {
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            display: none;
+            text-align: left;
+            line-height: 1.4;
+        }
+        .in-modal-alert.alert-error {
+            background-color: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        .in-modal-alert.alert-info {
+            background-color: #eff6ff;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+        }
+
     </style>
 </head>
 <body class="auth-locked">
+    <div id="toastContainer"></div>
 
     <!-- GLOBAL LOADING OVERLAY -->
     <div class="loading-overlay" id="globalLoadingOverlay" style="display:none;">
@@ -792,6 +850,7 @@
             </div>
             <h2 style="font-family:'Cinzel',serif; font-size: 1.4rem; color: var(--text-primary); margin-bottom: 0.2rem;">ECKANKAR ESEA</h2>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Regional Glossary & Translation Portal</p>
+            <div id="loginAlertBox" class="in-modal-alert alert-error"></div>
             
             <div class="form-group" style="text-align: left;">
                 <label>Username / Name</label>
@@ -1029,6 +1088,36 @@
 
     <!-- JavaScript Application Logic -->
     <script>
+
+        // Toast and Alert Message Helpers (No browser alerts)
+        function showToast(msg, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.className = `toast-item toast-${type}`;
+            const icon = type === 'success' ? 'fa-circle-check' : (type === 'error' ? 'fa-triangle-exclamation' : 'fa-circle-info');
+            toast.innerHTML = `<i class="fa-solid ${icon}"></i> <span>${msg}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.4s ease';
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        }
+
+        function showLoginAlert(msg, type = 'error') {
+            const box = document.getElementById('loginAlertBox');
+            if (!box) return;
+            box.className = `in-modal-alert alert-${type}`;
+            box.innerHTML = `<i class="fa-solid ${type === 'error' ? 'fa-triangle-exclamation' : 'fa-circle-info'}"></i> ${msg}`;
+            box.style.display = 'block';
+        }
+
+        function clearLoginAlert() {
+            const box = document.getElementById('loginAlertBox');
+            if (box) box.style.display = 'none';
+        }
+
         // WEB APP GOOGLE APPS SCRIPT ENDPOINT
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyRhHyO0hnceA_A8JUj-T3GGfYmBQgvWmIHi0WNSXYkq9RwOztD18P2HyTQvYjHZZg-iw/exec';
 
@@ -1070,7 +1159,7 @@
             const timer = setTimeout(() => {
                 timedOut = true;
                 hideLoading();
-                alert('Connection to Google Sheet timed out. Please click Sync to try again.');
+                showToast('Connection to Google Sheet timed out. Please click Sync to try again.', 'error');
             }, 12000);
 
             window[cbName] = function(data) {
@@ -1090,7 +1179,7 @@
                     updateMetricsAndBadges();
                     renderContent();
                 } else {
-                    alert('Error loading data: ' + (data ? data.message : 'Unknown error'));
+                    showToast('Error loading data: ' + (data ? data.message : 'Unknown error'), 'error');
                 }
             };
 
@@ -1099,31 +1188,33 @@
             document.body.appendChild(script);
         }
 
-        // Submit Login with Feedback & Single Click
+        // Submit Login with In-Modal Feedback & 30s Cold-Start Timeout
         function submitLogin() {
+            clearLoginAlert();
             const user = document.getElementById('loginUsername').value.trim();
             const pass = document.getElementById('loginPasscode').value.trim();
 
             if (!user || !pass) {
-                alert('Please enter both username and passcode.');
+                showLoginAlert('Please enter both username and passcode.');
                 return;
             }
 
             const btn = document.getElementById('loginSubmitBtn');
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...';
-            showLoading('Authenticating credentials...');
+            showLoading('Connecting to Google Apps Script...');
 
             const cbName = 'jp_login_' + Math.round(100000 * Math.random());
             let timedOut = false;
 
+            // 30 seconds timeout to accommodate Google Apps Script cold starts
             const timer = setTimeout(() => {
                 timedOut = true;
                 hideLoading();
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Sign In to Portal';
-                alert('Authentication timed out. Please check your network and try again.');
-            }, 10000);
+                showLoginAlert('Connection timed out. Google Apps Script is starting up. Please click Sign In again.', 'info');
+            }, 30000);
 
             window[cbName] = function(res) {
                 if (timedOut) return;
@@ -1134,16 +1225,18 @@
                 btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Sign In to Portal';
 
                 if (res && res.success) {
+                    clearLoginAlert();
                     state.currentUser = res.user;
                     document.body.classList.remove('auth-locked');
                     document.getElementById('loginScreen').style.display = 'none';
                     document.getElementById('sessionUserName').innerText = res.user.name;
                     document.getElementById('sessionUserRole').innerText = res.user.role + ' (' + res.user.language + ')';
                     
+                    showToast('Welcome ' + res.user.name + '! Logged in successfully.', 'success');
                     fetchLiveStore();
                 } else {
                     hideLoading();
-                    alert('Error: ' + (res ? res.message : 'Invalid credentials.'));
+                    showLoginAlert(res ? res.message : 'Invalid username or passcode.');
                 }
             };
 
@@ -1273,7 +1366,7 @@
                     if (isAdmin()) {
                         return item.Filipino_Status === 'Pending' || item.Japanese_Status === 'Pending' || item.Thai_Status === 'Pending';
                     }
-                    return item[statusCol] === 'Pending';
+                    return getItemStatus(item) === 'Pending';
                 }
                 if (state.activeFilter === 'incomplete') {
                     return !item.Category_Domain || !item.Audience_Scope || !item.ESC_Style_Rules;
@@ -1503,7 +1596,7 @@
         // Add Modal Functions
         function openAddModal() {
             if (!state.currentUser) {
-                alert('Please log in first.');
+                showToast('Please log in first.', 'error');
                 return;
             }
             document.getElementById('addEnglishText').value = '';
@@ -1583,7 +1676,7 @@
             const text = document.getElementById('addEnglishText').value.trim();
 
             if (!text) {
-                alert('Please enter the English text.');
+                showToast('Please enter the English text.', 'error');
                 return;
             }
 
@@ -1613,10 +1706,10 @@
                 closeAddModal();
 
                 if (res && res.success) {
-                    alert('Item added successfully.');
+                    showToast('Item added successfully!', 'success');
                     fetchLiveStore();
                 } else {
-                    alert('Error adding item: ' + (res ? res.message : 'Unknown error'));
+                    showToast('Error adding item: ' + (res ? res.message : 'Unknown error'), 'error');
                 }
             };
 
@@ -1733,10 +1826,10 @@
                 closeEditModal();
 
                 if (res && res.success) {
-                    alert('Item updated successfully.');
+                    showToast('Item updated successfully!', 'success');
                     fetchLiveStore();
                 } else {
-                    alert('Error updating item: ' + (res ? res.message : 'Unknown error'));
+                    showToast('Error updating item: ' + (res ? res.message : 'Unknown error'), 'error');
                 }
             };
 
@@ -1759,10 +1852,10 @@
                 hideLoading();
 
                 if (res && res.success) {
-                    alert('Item archived successfully.');
+                    showToast('Item archived successfully!', 'success');
                     fetchLiveStore();
                 } else {
-                    alert('Error deleting item: ' + (res ? res.message : 'Unknown error'));
+                    showToast('Error deleting item: ' + (res ? res.message : 'Unknown error'), 'error');
                 }
             };
 
