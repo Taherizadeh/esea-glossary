@@ -1184,6 +1184,14 @@
             };
 
             const script = document.createElement('script');
+            script.onerror = function() {
+                if (timedOut) return;
+                clearTimeout(timer);
+                delete window[cbName];
+                if (script.parentNode) document.body.removeChild(script);
+                hideLoading();
+                showToast('Failed to load data from Google Apps Script. Check network or permissions.', 'error');
+            };
             script.src = SCRIPT_URL + '?action=getAllData&callback=' + cbName;
             document.body.appendChild(script);
         }
@@ -1241,6 +1249,16 @@
             };
 
             const script = document.createElement('script');
+            script.onerror = function() {
+                if (timedOut) return;
+                clearTimeout(timer);
+                delete window[cbName];
+                if (script.parentNode) document.body.removeChild(script);
+                hideLoading();
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Sign In to Portal';
+                showLoginAlert('Unable to reach Google Apps Script. Please check your connection or Web App access permissions (must be set to Anyone).', 'error');
+            };
             script.src = `${SCRIPT_URL}?action=login&username=${encodeURIComponent(user)}&passcode=${encodeURIComponent(pass)}&callback=${cbName}`;
             document.body.appendChild(script);
         }
@@ -1970,5 +1988,6 @@ function switchTab(tab) {
             script.src = `${SCRIPT_URL}?action=${action}&id=${encodeURIComponent(id)}&rowIndex=${encodeURIComponent(id)}&englishTerm=${encodeURIComponent(engText)}&englishQuote=${encodeURIComponent(engText)}&user=${encodeURIComponent(state.currentUser.name)}&callback=${cbName}`;
             document.body.appendChild(script);
         }
-
-        
+    </script>
+</body>
+</html>
